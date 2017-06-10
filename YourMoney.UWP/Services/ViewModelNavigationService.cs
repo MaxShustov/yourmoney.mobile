@@ -19,7 +19,8 @@ namespace YourMoney.UWP.Services
             _keys = new Dictionary<string, Type>
             {
                 { typeof(LoginViewModel).ToString(), typeof(LoginPage) },
-                { typeof(RegisterViewModel).ToString(), typeof(RegisterPage) }
+                { typeof(RegisterViewModel).ToString(), typeof(RegisterPage) },
+                { typeof(HomeViewModel).ToString(), typeof(HomePage) }
             };
         }
 

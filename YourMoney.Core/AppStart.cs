@@ -18,9 +18,11 @@ namespace YourMoney.Core
             SimpleIoc.Default.Register<IApiContext, ApiContext>();
             SimpleIoc.Default.Register<IUserApiClient, UserApiClient>();
             SimpleIoc.Default.Register<IUserService, UserService>();
+            SimpleIoc.Default.Register<ISettingService, SettingService>();
 
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<RegisterViewModel>();
+            SimpleIoc.Default.Register<HomeViewModel>();
         }
     }
 }

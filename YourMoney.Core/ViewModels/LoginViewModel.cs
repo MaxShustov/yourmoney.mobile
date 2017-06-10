@@ -49,6 +49,8 @@ namespace YourMoney.Core.ViewModels
         private async void Login()
         {
             await _userService.Login(UserName, Password);
+
+            _navigationService.ShowViewModel<HomeViewModel>();
         }
 
         private void GoToRegister()

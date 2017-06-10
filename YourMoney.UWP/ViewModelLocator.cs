@@ -8,5 +8,7 @@ namespace YourMoney.UWP
         public LoginViewModel LoginViewModel => SimpleIoc.Default.GetInstance<LoginViewModel>();
 
         public RegisterViewModel RegisterViewModel => SimpleIoc.Default.GetInstance<RegisterViewModel>();
+
+        public HomeViewModel HomeViewModel => SimpleIoc.Default.GetInstance<HomeViewModel>();
     }
 }
