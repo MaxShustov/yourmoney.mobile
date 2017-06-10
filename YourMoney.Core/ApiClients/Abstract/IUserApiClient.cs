@@ -9,5 +9,7 @@ namespace YourMoney.Core.ApiClients.Abstract
         Task<Guid> Login(LoginModel loginModel);
 
         Task Register(RegisterModel registerModel);
+
+        Task<CurrentBalanceResponseModel> GetCurrentBalance(Guid userId);
     }
 }

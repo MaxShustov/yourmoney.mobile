@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace YourMoney.Core.Services.Abstract
 {
@@ -7,5 +8,7 @@ namespace YourMoney.Core.Services.Abstract
         Task Login(string userName, string password);
 
         Task Register(string userName, string password, string email);
+
+        Task<decimal> GetCurrentBalance(Guid userId);
     }
 }

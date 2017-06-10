@@ -9,6 +9,7 @@ namespace YourMoney.Core.ApiClients.Implementation
     {
         private const string LoginUrl = "api/users/login";
         private const string RegisterUrl = "api/users/";
+        private const string SummaryUrl = "api/users/{0}/summary";
 
         private readonly IApiContext _apiContext;
 
@@ -25,6 +26,11 @@ namespace YourMoney.Core.ApiClients.Implementation
         public Task Register(RegisterModel registerModel)
         {
             return _apiContext.Post(RegisterUrl, registerModel);
+        }
+
+        public Task<CurrentBalanceResponseModel> GetCurrentBalance(Guid userId)
+        {
+            return _apiContext.Get<CurrentBalanceResponseModel>(string.Format(SummaryUrl, userId));
         }
     }
 }
