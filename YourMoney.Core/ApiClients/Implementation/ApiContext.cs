@@ -20,9 +20,11 @@ namespace YourMoney.Core.ApiClients.Implementation
             _httpClient.BaseAddress = new Uri(AppConfig.Url);
         }
 
-        public Task<Guid> Login(string url, LoginModel loginModel)
+        public async Task<Guid> Login(string url, LoginModel loginModel)
         {
-            return Post<Guid, LoginModel>(url, loginModel);
+            var response = await Post<LoginResponseModel, LoginModel>(url, loginModel);
+
+            return response.UserId;
         }
 
         public async Task<T> Get<T>(string url)

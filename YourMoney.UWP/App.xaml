@@ -2,7 +2,9 @@
     x:Class="YourMoney.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:YourMoney.UWP"
+    xmlns:vm="using:YourMoney.UWP"
     RequestedTheme="Light">
-
+    <Application.Resources>
+        <vm:ViewModelLocator xmlns:vm ="using:YourMoney.UWP"  x:Key="ViewModelLocator"/>
+    </Application.Resources>
 </Application>
