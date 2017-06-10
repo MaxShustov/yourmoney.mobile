@@ -1,11 +1,14 @@
 ﻿using System;
+using GalaSoft.MvvmLight.Ioc;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using YourMoney.Core;
+using YourMoney.Core.Services.Abstract;
 using YourMoney.UWP.Pages;
+using YourMoney.UWP.Services;
 
 namespace YourMoney.UWP
 {
@@ -32,6 +35,7 @@ namespace YourMoney.UWP
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             AppStart.Initialize();
+            Initialize();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -94,6 +98,11 @@ namespace YourMoney.UWP
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        private void Initialize()
+        {
+            SimpleIoc.Default.Register<IViewModelNavigationService, ViewModelNavigationService>();
         }
     }
 }
