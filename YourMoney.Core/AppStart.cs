@@ -1,4 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
 using YourMoney.Core.ApiClients.Abstract;
 using YourMoney.Core.ApiClients.Implementation;
 using YourMoney.Core.Services.Abstract;
@@ -11,6 +13,8 @@ namespace YourMoney.Core
     {
         public static void Initialize()
         {
+            SimpleIoc.Default.Register<ISettings>(() => CrossSettings.Current);
+
             SimpleIoc.Default.Register<IApiContext, ApiContext>();
             SimpleIoc.Default.Register<IUserApiClient, UserApiClient>();
             SimpleIoc.Default.Register<IUserService, UserService>();

@@ -50,8 +50,10 @@
     <Compile Include="Models\LoginResponseModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Abstract\ISettingService.cs" />
     <Compile Include="Services\Abstract\IViewModelNavigationService.cs" />
     <Compile Include="Services\Abstract\IUserService.cs" />
+    <Compile Include="Services\Implementation\SettingService.cs" />
     <Compile Include="Services\Implementation\UserService.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

@@ -3,7 +3,8 @@
   "dependencies": {
     "modernhttpclient": "2.4.2",
     "MvvmLightLibs": "5.3.0",
-    "Newtonsoft.Json": "10.0.2"
+    "Newtonsoft.Json": "10.0.2",
+    "Xam.Plugins.Settings": "2.5.8"
   },
   "frameworks": {
     ".NETPortable,Version=v4.5,Profile=Profile7": {}

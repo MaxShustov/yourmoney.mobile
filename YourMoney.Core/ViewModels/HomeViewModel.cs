@@ -6,14 +6,18 @@ namespace YourMoney.Core.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
-        private IUserService _userService;
-        private Guid _userId;
+        private readonly IUserService _userService;
+        private readonly Guid _userId;
 
         private string _currentBalance;
 
-        public HomeViewModel(IUserService userService)
+        public HomeViewModel(IUserService userService, ISettingService settingService)
         {
             _userService = userService;
+
+            _userId = settingService.UserId;
+
+            Initialize();
         }
 
         public string CurrentBalance
