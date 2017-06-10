@@ -10,10 +10,10 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel VerticalAlignment="Center">
-            <TextBox Text="{Binding UserName}" PlaceholderText="User Name" Margin="10,0,10,10"/>
-            <TextBox Text="{Binding Password}" PlaceholderText="Password" Margin="10,0,10,10"/>
-            <TextBox Text="{Binding Email}" PlaceholderText="Email" Margin="10,0,10,10"/>
-            <Button Command="{Binding RegisterCommand}" HorizontalAlignment="Stretch" Margin="10,0">Register</Button>
+            <TextBox Text="{Binding UserName, Mode=TwoWay}" IsEnabled="{Binding IsUiEnabled}" PlaceholderText="User Name" Margin="10,0,10,10"/>
+            <PasswordBox Password="{Binding Password, Mode=TwoWay}" IsEnabled="{Binding IsUiEnabled}" PlaceholderText="Password" Margin="10,0,10,10"/>
+            <TextBox Text="{Binding Email, Mode=TwoWay}" PlaceholderText="Email" IsEnabled="{Binding IsUiEnabled}" Margin="10,0,10,10"/>
+            <Button Command="{Binding RegisterCommand}" IsEnabled="{Binding IsUiEnabled}" HorizontalAlignment="Stretch" Margin="10,0">Register</Button>
         </StackPanel>
     </Grid>
 </Page>

@@ -42,11 +42,11 @@ namespace YourMoney.Core.ApiClients.Implementation
             return await result.Get<TResult>();
         }
 
-        public Task Post<TContent>(string url, TContent content)
+        public async Task Post<TContent>(string url, TContent content)
         {
             var json = JsonConvert.SerializeObject(content);
 
-            return _httpClient.PostAsync(url, new StringContent(json, Encoding.Unicode, "application/json"));
+            var res = await _httpClient.PostAsync(url, new StringContent(json, Encoding.Unicode, "application/json"));
         }
 
         public Task Put<T>(string url, T content)

@@ -13,11 +13,14 @@ namespace YourMoney.Core.ViewModels
         private string _userName;
         private string _password;
         private string _email;
+        private bool _isUiEnabled;
 
         public RegisterViewModel(IUserService userService, IViewModelNavigationService navigationService)
         {
             _userService = userService;
             _navigationService = navigationService;
+
+            _isUiEnabled = true;
         }
 
         public ICommand RegisterCommand => new RelayCommand(Register);
@@ -58,11 +61,27 @@ namespace YourMoney.Core.ViewModels
             }
         }
 
+        public bool IsUiEnabled
+        {
+            get
+            {
+                return _isUiEnabled;
+            }
+            set
+            {
+                Set(() => IsUiEnabled, ref _isUiEnabled, value);
+            }
+        }
+
         private async void Register()
         {
+            IsUiEnabled = false;
+
             await _userService.Register(UserName, Password, Email);
 
             _navigationService.ShowViewModel<LoginViewModel>();
+
+            IsUiEnabled = true;
         }
     }
 }
