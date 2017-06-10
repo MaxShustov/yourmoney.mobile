@@ -16,6 +16,7 @@ namespace YourMoney.Core
             SimpleIoc.Default.Register<IUserService, UserService>();
 
             SimpleIoc.Default.Register<LoginViewModel>();
+            SimpleIoc.Default.Register<RegisterViewModel>();
         }
     }
 }

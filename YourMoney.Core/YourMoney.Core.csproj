@@ -52,6 +52,7 @@
     <Compile Include="Services\Abstract\IUserService.cs" />
     <Compile Include="Services\Implementation\UserService.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight">
