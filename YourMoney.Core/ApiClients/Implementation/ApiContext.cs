@@ -8,7 +8,7 @@ using YourMoney.Core.ApiClients.Abstract;
 using YourMoney.Core.Helpers;
 using YourMoney.Core.Models;
 
-namespace YourMoney.Core.ApiClients
+namespace YourMoney.Core.ApiClients.Implementation
 {
     public class ApiContext : IApiContext
     {

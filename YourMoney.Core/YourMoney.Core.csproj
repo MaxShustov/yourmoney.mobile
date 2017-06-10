@@ -39,11 +39,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiClients\Abstract\IApiContext.cs" />
-    <Compile Include="ApiClients\ApiContext.cs" />
+    <Compile Include="ApiClients\Abstract\IUserApiClient.cs" />
+    <Compile Include="ApiClients\Implementation\ApiContext.cs" />
+    <Compile Include="ApiClients\Implementation\UserApiClient.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="Helpers\HttpClientExtentions.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Abstract\IUserService.cs" />
+    <Compile Include="Services\Implementation\UserService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
