@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using YourMoney.Core.ApiClients.Abstract;
 using YourMoney.Core.Models;
@@ -10,6 +11,7 @@ namespace YourMoney.Core.ApiClients.Implementation
         private const string LoginUrl = "api/users/login";
         private const string RegisterUrl = "api/users/";
         private const string SummaryUrl = "api/users/{0}/summary";
+        private const string TransactionsForUserUrl = "api/users/{0}/transactions";
 
         private readonly IApiContext _apiContext;
 
@@ -31,6 +33,11 @@ namespace YourMoney.Core.ApiClients.Implementation
         public Task<CurrentBalanceResponseModel> GetCurrentBalance(Guid userId)
         {
             return _apiContext.Get<CurrentBalanceResponseModel>(string.Format(SummaryUrl, userId));
+        }
+
+        public Task<List<Transaction>> GetTransactionForUser(Guid userId)
+        {
+            return _apiContext.Get<List<Transaction>>(string.Format(TransactionsForUserUrl, userId));
         }
     }
 }

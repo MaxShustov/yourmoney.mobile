@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using YourMoney.Core.Models;
 
@@ -11,5 +12,7 @@ namespace YourMoney.Core.ApiClients.Abstract
         Task Register(RegisterModel registerModel);
 
         Task<CurrentBalanceResponseModel> GetCurrentBalance(Guid userId);
+
+        Task<List<Transaction>> GetTransactionForUser(Guid userId);
     }
 }

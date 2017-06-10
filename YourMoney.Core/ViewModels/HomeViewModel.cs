@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using GalaSoft.MvvmLight;
+using YourMoney.Core.Models;
 using YourMoney.Core.Services.Abstract;
 
 namespace YourMoney.Core.ViewModels
@@ -10,6 +12,7 @@ namespace YourMoney.Core.ViewModels
         private readonly Guid _userId;
 
         private string _currentBalance;
+        private List<Transaction> _transactions;
 
         public HomeViewModel(IUserService userService, ISettingService settingService)
         {
@@ -32,9 +35,22 @@ namespace YourMoney.Core.ViewModels
             }
         }
 
+        public List<Transaction> Transactions
+        {
+            get
+            {
+                return _transactions;
+            }
+            set
+            {
+                Set(() => Transactions, ref _transactions, value);
+            }
+        }
+
         private async void Initialize()
         {
             CurrentBalance = (await _userService.GetCurrentBalance(_userId)).ToString();
+            Transactions = await _userService.GetTransactions(_userId);
         }
     }
 }

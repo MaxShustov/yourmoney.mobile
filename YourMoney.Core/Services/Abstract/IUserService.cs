@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using YourMoney.Core.Models;
 
 namespace YourMoney.Core.Services.Abstract
 {
@@ -10,5 +12,7 @@ namespace YourMoney.Core.Services.Abstract
         Task Register(string userName, string password, string email);
 
         Task<decimal> GetCurrentBalance(Guid userId);
+
+        Task<List<Transaction>> GetTransactions(Guid userId);
     }
 }

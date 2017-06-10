@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using YourMoney.Core.ApiClients.Abstract;
 using YourMoney.Core.Models;
@@ -47,6 +48,11 @@ namespace YourMoney.Core.Services.Implementation
             var currentBalance = await _userApiClient.GetCurrentBalance(userId);
 
             return currentBalance.CurrentBalance;
+        }
+
+        public Task<List<Transaction>> GetTransactions(Guid userId)
+        {
+            return _userApiClient.GetTransactionForUser(userId);
         }
     }
 }
