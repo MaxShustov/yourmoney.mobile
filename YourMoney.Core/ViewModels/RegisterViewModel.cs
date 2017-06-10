@@ -8,14 +8,16 @@ namespace YourMoney.Core.ViewModels
     public class RegisterViewModel : ViewModelBase
     {
         private readonly IUserService _userService;
+        private readonly IViewModelNavigationService _navigationService;
 
         private string _userName;
         private string _password;
         private string _email;
 
-        public RegisterViewModel(IUserService userService)
+        public RegisterViewModel(IUserService userService, IViewModelNavigationService navigationService)
         {
             _userService = userService;
+            _navigationService = navigationService;
         }
 
         public ICommand RegisterCommand => new RelayCommand(Register);
@@ -59,6 +61,8 @@ namespace YourMoney.Core.ViewModels
         private async void Register()
         {
             await _userService.Register(UserName, Password, Email);
+
+            _navigationService.ShowViewModel<LoginViewModel>();
         }
     }
 }

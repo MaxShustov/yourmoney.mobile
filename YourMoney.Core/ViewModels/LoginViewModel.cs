@@ -8,16 +8,19 @@ namespace YourMoney.Core.ViewModels
     public class LoginViewModel : ViewModelBase
     {
         private readonly IUserService _userService;
+        private readonly IViewModelNavigationService _navigationService;
 
         private string _userName;
         private string _password;
 
-        public LoginViewModel(IUserService userService)
+        public LoginViewModel(IUserService userService, IViewModelNavigationService navigationService)
         {
             _userService = userService;
+            _navigationService = navigationService;
         }
 
         public ICommand LoginCommand => new RelayCommand(Login);
+        public ICommand RegisterCommand => new RelayCommand(GoToRegister);
 
         public string UserName
         {
@@ -46,6 +49,11 @@ namespace YourMoney.Core.ViewModels
         private async void Login()
         {
             await _userService.Login(UserName, Password);
+        }
+
+        private void GoToRegister()
+        {
+            _navigationService.ShowViewModel<RegisterViewModel>();
         }
     }
 }

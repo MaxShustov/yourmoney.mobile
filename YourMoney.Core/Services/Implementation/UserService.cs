@@ -2,19 +2,16 @@
 using YourMoney.Core.ApiClients.Abstract;
 using YourMoney.Core.Models;
 using YourMoney.Core.Services.Abstract;
-using YourMoney.Core.ViewModels;
 
 namespace YourMoney.Core.Services.Implementation
 {
     public class UserService : IUserService
     {
         private readonly IUserApiClient _userApiClient;
-        private readonly IViewModelNavigationService _navigationService;
 
-        public UserService(IUserApiClient userApiClient, IViewModelNavigationService navigationService)
+        public UserService(IUserApiClient userApiClient)
         {
             _userApiClient = userApiClient;
-            _navigationService = navigationService;
         }
 
         public async Task Login(string userName, string password)
@@ -27,7 +24,6 @@ namespace YourMoney.Core.Services.Implementation
 
             var userId = await _userApiClient.Login(loginModel);
 
-            _navigationService.ShowViewModel<RegisterViewModel>();
             //TODO add saving to setting
         }
 
