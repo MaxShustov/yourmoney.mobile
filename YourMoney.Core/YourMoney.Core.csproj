@@ -43,6 +43,7 @@
     <Compile Include="ApiClients\Implementation\ApiContext.cs" />
     <Compile Include="ApiClients\Implementation\UserApiClient.cs" />
     <Compile Include="AppConfig.cs" />
+    <Compile Include="AppStart.cs" />
     <Compile Include="Helpers\HttpClientExtentions.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
