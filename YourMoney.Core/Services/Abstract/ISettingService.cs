@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace YourMoney.Core.Services.Abstract
+﻿namespace YourMoney.Core.Services.Abstract
 {
     public interface ISettingService
     {
-        Guid UserId { get; set; }
+        string UserId { get; set; }
     }
 }

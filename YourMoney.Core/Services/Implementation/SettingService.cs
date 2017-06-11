@@ -1,5 +1,4 @@
-﻿using System;
-using Plugin.Settings.Abstractions;
+﻿using Plugin.Settings.Abstractions;
 using YourMoney.Core.Services.Abstract;
 
 namespace YourMoney.Core.Services.Implementation
@@ -15,11 +14,11 @@ namespace YourMoney.Core.Services.Implementation
             _settings = settings;
         }
 
-        public Guid UserId
+        public string UserId
         {
             get
             {
-                return _settings.GetValueOrDefault<Guid>(UserIdKey);
+                return _settings.GetValueOrDefault<string>(UserIdKey);
             }
             set
             {

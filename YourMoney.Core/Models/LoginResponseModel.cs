@@ -1,11 +1,10 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace YourMoney.Core.Models
 {
     public class LoginResponseModel
     {
         [JsonProperty("UserId")]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

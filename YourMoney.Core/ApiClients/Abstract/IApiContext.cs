@@ -1,12 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using YourMoney.Core.Models;
 
 namespace YourMoney.Core.ApiClients.Abstract
 {
     public interface IApiContext
     {
-        Task<Guid> Login(string url, LoginModel loginModel);
+        Task<string> Login(string url, LoginModel loginModel);
 
         Task<T> Get<T>(string url);
 

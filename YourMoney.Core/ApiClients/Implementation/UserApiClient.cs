@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using YourMoney.Core.ApiClients.Abstract;
 using YourMoney.Core.Models;
@@ -20,7 +19,7 @@ namespace YourMoney.Core.ApiClients.Implementation
             _apiContext = apiContext;
         }
 
-        public Task<Guid> Login(LoginModel loginModel)
+        public Task<string> Login(LoginModel loginModel)
         {
             return _apiContext.Login(LoginUrl, loginModel);
         }
@@ -30,12 +29,12 @@ namespace YourMoney.Core.ApiClients.Implementation
             return _apiContext.Post(RegisterUrl, registerModel);
         }
 
-        public Task<CurrentBalanceResponseModel> GetCurrentBalance(Guid userId)
+        public Task<CurrentBalanceResponseModel> GetCurrentBalance(string userId)
         {
             return _apiContext.Get<CurrentBalanceResponseModel>(string.Format(SummaryUrl, userId));
         }
 
-        public Task<List<Transaction>> GetTransactionForUser(Guid userId)
+        public Task<List<Transaction>> GetTransactionForUser(string userId)
         {
             return _apiContext.Get<List<Transaction>>(string.Format(TransactionsForUserUrl, userId));
         }

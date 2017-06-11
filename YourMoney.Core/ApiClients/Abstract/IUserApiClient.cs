@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using YourMoney.Core.Models;
 
@@ -7,12 +6,12 @@ namespace YourMoney.Core.ApiClients.Abstract
 {
     public interface IUserApiClient
     {
-        Task<Guid> Login(LoginModel loginModel);
+        Task<string> Login(LoginModel loginModel);
 
         Task Register(RegisterModel registerModel);
 
-        Task<CurrentBalanceResponseModel> GetCurrentBalance(Guid userId);
+        Task<CurrentBalanceResponseModel> GetCurrentBalance(string userId);
 
-        Task<List<Transaction>> GetTransactionForUser(Guid userId);
+        Task<List<Transaction>> GetTransactionForUser(string userId);
     }
 }

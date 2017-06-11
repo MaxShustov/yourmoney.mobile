@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GalaSoft.MvvmLight;
 using YourMoney.Core.Models;
 using YourMoney.Core.Services.Abstract;
@@ -9,7 +8,7 @@ namespace YourMoney.Core.ViewModels
     public class HomeViewModel : ViewModelBase
     {
         private readonly IUserService _userService;
-        private readonly Guid _userId;
+        private readonly string _userId;
 
         private string _currentBalance;
         private List<Transaction> _transactions;
