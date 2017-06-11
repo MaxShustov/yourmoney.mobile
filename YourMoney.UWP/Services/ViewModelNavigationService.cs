@@ -20,7 +20,8 @@ namespace YourMoney.UWP.Services
             {
                 { typeof(LoginViewModel).ToString(), typeof(LoginPage) },
                 { typeof(RegisterViewModel).ToString(), typeof(RegisterPage) },
-                { typeof(HomeViewModel).ToString(), typeof(HomePage) }
+                { typeof(HomeViewModel).ToString(), typeof(HomePage) },
+                { typeof(AddIncomeTransactionViewModel).ToString(), typeof(AddTransactionPage) }
             };
         }
 

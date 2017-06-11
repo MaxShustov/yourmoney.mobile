@@ -9,14 +9,16 @@ namespace YourMoney.Core.ViewModels
     public class AddIncomeTransactionViewModel : ViewModelBase
     {
         private readonly ITransactionService _transactionService;
+        private readonly IViewModelNavigationService _navigationService;
 
         private decimal _value;
         private string _description;
         private string _category;
 
-        public AddIncomeTransactionViewModel(ITransactionService transactionService)
+        public AddIncomeTransactionViewModel(ITransactionService transactionService, IViewModelNavigationService navigationService)
         {
             _transactionService = transactionService;
+            _navigationService = navigationService;
         }
 
         public ICommand AddTransactionCommand => new RelayCommand(AddTransaction);
@@ -67,6 +69,8 @@ namespace YourMoney.Core.ViewModels
             };
 
             await _transactionService.AddTransaction(transaction);
+
+            _navigationService.ShowViewModel<HomeViewModel>();
         }
     }
 }

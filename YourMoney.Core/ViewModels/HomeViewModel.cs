@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Input;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using YourMoney.Core.Models;
 using YourMoney.Core.Services.Abstract;
 
@@ -8,19 +10,23 @@ namespace YourMoney.Core.ViewModels
     public class HomeViewModel : ViewModelBase
     {
         private readonly IUserService _userService;
+        private readonly IViewModelNavigationService _navigationService;
         private readonly string _userId;
 
         private string _currentBalance;
         private List<Transaction> _transactions;
 
-        public HomeViewModel(IUserService userService, ISettingService settingService)
+        public HomeViewModel(IUserService userService, ISettingService settingService, IViewModelNavigationService navigationService)
         {
             _userService = userService;
+            _navigationService = navigationService;
 
             _userId = settingService.UserId;
 
             Initialize();
         }
+
+        public ICommand IncomeCommand => new RelayCommand(Income);
 
         public string CurrentBalance
         {
@@ -50,6 +56,11 @@ namespace YourMoney.Core.ViewModels
         {
             CurrentBalance = (await _userService.GetCurrentBalance(_userId)).ToString();
             Transactions = await _userService.GetTransactions(_userId);
+        }
+
+        private async void Income()
+        {
+            _navigationService.ShowViewModel<AddIncomeTransactionViewModel>();
         }
     }
 }
