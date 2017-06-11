@@ -19,5 +19,8 @@ namespace YourMoney.Core.Models
 
         [JsonProperty("value")]
         public decimal Value { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
     }
 }
