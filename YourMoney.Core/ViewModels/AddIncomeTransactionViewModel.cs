@@ -11,7 +11,7 @@ namespace YourMoney.Core.ViewModels
         private readonly ITransactionService _transactionService;
         private readonly IViewModelNavigationService _navigationService;
 
-        private decimal _value;
+        private double _value;
         private string _description;
         private string _category;
 
@@ -23,7 +23,7 @@ namespace YourMoney.Core.ViewModels
 
         public ICommand AddTransactionCommand => new RelayCommand(AddTransaction);
 
-        public decimal Value
+        public double Value
         {
             get
             {
@@ -64,7 +64,7 @@ namespace YourMoney.Core.ViewModels
             var transaction = new Transaction
             {
                 Description = Description,
-                Value = Value,
+                Value = (decimal)Value,
                 Category = SelectedCategory
             };
 

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using YourMoney.Core.ApiClients.Abstract;
 using YourMoney.Core.Models;
 using YourMoney.Core.Services.Abstract;
@@ -20,6 +21,7 @@ namespace YourMoney.Core.Services.Implementation
         {
             var userId = _settingService.UserId;
             transaction.UserId = userId;
+            transaction.Date = DateTime.Now;
 
             return _transactionApiClient.AddTransaction(transaction);
         }

@@ -5,9 +5,6 @@ namespace YourMoney.Core.Models
 {
     public class Transaction
     {
-        [JsonProperty("_id")]
-        public Guid TransactionId { get; set; }
-
         [JsonProperty("description")]
         public string Description { get; set; }
 
