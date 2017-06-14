@@ -3,10 +3,11 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using YourMoney.Core.Models;
 using YourMoney.Core.Services.Abstract;
+using YourMoney.Core.ViewModels.Abstract;
 
 namespace YourMoney.Core.ViewModels
 {
-    public class AddIncomeTransactionViewModel : ViewModelBase
+    public class AddIncomeTransactionViewModel : ViewModelBase, IViewModel
     {
         private readonly ITransactionService _transactionService;
         private readonly IViewModelNavigationService _navigationService;
@@ -59,6 +60,14 @@ namespace YourMoney.Core.ViewModels
             }
         }
 
+        public void BeforeBack()
+        {
+        }
+
+        public void OnBack()
+        {
+        }
+
         private async void AddTransaction()
         {
             var transaction = new Transaction
@@ -70,7 +79,7 @@ namespace YourMoney.Core.ViewModels
 
             await _transactionService.AddTransaction(transaction);
 
-            _navigationService.ShowViewModel<HomeViewModel>();
+            _navigationService.GoBack();
         }
     }
 }

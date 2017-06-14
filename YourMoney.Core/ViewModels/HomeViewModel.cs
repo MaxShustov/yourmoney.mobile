@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using YourMoney.Core.Models;
 using YourMoney.Core.Services.Abstract;
+using YourMoney.Core.ViewModels.Abstract;
 
 namespace YourMoney.Core.ViewModels
 {
-    public class HomeViewModel : ViewModelBase
+    public class HomeViewModel : ViewModelBase, IViewModel
     {
         private readonly IUserService _userService;
         private readonly IViewModelNavigationService _navigationService;
@@ -52,13 +54,22 @@ namespace YourMoney.Core.ViewModels
             }
         }
 
+        public void BeforeBack()
+        {
+            Initialize();
+        }
+
+        public void OnBack()
+        {
+        }
+
         private async void Initialize()
         {
             CurrentBalance = (await _userService.GetCurrentBalance(_userId)).ToString();
-            Transactions = await _userService.GetTransactions(_userId);
+            Transactions = (await _userService.GetTransactions(_userId)).OrderByDescending(t => t.Date).ToList();
         }
 
-        private async void Income()
+        private void Income()
         {
             _navigationService.ShowViewModel<AddIncomeTransactionViewModel>();
         }

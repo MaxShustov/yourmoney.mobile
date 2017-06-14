@@ -1,34 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using GalaSoft.MvvmLight.Ioc;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using YourMoney.Core.Services.Abstract;
 using YourMoney.Core.ViewModels;
+using YourMoney.Core.ViewModels.Abstract;
 using YourMoney.UWP.Pages;
 
 namespace YourMoney.UWP.Services
 {
     public class ViewModelNavigationService : IViewModelNavigationService
     {
-        private readonly IDictionary<string, Type> _keys;
+        private readonly IDictionary<Type, Type> _keys;
 
         private string _currentPageKey;
 
         public ViewModelNavigationService()
         {
-            _keys = new Dictionary<string, Type>
+            _keys = new Dictionary<Type, Type>
             {
-                { typeof(LoginViewModel).ToString(), typeof(LoginPage) },
-                { typeof(RegisterViewModel).ToString(), typeof(RegisterPage) },
-                { typeof(HomeViewModel).ToString(), typeof(HomePage) },
-                { typeof(AddIncomeTransactionViewModel).ToString(), typeof(AddTransactionPage) }
+                { typeof(LoginViewModel), typeof(LoginPage) },
+                { typeof(RegisterViewModel), typeof(RegisterPage) },
+                { typeof(HomeViewModel), typeof(HomePage) },
+                { typeof(AddIncomeTransactionViewModel), typeof(AddTransactionPage) }
             };
         }
 
         public void ShowViewModel<TViewModel>()
         {
             var viewModelType = typeof(TViewModel);
-            var pageType = _keys[viewModelType.ToString()];
+            var pageType = _keys[viewModelType];
 
             RootFrame.Navigate(pageType);
 
@@ -37,12 +40,22 @@ namespace YourMoney.UWP.Services
 
         public void GoBack()
         {
-            throw new System.NotImplementedException();
+            if (RootFrame.CanGoBack)
+            {
+                var viewModelType = _keys.Single(p => p.Value == RootFrame.BackStack.Last().SourcePageType).Key;
+                var viewModel = (IViewModel)SimpleIoc.Default.GetInstance(viewModelType);
+
+                viewModel.BeforeBack();
+
+                RootFrame.GoBack();
+
+                viewModel.OnBack();
+            }
         }
 
         public void NavigateTo(string pageKey)
         {
-            var pageType = _keys[pageKey];
+            var pageType = _keys.Single(p => p.Key.ToString() == pageKey).Value;
 
             RootFrame.Navigate(pageType);
 

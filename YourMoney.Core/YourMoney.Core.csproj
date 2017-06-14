@@ -60,6 +60,7 @@
     <Compile Include="Services\Implementation\SettingService.cs" />
     <Compile Include="Services\Implementation\TransactionService.cs" />
     <Compile Include="Services\Implementation\UserService.cs" />
+    <Compile Include="ViewModels\Abstract\IViewModel.cs" />
     <Compile Include="ViewModels\AddIncomeTransactionViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
