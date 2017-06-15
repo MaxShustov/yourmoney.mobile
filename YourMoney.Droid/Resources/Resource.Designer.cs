@@ -1398,6 +1398,9 @@ namespace YourMoney.Droid
 		public partial class Dimension
 		{
 			
+			// aapt resource value: 0x7f06008b
+			public const int DefaultMargin = 2131099787;
+			
 			// aapt resource value: 0x7f06000f
 			public const int abc_action_bar_content_inset_material = 2131099663;
 			
