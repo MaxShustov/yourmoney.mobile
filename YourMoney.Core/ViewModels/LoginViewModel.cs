@@ -2,10 +2,11 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using YourMoney.Core.Services.Abstract;
+using YourMoney.Core.ViewModels.Abstract;
 
 namespace YourMoney.Core.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase, IViewModel
     {
         private readonly IUserService _userService;
         private readonly IViewModelNavigationService _navigationService;
@@ -20,6 +21,9 @@ namespace YourMoney.Core.ViewModels
             _navigationService = navigationService;
 
             _isUiEnabled = true;
+
+            UserName = string.Empty;
+            Password = string.Empty;
         }
 
         public ICommand LoginCommand => new RelayCommand(Login);
@@ -78,6 +82,14 @@ namespace YourMoney.Core.ViewModels
         private void GoToRegister()
         {
             _navigationService.ShowViewModel<RegisterViewModel>();
+        }
+
+        public void BeforeBack()
+        {
+        }
+
+        public void OnBack()
+        {
         }
     }
 }
