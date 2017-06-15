@@ -37,12 +37,22 @@
             android:layout_height="wrap_content"
             android:hint="@string/PasswordHint" />
     </android.support.design.widget.TextInputLayout>
+  <TextView
+        android:id="@+id/ErrorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/error"
+        android:layout_below="@id/input_layout_password"
+        android:layout_margin="@dimen/DefaultMargin"
+        android:layout_centerHorizontal="true"/>
     <Button
         android:id="@+id/LoginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/input_layout_password"
-        android:layout_margin="@dimen/DefaultMargin"
+        android:layout_below="@id/ErrorTextView"
+        android:layout_marginLeft="@dimen/DefaultMargin"
+        android:layout_marginRight="@dimen/DefaultMargin"
+        android:layout_marginBottom="@dimen/DefaultMargin"
         android:text="@string/LoginButtonText"/>
     <TextView
         android:id="@+id/OrTextView"
