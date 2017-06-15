@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
-    <string name="ApplicationName">YourMoney.Droid</string>
+  <string name="ApplicationName">YourMoney</string>
+  
+  <!--Login page-->
+  <string name="PasswordHint">Password</string>
+  <string name="UserNameHint">User name</string>
+  <string name="LoginButtonText">Login</string>
+  <string name="RegisterButtonText">Register</string>
+  <string name="OrText">OR</string>
 </resources>
