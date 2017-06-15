@@ -1,26 +1,24 @@
-﻿using System.Threading.Tasks;
-using Android.App;
+﻿using Android.App;
 using Android.OS;
+using YourMoney.Core.ViewModels;
 
 namespace YourMoney.Droid.Activities
 {
     [Activity(MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/SplashTheme")]
-    public class SplashScreenActivity : Activity
+    public class SplashScreenActivity : BaseActivity<SplashViewModel>
     {
-        protected async override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.Main);
-
-            await GoToLogin();
         }
 
-        private async Task GoToLogin()
+        protected override void OnStart()
         {
-            await Task.Delay(1000);
+            base.OnStart();
 
-            StartActivity(typeof(LoginActivity));
+            ViewModel.ShowFirstViewModel();
         }
     }
 }

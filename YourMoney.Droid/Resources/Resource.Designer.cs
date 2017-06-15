@@ -26,6 +26,7 @@ namespace YourMoney.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::ModernHttpClient.Resource.String.library_name = global::YourMoney.Droid.Resource.String.library_name;
 		}
 		
 		public partial class Animation
@@ -2912,26 +2913,26 @@ namespace YourMoney.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f080029
-			public const int ApplicationName = 2131230761;
-			
-			// aapt resource value: 0x7f08002c
-			public const int LoginButtonText = 2131230764;
-			
-			// aapt resource value: 0x7f08002f
-			public const int LoginError = 2131230767;
-			
-			// aapt resource value: 0x7f08002e
-			public const int OrText = 2131230766;
-			
 			// aapt resource value: 0x7f08002a
-			public const int PasswordHint = 2131230762;
+			public const int ApplicationName = 2131230762;
 			
 			// aapt resource value: 0x7f08002d
-			public const int RegisterButtonText = 2131230765;
+			public const int LoginButtonText = 2131230765;
+			
+			// aapt resource value: 0x7f080030
+			public const int LoginError = 2131230768;
+			
+			// aapt resource value: 0x7f08002f
+			public const int OrText = 2131230767;
 			
 			// aapt resource value: 0x7f08002b
-			public const int UserNameHint = 2131230763;
+			public const int PasswordHint = 2131230763;
+			
+			// aapt resource value: 0x7f08002e
+			public const int RegisterButtonText = 2131230766;
+			
+			// aapt resource value: 0x7f08002c
+			public const int UserNameHint = 2131230764;
 			
 			// aapt resource value: 0x7f080000
 			public const int abc_action_bar_home_description = 2131230720;
@@ -3034,6 +3035,9 @@ namespace YourMoney.Droid
 			
 			// aapt resource value: 0x7f080023
 			public const int character_counter_pattern = 2131230755;
+			
+			// aapt resource value: 0x7f080029
+			public const int library_name = 2131230761;
 			
 			// aapt resource value: 0x7f080024
 			public const int password_toggle_content_description = 2131230756;

@@ -26,6 +26,7 @@ namespace YourMoney.Core
             SimpleIoc.Default.Register<RegisterViewModel>();
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<AddIncomeTransactionViewModel>();
+            SimpleIoc.Default.Register<SplashViewModel>();
         }
     }
 }
