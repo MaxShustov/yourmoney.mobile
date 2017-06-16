@@ -19,7 +19,8 @@ namespace YourMoney.Droid.Services
 
             _keys = new Dictionary<Type, Type>
             {
-                { typeof(LoginViewModel), typeof(LoginActivity) }
+                { typeof(LoginViewModel), typeof(LoginActivity) },
+                { typeof(HomeViewModel), typeof(HomeActivity) }
             };
         }
 

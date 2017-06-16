@@ -9,4 +9,7 @@
   <string name="RegisterButtonText">Register</string>
   <string name="OrText">OR</string>
   <string name="LoginError">User name or password is incorrect</string>
+  
+  <!--Home page-->
+  <string name="YourBalanceText">Your balance is:</string>
 </resources>
