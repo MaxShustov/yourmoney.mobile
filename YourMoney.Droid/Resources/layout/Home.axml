@@ -2,23 +2,38 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <TextView 
-    android:id="@+id/YourBalanceTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/DefaultMargin"
-    android:text="@string/YourBalanceText"
-    android:textSize="@dimen/LargeFontSize"/>
   <TextView
-    android:id="@+id/BalanceTextView"
-    android:layout_width="wrap_content"
+      android:id="@+id/YourBalanceTextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/DefaultMargin"
+      android:text="@string/YourBalanceText"
+      android:textSize="@dimen/LargeFontSize" />
+  <TextView
+      android:id="@+id/BalanceTextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/YourBalanceTextView"
+      android:layout_marginTop="@dimen/DefaultMargin"
+      android:textSize="@dimen/LargeFontSize" />
+  <FrameLayout
+    android:id="@+id/homeFrameLayout"
     android:layout_height="wrap_content"
-    android:layout_toRightOf="@id/YourBalanceTextView"
-    android:layout_marginTop="@dimen/DefaultMargin"
-    android:textSize="@dimen/LargeFontSize"/>
-  <android.support.v7.widget.RecyclerView
-    android:id="@+id/transactionRecyclerView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/YourBalanceTextView"/>
+    android:layout_below="@id/YourBalanceTextView"
+    xmlns:fab="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/transactionRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_list"
+        fab:fab_colorNormal="@color/primary"
+        fab:fab_colorPressed="@color/primaryDark"/>
+  </FrameLayout>
 </RelativeLayout>
