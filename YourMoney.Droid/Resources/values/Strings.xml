@@ -16,4 +16,6 @@
   <string name="HomeCategoryText">Category:</string>
   <string name="HomeDescriptionText">Description:</string>
   <string name="HomeValueText">Value:</string>
+  <string name="HomeAddIncomeText">Add income</string>
+  <string name="HomeAddOutcomeText">Add outcome</string>
 </resources>

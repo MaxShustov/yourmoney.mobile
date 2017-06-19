@@ -2,38 +2,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <TextView
-      android:id="@+id/YourBalanceTextView"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/DefaultMargin"
-      android:text="@string/YourBalanceText"
-      android:textSize="@dimen/LargeFontSize" />
-  <TextView
-      android:id="@+id/BalanceTextView"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_toRightOf="@id/YourBalanceTextView"
-      android:layout_marginTop="@dimen/DefaultMargin"
-      android:textSize="@dimen/LargeFontSize" />
-  <FrameLayout
-    android:id="@+id/homeFrameLayout"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:layout_below="@id/YourBalanceTextView"
-    xmlns:fab="http://schemas.android.com/apk/res-auto">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/transactionRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <com.github.clans.fab.FloatingActionButton
-        android:id="@+id/fab"
+    <TextView
+        android:id="@+id/YourBalanceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_list"
-        fab:fab_colorNormal="@color/primary"
-        fab:fab_colorPressed="@color/primaryDark"/>
-  </FrameLayout>
+        android:layout_margin="@dimen/DefaultMargin"
+        android:text="@string/YourBalanceText"
+        android:textSize="@dimen/LargeFontSize" />
+    <TextView
+        android:id="@+id/BalanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/YourBalanceTextView"
+        android:layout_marginTop="@dimen/DefaultMargin"
+        android:textSize="@dimen/LargeFontSize" />
+    <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/homeFrameLayout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/YourBalanceTextView">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/transactionRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+      <com.github.clans.fab.FloatingActionMenu
+          android:id="@+id/menu_red"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentRight="true"
+          android:paddingRight="@dimen/DefaultPadding"
+          android:paddingBottom="@dimen/DefaultPadding"
+          android:paddingLeft="@dimen/DefaultPadding"
+          app:menu_labels_ellipsize="end"
+          app:menu_labels_singleLine="true"
+          app:menu_colorNormal="@color/primary"
+          app:menu_colorPressed="@color/primaryDark">
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/addIncomeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add"
+            app:fab_size="mini"
+            app:fab_label="@string/HomeAddIncomeText"
+            app:fab_colorNormal="@color/primaryAction"
+            app:fab_colorPressed="@color/primaryActionDark"/>
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/addOutcomeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_remove"
+            app:fab_size="mini"
+            app:fab_label="@string/HomeAddOutcomeText"
+            app:fab_colorNormal="@color/secondaryAction"
+            app:fab_colorPressed="@color/secondaryActionDark"/>
+      </com.github.clans.fab.FloatingActionMenu>
+    </FrameLayout>
 </RelativeLayout>

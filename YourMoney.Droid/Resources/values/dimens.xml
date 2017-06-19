@@ -4,6 +4,8 @@
   <dimen name="SmallMargin">4dp</dimen>
   <dimen name="LargeFontSize">22sp</dimen>
   <dimen name="MediumFontSize">18sp</dimen>
+  <dimen name="DefaultPadding">8dp</dimen>
+  <dimen name="SmallPadding">4dp</dimen>
   
   <!--Login page-->
   <dimen name="LoginIconSize">200dp</dimen>
