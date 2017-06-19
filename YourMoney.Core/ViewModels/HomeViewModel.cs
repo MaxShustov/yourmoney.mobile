@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
@@ -16,7 +16,7 @@ namespace YourMoney.Core.ViewModels
         private readonly string _userId;
 
         private string _currentBalance;
-        private List<Transaction> _transactions;
+        private ObservableCollection<Transaction> _transactions;
 
         public HomeViewModel(IUserService userService, ISettingService settingService, IViewModelNavigationService navigationService)
         {
@@ -24,6 +24,8 @@ namespace YourMoney.Core.ViewModels
             _navigationService = navigationService;
 
             _userId = settingService.UserId;
+
+            _transactions = new ObservableCollection<Transaction>();
 
             Initialize();
         }
@@ -42,7 +44,7 @@ namespace YourMoney.Core.ViewModels
             }
         }
 
-        public List<Transaction> Transactions
+        public ObservableCollection<Transaction> Transactions
         {
             get
             {
@@ -66,7 +68,7 @@ namespace YourMoney.Core.ViewModels
         private async void Initialize()
         {
             CurrentBalance = (await _userService.GetCurrentBalance(_userId)).ToString();
-            Transactions = (await _userService.GetTransactions(_userId)).OrderByDescending(t => t.Date).ToList();
+            Transactions = new ObservableCollection<Transaction>((await _userService.GetTransactions(_userId)).OrderByDescending(t => t.Date));
         }
 
         private void Income()

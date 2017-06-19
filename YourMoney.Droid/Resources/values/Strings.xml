@@ -12,4 +12,8 @@
   
   <!--Home page-->
   <string name="YourBalanceText">Your balance is:</string>
+  <string name="HomeDateText">Date:</string>
+  <string name="HomeCategoryText">Category:</string>
+  <string name="HomeDescriptionText">Description:</string>
+  <string name="HomeValueText">Value:</string>
 </resources>

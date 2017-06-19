@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <dimen name="DefaultMargin">10dp</dimen>
-  <dimen name="LargeFontSize">22dp</dimen>
+  <dimen name="DefaultMargin">8dp</dimen>
+  <dimen name="SmallMargin">4dp</dimen>
+  <dimen name="LargeFontSize">22sp</dimen>
+  <dimen name="MediumFontSize">18sp</dimen>
   
   <!--Login page-->
   <dimen name="LoginIconSize">200dp</dimen>
