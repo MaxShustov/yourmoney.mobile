@@ -43,8 +43,9 @@ namespace YourMoney.Droid.Activities
                 this.SetBinding(() => _passwordEditText.Text, () => ViewModel.Password, BindingMode.TwoWay),
                 this.SetBinding(() => _passwordEditText.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay),
                 this.SetBinding(() => _passwordEditText.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay),
-                this.SetBinding(() => _registerButton.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay)
-            };
+                this.SetBinding(() => _registerButton.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay),
+                this.SetBinding(() => ViewModel.Error, () => _errorTextView.Text)
+        };
 
             _loginButton.SetCommand(ViewModel.LoginCommand);
             _registerButton.SetCommand(ViewModel.RegisterCommand);

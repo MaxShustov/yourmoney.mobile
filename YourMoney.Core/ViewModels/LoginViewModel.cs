@@ -1,5 +1,6 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
+using YourMoney.Core.Exceptions;
 using YourMoney.Core.Services.Abstract;
 
 namespace YourMoney.Core.ViewModels
@@ -11,6 +12,7 @@ namespace YourMoney.Core.ViewModels
 
         private string _userName;
         private string _password;
+        private string _error;
         private bool _isUiEnabled;
 
         public LoginViewModel(IUserService userService, IViewModelNavigationService navigationService)
@@ -22,6 +24,7 @@ namespace YourMoney.Core.ViewModels
 
             UserName = string.Empty;
             Password = string.Empty;
+
         }
 
         public ICommand LoginCommand => new RelayCommand(Login);
@@ -36,6 +39,8 @@ namespace YourMoney.Core.ViewModels
             set
             {
                 Set(() => UserName, ref _userName, value);
+
+                Error = string.Empty;
             }
         }
 
@@ -48,6 +53,20 @@ namespace YourMoney.Core.ViewModels
             set
             {
                 Set(() => Password, ref _password, value);
+
+                Error = string.Empty;
+            }
+        }
+
+        public string Error
+        {
+            get
+            {
+                return _error;
+            }
+            set
+            {
+                Set(() => Error, ref _error, value);
             }
         }
 
@@ -67,11 +86,21 @@ namespace YourMoney.Core.ViewModels
         {
             IsUiEnabled = false;
 
-            await _userService.Login(UserName, Password);
+            try
+            {
+                await _userService.Login(UserName, Password);
+            }
+            catch (ForbiddenApiException)
+            {
+                Error = "User name or password is invalid.";
+                return;
+            }
+            finally
+            {
+                IsUiEnabled = true;
+            }
 
             _navigationService.ShowViewModel<HomeViewModel>();
-
-            IsUiEnabled = true;
         }
 
         private void GoToRegister()

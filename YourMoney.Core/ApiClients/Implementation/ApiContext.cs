@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using ModernHttpClient;
 using Newtonsoft.Json;
 using YourMoney.Core.ApiClients.Abstract;
+using YourMoney.Core.Exceptions;
 using YourMoney.Core.Helpers;
 using YourMoney.Core.Models;
 
@@ -31,6 +33,8 @@ namespace YourMoney.Core.ApiClients.Implementation
         {
             var result = await _httpClient.GetAsync(url);
 
+            CheckIfOk(result);
+
             return await result.Get<T>();
         }
 
@@ -38,6 +42,8 @@ namespace YourMoney.Core.ApiClients.Implementation
         {
             var json = JsonConvert.SerializeObject(content);
             var result = await _httpClient.PostAsync(url, new StringContent(json, Encoding.Unicode, "application/json"));
+
+            CheckIfOk(result);
 
             return await result.Get<TResult>();
         }
@@ -47,6 +53,8 @@ namespace YourMoney.Core.ApiClients.Implementation
             var json = JsonConvert.SerializeObject(content);
 
             var res = await _httpClient.PostAsync(url, new StringContent(json, Encoding.Unicode, "application/json"));
+
+            CheckIfOk(res);
         }
 
         public Task Put<T>(string url, T content)
@@ -57,6 +65,19 @@ namespace YourMoney.Core.ApiClients.Implementation
         public Task Delete(string url)
         {
             throw new System.NotImplementedException();
+        }
+
+        private void CheckIfOk(HttpResponseMessage httpResponseMessage)
+        {
+            if (!httpResponseMessage.IsSuccessStatusCode)
+            {
+                if (httpResponseMessage.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    throw new ForbiddenApiException();
+                }
+
+                throw new ApiException(httpResponseMessage.StatusCode);
+            }
         }
     }
 }
