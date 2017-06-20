@@ -4,6 +4,8 @@ using Android.App;
 using Android.OS;
 using Android.Runtime;
 using GalaSoft.MvvmLight.Ioc;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
 using Plugin.CurrentActivity;
 using YourMoney.Core;
 using YourMoney.Core.Services.Abstract;
@@ -25,6 +27,8 @@ namespace YourMoney.Droid
             base.OnCreate();
             RegisterActivityLifecycleCallbacks(this);
             //A great place to initialize Xamarin.Insights and Dependency Services!
+
+            MobileCenter.Start("7f6abd3a-30bc-40f0-a2da-101eb68d2ce5", typeof(Analytics));
 
             SimpleIoc.Default.Register<IViewModelNavigationService, ViewModelNavigationService>();
             SimpleIoc.Default.Register(() => CrossCurrentActivity.Current);
