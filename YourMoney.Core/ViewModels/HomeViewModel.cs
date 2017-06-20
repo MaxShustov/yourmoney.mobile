@@ -1,15 +1,13 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using YourMoney.Core.Models;
 using YourMoney.Core.Services.Abstract;
-using YourMoney.Core.ViewModels.Abstract;
 
 namespace YourMoney.Core.ViewModels
 {
-    public class HomeViewModel : ViewModelBase, IViewModel
+    public class HomeViewModel : BaseViewModel
     {
         private readonly IUserService _userService;
         private readonly IViewModelNavigationService _navigationService;
@@ -26,8 +24,6 @@ namespace YourMoney.Core.ViewModels
             _userId = settingService.UserId;
 
             _transactions = new ObservableCollection<Transaction>();
-
-            Initialize();
         }
 
         public ICommand IncomeCommand => new RelayCommand(Income);
@@ -56,16 +52,14 @@ namespace YourMoney.Core.ViewModels
             }
         }
 
-        public void BeforeBack()
+        public override void Appeared()
         {
-            Initialize();
+            base.Appeared();
+
+            GetData();
         }
 
-        public void OnBack()
-        {
-        }
-
-        private async void Initialize()
+        private async void GetData()
         {
             CurrentBalance = (await _userService.GetCurrentBalance(_userId)).ToString();
             Transactions = new ObservableCollection<Transaction>((await _userService.GetTransactions(_userId)).OrderByDescending(t => t.Date));

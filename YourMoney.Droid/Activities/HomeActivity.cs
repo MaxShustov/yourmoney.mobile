@@ -3,6 +3,7 @@ using Android.App;
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Widget;
+using Clans.Fab;
 using GalaSoft.MvvmLight.Helpers;
 using YourMoney.Core.ViewModels;
 using YourMoney.Droid.RecyclerViews;
@@ -18,6 +19,9 @@ namespace YourMoney.Droid.Activities
         private TextView _currentBalance;
         private TransactionsAdapter _adapter;
         private LinearLayoutManager _layoutManager;
+        private FloatingActionButton _addIncomeButton;
+        private FloatingActionButton _addOutcomeButton;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -26,6 +30,8 @@ namespace YourMoney.Droid.Activities
 
             _recyclerView = FindViewById<RecyclerView>(Resource.Id.transactionRecyclerView);
             _currentBalance = FindViewById<TextView>(Resource.Id.BalanceTextView);
+            _addIncomeButton = FindViewById<FloatingActionButton>(Resource.Id.addIncomeButton);
+            _addOutcomeButton = FindViewById<FloatingActionButton>(Resource.Id.addOutcomeButton);
 
             _adapter = new TransactionsAdapter();
 
@@ -43,6 +49,8 @@ namespace YourMoney.Droid.Activities
                 this.SetBinding(() => ViewModel.CurrentBalance, () => _currentBalance.Text),
                 this.SetBinding(() => ViewModel.Transactions, () => _adapter.ItemSource)
             };
+            
+            _addIncomeButton.SetCommand("Click", ViewModel.IncomeCommand);
         }
     }
 }

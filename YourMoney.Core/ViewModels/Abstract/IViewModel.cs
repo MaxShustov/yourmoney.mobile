@@ -2,8 +2,12 @@
 {
     public interface IViewModel
     {
-        void BeforeBack();
+        void Appearing();
 
-        void OnBack();
+        void Appeared();
+
+        void Disappearing();
+
+        void Disappeared();
     }
 }

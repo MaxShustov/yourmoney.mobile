@@ -1,11 +1,10 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using YourMoney.Core.Services.Abstract;
 
 namespace YourMoney.Core.ViewModels
 {
-    public class RegisterViewModel : ViewModelBase
+    public class RegisterViewModel : BaseViewModel
     {
         private readonly IUserService _userService;
         private readonly IViewModelNavigationService _navigationService;

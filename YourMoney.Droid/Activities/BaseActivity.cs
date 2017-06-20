@@ -11,5 +11,19 @@ namespace YourMoney.Droid.Activities
         where T : IViewModel
     {
         protected T ViewModel => SimpleIoc.Default.GetInstance<T>();
+
+        protected override void OnStart()
+        {
+            base.OnRestart();
+
+            ViewModel.Appeared();
+        }
+
+        public override void OnAttachedToWindow()
+        {
+            base.OnAttachedToWindow();
+
+            ViewModel.Appearing();
+        }
     }
 }

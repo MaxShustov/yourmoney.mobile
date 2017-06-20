@@ -20,7 +20,8 @@ namespace YourMoney.Droid.Services
             _keys = new Dictionary<Type, Type>
             {
                 { typeof(LoginViewModel), typeof(LoginActivity) },
-                { typeof(HomeViewModel), typeof(HomeActivity) }
+                { typeof(HomeViewModel), typeof(HomeActivity) },
+                { typeof(AddIncomeTransactionViewModel), typeof(AddIncomeActivity) }
             };
         }
 
@@ -28,6 +29,7 @@ namespace YourMoney.Droid.Services
 
         public void GoBack()
         {
+            _currentActivity.Activity.Finish();
         }
 
         public void NavigateTo(string pageKey)

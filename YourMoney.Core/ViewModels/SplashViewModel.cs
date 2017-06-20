@@ -1,10 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using YourMoney.Core.Services.Abstract;
-using YourMoney.Core.ViewModels.Abstract;
+﻿using YourMoney.Core.Services.Abstract;
 
 namespace YourMoney.Core.ViewModels
 {
-    public class SplashViewModel : ViewModelBase, IViewModel
+    public class SplashViewModel : BaseViewModel
     {
         private readonly ISettingService _settingService;
         private readonly IViewModelNavigationService _viewModelNavigationService;
@@ -20,14 +18,6 @@ namespace YourMoney.Core.ViewModels
         public void ShowFirstViewModel()
         {
             _viewModelNavigationService.ShowViewModel<LoginViewModel>();
-        }
-
-        public void BeforeBack()
-        {
-        }
-
-        public void OnBack()
-        {
         }
     }
 }

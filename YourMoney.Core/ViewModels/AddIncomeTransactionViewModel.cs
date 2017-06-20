@@ -1,13 +1,11 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using YourMoney.Core.Models;
 using YourMoney.Core.Services.Abstract;
-using YourMoney.Core.ViewModels.Abstract;
 
 namespace YourMoney.Core.ViewModels
 {
-    public class AddIncomeTransactionViewModel : ViewModelBase, IViewModel
+    public class AddIncomeTransactionViewModel : BaseViewModel
     {
         private readonly ITransactionService _transactionService;
         private readonly IViewModelNavigationService _navigationService;
@@ -60,12 +58,13 @@ namespace YourMoney.Core.ViewModels
             }
         }
 
-        public void BeforeBack()
+        public override void Appearing()
         {
-        }
+            base.Appearing();
 
-        public void OnBack()
-        {
+            Description = string.Empty;
+            SelectedCategory = string.Empty;
+            Value = 0;
         }
 
         private async void AddTransaction()

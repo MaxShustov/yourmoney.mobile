@@ -18,4 +18,10 @@
   <string name="HomeValueText">Value:</string>
   <string name="HomeAddIncomeText">Add income</string>
   <string name="HomeAddOutcomeText">Add outcome</string>
+  
+  <!--Add Income/Outcome page-->
+  <string name="DescriptionHint">Description</string>
+  <string name="CategoryHint">Category</string>
+  <string name="ValueHint">Value</string>
+  <string name="AddTransactionText">Add transaction</string>
 </resources>

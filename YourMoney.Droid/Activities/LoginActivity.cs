@@ -39,11 +39,11 @@ namespace YourMoney.Droid.Activities
             _bindings = new List<Binding>
             {
                 this.SetBinding(() => ViewModel.UserName, () => _userNameEditText.Text, BindingMode.TwoWay),
-                this.SetBinding(() => _userNameEditText.Enabled, () => ViewModel.IsUiEnabled),
+                this.SetBinding(() => _userNameEditText.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay),
                 this.SetBinding(() => _passwordEditText.Text, () => ViewModel.Password, BindingMode.TwoWay),
-                this.SetBinding(() => _passwordEditText.Enabled, () => ViewModel.IsUiEnabled),
-                this.SetBinding(() => _passwordEditText.Enabled, () => ViewModel.IsUiEnabled),
-                this.SetBinding(() => _registerButton.Enabled, () => ViewModel.IsUiEnabled)
+                this.SetBinding(() => _passwordEditText.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay),
+                this.SetBinding(() => _passwordEditText.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay),
+                this.SetBinding(() => _registerButton.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay)
             };
 
             _loginButton.SetCommand(ViewModel.LoginCommand);

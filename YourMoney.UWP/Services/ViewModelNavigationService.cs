@@ -45,11 +45,11 @@ namespace YourMoney.UWP.Services
                 var viewModelType = _keys.Single(p => p.Value == RootFrame.BackStack.Last().SourcePageType).Key;
                 var viewModel = (IViewModel)SimpleIoc.Default.GetInstance(viewModelType);
 
-                viewModel.BeforeBack();
+                viewModel.Appearing();
 
                 RootFrame.GoBack();
 
-                viewModel.OnBack();
+                viewModel.Appeared();
             }
         }
 
