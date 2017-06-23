@@ -12,6 +12,8 @@ namespace YourMoney.Core.ViewModels
         private string _userName;
         private string _password;
         private string _email;
+        private string _confirmPassword;
+        private string _error;
         private bool _isUiEnabled;
 
         public RegisterViewModel(IUserService userService, IViewModelNavigationService navigationService)
@@ -72,15 +74,50 @@ namespace YourMoney.Core.ViewModels
             }
         }
 
+        public string ConfirmPassword
+        {
+            get
+            {
+                return _confirmPassword;
+            }
+            set
+            {
+                Set(() => ConfirmPassword, ref _confirmPassword, value);
+            }
+        }
+
+        public string Error
+        {
+            get
+            {
+                return _error;
+            }
+            set
+            {
+                Set(() => Error, ref _error, value);
+            }
+        }
+
         private async void Register()
         {
             IsUiEnabled = false;
 
-            await _userService.Register(UserName, Password, Email);
+            try
+            {
+                if (ConfirmPassword != Password)
+                {
+                    Error = "Confirm password and password are not equal.";
+                    return;
+                }
 
-            _navigationService.ShowViewModel<LoginViewModel>();
+                await _userService.Register(UserName, Password, Email);
 
-            IsUiEnabled = true;
+                _navigationService.ShowViewModel<LoginViewModel>();
+            }
+            finally
+            {
+                IsUiEnabled = true;
+            }
         }
     }
 }

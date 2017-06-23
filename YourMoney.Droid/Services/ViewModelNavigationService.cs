@@ -21,7 +21,8 @@ namespace YourMoney.Droid.Services
             {
                 { typeof(LoginViewModel), typeof(LoginActivity) },
                 { typeof(HomeViewModel), typeof(HomeActivity) },
-                { typeof(AddIncomeTransactionViewModel), typeof(AddIncomeActivity) }
+                { typeof(AddIncomeTransactionViewModel), typeof(AddIncomeActivity) },
+                { typeof(RegisterViewModel), typeof(RegistrationActivity) }
             };
         }
 

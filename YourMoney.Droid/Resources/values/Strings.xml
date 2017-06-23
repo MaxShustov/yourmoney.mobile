@@ -24,4 +24,8 @@
   <string name="CategoryHint">Category</string>
   <string name="ValueHint">Value</string>
   <string name="AddTransactionText">Add transaction</string>
+  
+  <!--Registration page-->
+  <string name="ConfirmPasswordHint">Confirm password</string>
+  <string name="EmailHint">Please type your email</string>
 </resources>
