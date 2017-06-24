@@ -201,12 +201,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\AddIncomeActivity.cs" />
+    <None Include="Activities\AddIncomeActivity.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
-    <Compile Include="Activities\HomeActivity.cs" />
+    <None Include="Activities\HomeActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
-    <Compile Include="Activities\RegistrationActivity.cs" />
-    <Compile Include="Activities\SplashScreenActivity.cs" />
+    <None Include="Activities\RegistrationActivity.cs" />
+    <None Include="Activities\SplashScreenActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="RecyclerViews\TransactionsAdapter.cs" />
     <Compile Include="RecyclerViews\ViewHolders\TransactionViewHolder.cs" />

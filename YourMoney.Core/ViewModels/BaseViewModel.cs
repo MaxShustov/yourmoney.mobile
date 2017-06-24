@@ -1,9 +1,9 @@
-﻿using GalaSoft.MvvmLight;
+﻿using ReactiveUI;
 using YourMoney.Core.ViewModels.Abstract;
 
 namespace YourMoney.Core.ViewModels
 {
-    public class BaseViewModel : ViewModelBase, IViewModel
+    public class BaseViewModel : ReactiveObject, IViewModel
     {
         public virtual void Appearing()
         {

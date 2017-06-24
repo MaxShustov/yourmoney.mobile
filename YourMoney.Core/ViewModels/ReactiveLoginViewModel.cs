@@ -6,7 +6,7 @@ using ReactiveUI.Fody.Helpers;
 
 namespace YourMoney.Core.ViewModels
 {
-    public class ReactiveLoginViewModel : ReactiveObject
+    public class ReactiveLoginViewModel : BaseViewModel
     {
         private readonly ObservableAsPropertyHelper<bool> _canLogin;
         private ReactiveCommand<Unit, Unit> _loginCommand;

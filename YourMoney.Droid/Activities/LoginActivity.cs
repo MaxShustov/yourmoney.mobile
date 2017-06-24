@@ -1,15 +1,15 @@
 using Android.App;
 using Android.OS;
 using Android.Widget;
-using Autofac;
+using Plugin.CurrentActivity;
 using ReactiveUI;
-using YourMoney.Core;
 using YourMoney.Core.ViewModels;
+using YourMoney.Droid.Services;
 
 namespace YourMoney.Droid.Activities
 {
     [Activity(Label = "Login", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class LoginActivity : ReactiveActivity<ReactiveLoginViewModel>
+    public class LoginActivity : BaseActivity<ReactiveLoginViewModel>
     {
         public EditText UserNameEditText { get; set; }
 
@@ -27,7 +27,7 @@ namespace YourMoney.Droid.Activities
 
             SetContentView(Resource.Layout.Login);
 
-            ViewModel = AppStart.Container.Resolve<ReactiveLoginViewModel>();
+            var navigationService = new ViewModelNavigationService(CrossCurrentActivity.Current);
 
             this.WireUpControls();
 
