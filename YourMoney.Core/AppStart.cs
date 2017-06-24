@@ -1,32 +1,41 @@
-﻿using GalaSoft.MvvmLight.Ioc;
-using Plugin.Settings;
-using Plugin.Settings.Abstractions;
-using YourMoney.Core.ApiClients.Abstract;
-using YourMoney.Core.ApiClients.Implementation;
-using YourMoney.Core.Services.Abstract;
-using YourMoney.Core.Services.Implementation;
+﻿using System;
+using Autofac;
 using YourMoney.Core.ViewModels;
 
 namespace YourMoney.Core
 {
     public class AppStart
     {
-        public static void Initialize()
+        public static IContainer Container { get; set; }
+
+        public static void Initialize(Action<ContainerBuilder> registerPlatformDependencies = null)
         {
-            SimpleIoc.Default.Register<ISettings>(() => CrossSettings.Current);
+            var builder = new ContainerBuilder();
 
-            SimpleIoc.Default.Register<IApiContext, ApiContext>();
-            SimpleIoc.Default.Register<IUserApiClient, UserApiClient>();
-            SimpleIoc.Default.Register<ITransactionApiClient, TransactionApiClient>();
-            SimpleIoc.Default.Register<IUserService, UserService>();
-            SimpleIoc.Default.Register<ITransactionService, TransactionService>();
-            SimpleIoc.Default.Register<ISettingService, SettingService>();
+            registerPlatformDependencies?.Invoke(builder);
+            RegisterDependencies(builder);
 
-            SimpleIoc.Default.Register<LoginViewModel>();
-            SimpleIoc.Default.Register<RegisterViewModel>();
-            SimpleIoc.Default.Register<HomeViewModel>();
-            SimpleIoc.Default.Register<AddIncomeTransactionViewModel>();
-            SimpleIoc.Default.Register<SplashViewModel>();
+            Container = builder.Build();
+
+            //SimpleIoc.Default.Register<ISettings>(() => CrossSettings.Current);
+
+            //SimpleIoc.Default.Register<IApiContext, ApiContext>();
+            //SimpleIoc.Default.Register<IUserApiClient, UserApiClient>();
+            //SimpleIoc.Default.Register<ITransactionApiClient, TransactionApiClient>();
+            //SimpleIoc.Default.Register<IUserService, UserService>();
+            //SimpleIoc.Default.Register<ITransactionService, TransactionService>();
+            //SimpleIoc.Default.Register<ISettingService, SettingService>();
+
+            //SimpleIoc.Default.Register<LoginViewModel>();
+            //SimpleIoc.Default.Register<RegisterViewModel>();
+            //SimpleIoc.Default.Register<HomeViewModel>();
+            //SimpleIoc.Default.Register<AddIncomeTransactionViewModel>();
+            //SimpleIoc.Default.Register<SplashViewModel>();
+        }
+
+        private static void RegisterDependencies(ContainerBuilder builder)
+        {
+            builder.RegisterType<ReactiveLoginViewModel>().SingleInstance();
         }
     }
 }

@@ -1,21 +1,25 @@
-using System.Collections.Generic;
 using Android.App;
 using Android.OS;
 using Android.Widget;
-using GalaSoft.MvvmLight.Helpers;
+using Autofac;
+using ReactiveUI;
+using YourMoney.Core;
 using YourMoney.Core.ViewModels;
 
 namespace YourMoney.Droid.Activities
 {
-    [Activity(Label = "Login", Theme = "@style/AppTheme")]
-    public class LoginActivity : BaseActivity<LoginViewModel>
+    [Activity(Label = "Login", Theme = "@style/AppTheme", MainLauncher = true)]
+    public class LoginActivity : ReactiveActivity<ReactiveLoginViewModel>
     {
-        public EditText _userNameEditText { get; set; }
-        private EditText _passwordEditText;
-        public Button _loginButton { get; set; }
-        public Button _registerButton { get; set; }
-        private TextView _errorTextView;
-        private IList<Binding> _bindings;
+        public EditText UserNameEditText { get; set; }
+
+        public EditText PasswordEditText { get; set; }
+
+        public Button LoginButton { get; set; }
+
+        public Button RegisterButton { get; set; }
+
+        public TextView ErrorTextView { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -23,32 +27,21 @@ namespace YourMoney.Droid.Activities
 
             SetContentView(Resource.Layout.Login);
 
-            _userNameEditText = FindViewById<EditText>(Resource.Id.input_login);
-            _passwordEditText = FindViewById<EditText>(Resource.Id.input_password);
-            _loginButton = FindViewById<Button>(Resource.Id.LoginButton);
-            _registerButton = FindViewById<Button>(Resource.Id.RegisterButton);
-            _errorTextView = FindViewById<TextView>(Resource.Id.ErrorTextView);
+            ViewModel = AppStart.Container.Resolve<ReactiveLoginViewModel>();
 
-            _userNameEditText.Text = string.Empty;
+            this.WireUpControls();
 
             BindViewModel();
         }
 
         private void BindViewModel()
         {
-            _bindings = new List<Binding>
-            {
-                this.SetBinding(() => ViewModel.UserName, () => _userNameEditText.Text, BindingMode.TwoWay),
-                this.SetBinding(() => _userNameEditText.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay),
-                this.SetBinding(() => _passwordEditText.Text, () => ViewModel.Password, BindingMode.TwoWay),
-                this.SetBinding(() => _passwordEditText.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay),
-                this.SetBinding(() => _passwordEditText.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay),
-                this.SetBinding(() => _registerButton.Enabled, () => ViewModel.IsUiEnabled, BindingMode.TwoWay),
-                this.SetBinding(() => ViewModel.Error, () => _errorTextView.Text)
-        };
+            this.Bind(ViewModel, m => m.UserName, a => a.UserNameEditText.Text);
+            this.Bind(ViewModel, m => m.Password, a => a.PasswordEditText.Text);
+            this.OneWayBind(ViewModel, m => m.Error, a => a.ErrorTextView.Text);
+            this.OneWayBind(ViewModel, m => m.CanLogin, a => a.LoginButton.Enabled);
 
-            _loginButton.SetCommand(ViewModel.LoginCommand);
-            _registerButton.SetCommand(ViewModel.RegisterCommand);
+            this.BindCommand(ViewModel, m => m.LoginCommand, a => a.LoginButton, "Click");
         }
     }
 }
