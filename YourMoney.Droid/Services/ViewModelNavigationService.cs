@@ -21,21 +21,9 @@ namespace YourMoney.Droid.Services
             _navigationMap = GetNavigationMap();
         }
 
-        public string CurrentPageKey => string.Empty;
-
         public void GoBack()
         {
             _currentActivity.Activity.Finish();
-        }
-
-        public void NavigateTo(string pageKey)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NavigateTo(string pageKey, object parameter)
-        {
-            throw new NotImplementedException();
         }
 
         public void ShowViewModel<TViewModel>()

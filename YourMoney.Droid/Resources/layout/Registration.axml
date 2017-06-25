@@ -19,7 +19,7 @@
     android:layout_marginRight="@dimen/DefaultMargin"
     android:layout_marginTop="@dimen/DefaultMargin">
     <EditText
-        android:id="@+id/input_userName"
+        android:id="@+id/UserNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/UserNameHint" />
@@ -33,7 +33,7 @@
       android:layout_marginRight="@dimen/DefaultMargin"
       android:layout_marginTop="@dimen/DefaultMargin">
     <EditText
-        android:id="@+id/input_password"
+        android:id="@+id/PasswordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/PasswordHint"
@@ -47,7 +47,7 @@
       android:layout_marginLeft="@dimen/DefaultMargin"
       android:layout_marginRight="@dimen/DefaultMargin">
     <EditText
-        android:id="@+id/input_confirmPassword"
+        android:id="@+id/ConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/ConfirmPasswordHint"
@@ -62,7 +62,7 @@
       android:layout_marginRight="@dimen/DefaultMargin"
       android:layout_marginTop="@dimen/DefaultMargin">
     <EditText
-        android:id="@+id/input_email"
+        android:id="@+id/EmailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/EmailHint"
@@ -78,7 +78,7 @@
     android:layout_margin="@dimen/DefaultMargin"
     android:text="Error test string"/>
   <Button
-    android:id="@+id/RegisterButton"
+    android:id="@+id/RegisteButton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@+id/ErrorTextView"

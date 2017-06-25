@@ -42,6 +42,7 @@ namespace YourMoney.Core
 
             builder.RegisterType<ReactiveLoginViewModel>().SingleInstance();
             builder.RegisterType<SplashViewModel>().SingleInstance();
+            builder.RegisterType<ReactiveRegisterViewModel>().SingleInstance();
         }
     }
 }

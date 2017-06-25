@@ -17,7 +17,7 @@ namespace YourMoney.Core.ViewModels
 
         public void ShowFirstViewModel()
         {
-            _viewModelNavigationService.ShowViewModel<ReactiveLoginViewModel>();
+            _viewModelNavigationService.ShowViewModel<ReactiveRegisterViewModel>();
         }
     }
 }

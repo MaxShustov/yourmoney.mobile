@@ -1,9 +1,9 @@
-﻿using GalaSoft.MvvmLight.Views;
-
-namespace YourMoney.Core.Services.Abstract
+﻿namespace YourMoney.Core.Services.Abstract
 {
-    public interface IViewModelNavigationService : INavigationService
+    public interface IViewModelNavigationService
     {
         void ShowViewModel<TViewModel>();
+
+        void GoBack();
     }
 }
