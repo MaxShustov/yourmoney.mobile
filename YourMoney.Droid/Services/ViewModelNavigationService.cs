@@ -12,21 +12,13 @@ namespace YourMoney.Droid.Services
     public class ViewModelNavigationService : IViewModelNavigationService
     {
         private readonly ICurrentActivity _currentActivity;
-
-        private IDictionary<Type, Type> _keys;
+        private readonly IDictionary<Type, Type> _navigationMap;
 
         public ViewModelNavigationService(ICurrentActivity currentActivity)
         {
             _currentActivity = currentActivity;
 
-            _keys = GetNavigationMap();
-            //_keys = new Dictionary<Type, Type>
-            //{
-            //    { typeof(LoginViewModel), typeof(LoginActivity) },
-            //    { typeof(HomeViewModel), typeof(HomeActivity) },
-            //    { typeof(AddIncomeTransactionViewModel), typeof(AddIncomeActivity) },
-            //    { typeof(RegisterViewModel), typeof(RegistrationActivity) }
-            //};
+            _navigationMap = GetNavigationMap();
         }
 
         public string CurrentPageKey => string.Empty;
@@ -48,7 +40,7 @@ namespace YourMoney.Droid.Services
 
         public void ShowViewModel<TViewModel>()
         {
-            var activityType = _keys[typeof(TViewModel)];
+            var activityType = _navigationMap[typeof(TViewModel)];
 
             _currentActivity.Activity.StartActivity(activityType);
         }

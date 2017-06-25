@@ -70,7 +70,7 @@
     <None Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ReactiveLoginViewModel.cs" />
     <None Include="ViewModels\RegisterViewModel.cs" />
-    <None Include="ViewModels\SplashViewModel.cs" />
+    <Compile Include="ViewModels\SplashViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight">

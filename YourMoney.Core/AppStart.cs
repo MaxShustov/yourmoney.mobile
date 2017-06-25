@@ -1,5 +1,11 @@
 ﻿using System;
 using Autofac;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
+using YourMoney.Core.ApiClients.Abstract;
+using YourMoney.Core.ApiClients.Implementation;
+using YourMoney.Core.Services.Abstract;
+using YourMoney.Core.Services.Implementation;
 using YourMoney.Core.ViewModels;
 
 namespace YourMoney.Core
@@ -17,16 +23,6 @@ namespace YourMoney.Core
 
             Container = builder.Build();
 
-            //SimpleIoc.Default.Register<ISettings>(() => CrossSettings.Current);
-
-            //SimpleIoc.Default.Register<IApiContext, ApiContext>();
-            //SimpleIoc.Default.Register<IUserApiClient, UserApiClient>();
-            //SimpleIoc.Default.Register<ITransactionApiClient, TransactionApiClient>();
-            //SimpleIoc.Default.Register<IUserService, UserService>();
-            //SimpleIoc.Default.Register<ITransactionService, TransactionService>();
-            //SimpleIoc.Default.Register<ISettingService, SettingService>();
-
-            //SimpleIoc.Default.Register<LoginViewModel>();
             //SimpleIoc.Default.Register<RegisterViewModel>();
             //SimpleIoc.Default.Register<HomeViewModel>();
             //SimpleIoc.Default.Register<AddIncomeTransactionViewModel>();
@@ -35,7 +31,17 @@ namespace YourMoney.Core
 
         private static void RegisterDependencies(ContainerBuilder builder)
         {
+            builder.Register(c => CrossSettings.Current).As<ISettings>();
+
+            builder.RegisterType<ApiContext>().As<IApiContext>();
+            builder.RegisterType<UserApiClient>().As<IUserApiClient>();
+            builder.RegisterType<TransactionApiClient>().As<ITransactionApiClient>();
+            builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<TransactionService>().As<ITransactionService>();
+            builder.RegisterType<SettingService>().As<ISettingService>();
+
             builder.RegisterType<ReactiveLoginViewModel>().SingleInstance();
+            builder.RegisterType<SplashViewModel>().SingleInstance();
         }
     }
 }
