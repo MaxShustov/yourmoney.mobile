@@ -45,5 +45,17 @@ namespace YourMoney.Droid.Activities
 
             ViewModel.Appeared();
         }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+
+            ViewModel.Disappeared();
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+        }
     }
 }

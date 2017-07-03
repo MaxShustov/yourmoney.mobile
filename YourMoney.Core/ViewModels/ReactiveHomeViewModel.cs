@@ -7,6 +7,7 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using YourMoney.Core.Enums;
 using YourMoney.Core.Models;
 using YourMoney.Core.Services.Abstract;
 
@@ -43,6 +44,16 @@ namespace YourMoney.Core.ViewModels
             GetCurrentBalanceCommand
                 .Select(b => $"{RegionInfo.CurrentRegion.CurrencySymbol}{b}")
                 .ToPropertyEx(this, m => m.CurrentBalance);
+
+            StateObservable
+                .Where(state => state == ViewModelState.Appeared)
+                .Select(s => Unit.Default)
+                .InvokeCommand(GetCurrentBalanceCommand);
+
+            StateObservable
+                .Where(state => state == ViewModelState.Appeared)
+                .Select(s => Unit.Default)
+                .InvokeCommand(GetTransactionsCommand);
         }
 
         public ReactiveCommand<Unit, Unit> IncomeCommand { get; }
@@ -57,13 +68,6 @@ namespace YourMoney.Core.ViewModels
 
         public extern ReadOnlyObservableCollection<Transaction> Transactions { [ObservableAsProperty] get; }
 
-        public override void Appeared()
-        {
-            base.Appeared();
-
-            GetData();
-        }
-
         private void Income()
         {
         }
@@ -71,12 +75,6 @@ namespace YourMoney.Core.ViewModels
         private void Outcome()
         {
 
-        }
-
-        private async void GetData()
-        {
-            await GetTransactionsCommand.Execute();
-            await GetCurrentBalanceCommand.Execute();
         }
 
         private Task<List<Transaction>> GetTransactions()

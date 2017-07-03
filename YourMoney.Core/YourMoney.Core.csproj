@@ -46,6 +46,7 @@
     <Compile Include="ApiClients\Implementation\UserApiClient.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="AppStart.cs" />
+    <Compile Include="Enums\ViewModelState.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="Exceptions\ForbiddenApiException.cs" />
     <Compile Include="Extentions\ObservableExtentions.cs" />
