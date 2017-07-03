@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Clans.Fab;
 using ReactiveUI;
+using YourMoney.Core.Enums;
 using YourMoney.Core.ViewModels;
 using YourMoney.Droid.RecyclerViews;
 
@@ -22,6 +23,7 @@ namespace YourMoney.Droid.Activities
         public FloatingActionButton AddIncomeButton { get; private set; }
         public FloatingActionButton AddOutcomeButton { get; private set; }
         public TransactionsAdapter TransactionsAdapter { get; private set; }
+        public FloatingActionMenu FloatingActionMenu { get; private set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -53,6 +55,17 @@ namespace YourMoney.Droid.Activities
 
             this.OneWayBind(ViewModel, m => m.CurrentBalance, a => a.CurrentBalanceTextView.Text);
             this.OneWayBind(ViewModel, m => m.Transactions, a => a.TransactionsAdapter.ItemSource);
+
+            var disappearedObserver = Observer.Create<ViewModelState>(CloseMenu);
+
+            ViewModel.StateObservable
+                .Where(state => state == ViewModelState.Disappered)
+                .Subscribe(disappearedObserver);
+        }
+
+        private void CloseMenu(ViewModelState state)
+        {
+            FloatingActionMenu.Close(false);
         }
     }
 }

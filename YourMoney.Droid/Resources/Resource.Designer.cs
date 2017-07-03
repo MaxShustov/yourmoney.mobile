@@ -2518,6 +2518,9 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f070095
 			public const int ErrorTextView = 2131165333;
 			
+			// aapt resource value: 0x7f07008d
+			public const int FloatingActionMenu = 2131165325;
+			
 			// aapt resource value: 0x7f070096
 			public const int LoginButton = 2131165334;
 			
@@ -2823,9 +2826,6 @@ namespace YourMoney.Droid
 			
 			// aapt resource value: 0x7f07009f
 			public const int media_actions = 2131165343;
-			
-			// aapt resource value: 0x7f07008d
-			public const int menu_red = 2131165325;
 			
 			// aapt resource value: 0x7f070023
 			public const int middle = 2131165219;
