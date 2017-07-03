@@ -2479,11 +2479,14 @@ namespace YourMoney.Droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f07008e
+			public const int AddIncomeButton = 2131165326;
+			
+			// aapt resource value: 0x7f07008f
+			public const int AddOutcomeButton = 2131165327;
+			
 			// aapt resource value: 0x7f07007c
 			public const int AddTransactionButton = 2131165308;
-			
-			// aapt resource value: 0x7f07008a
-			public const int BalanceTextView = 2131165322;
 			
 			// aapt resource value: 0x7f0700b8
 			public const int CategoryLabelTextView = 2131165368;
@@ -2493,6 +2496,9 @@ namespace YourMoney.Droid
 			
 			// aapt resource value: 0x7f0700b2
 			public const int ConfirmPassword = 2131165362;
+			
+			// aapt resource value: 0x7f07008a
+			public const int CurrentBalanceTextView = 2131165322;
 			
 			// aapt resource value: 0x7f0700b6
 			public const int DateLabelTextView = 2131165366;
@@ -2526,6 +2532,9 @@ namespace YourMoney.Droid
 			
 			// aapt resource value: 0x7f070098
 			public const int RegisterButton = 2131165336;
+			
+			// aapt resource value: 0x7f07008c
+			public const int TransactionRecyclerView = 2131165324;
 			
 			// aapt resource value: 0x7f070092
 			public const int UserNameEditText = 2131165330;
@@ -2601,12 +2610,6 @@ namespace YourMoney.Droid
 			
 			// aapt resource value: 0x7f07001a
 			public const int add = 2131165210;
-			
-			// aapt resource value: 0x7f07008e
-			public const int addIncomeButton = 2131165326;
-			
-			// aapt resource value: 0x7f07008f
-			public const int addOutcomeButton = 2131165327;
 			
 			// aapt resource value: 0x7f07005b
 			public const int alertTitle = 2131165275;
@@ -3027,9 +3030,6 @@ namespace YourMoney.Droid
 			
 			// aapt resource value: 0x7f07007f
 			public const int touch_outside = 2131165311;
-			
-			// aapt resource value: 0x7f07008c
-			public const int transactionRecyclerView = 2131165324;
 			
 			// aapt resource value: 0x7f07000a
 			public const int transition_current_scene = 2131165194;

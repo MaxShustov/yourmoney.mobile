@@ -3,6 +3,7 @@ using Android.OS;
 using Android.Widget;
 using ReactiveUI;
 using YourMoney.Core.ViewModels;
+using YourMoney.Droid.Helpers;
 
 namespace YourMoney.Droid.Activities
 {
@@ -36,7 +37,17 @@ namespace YourMoney.Droid.Activities
             this.Bind(ViewModel, m => m.Password, a => a.PasswordEditText.Text);
             this.OneWayBind(ViewModel, m => m.Error, a => a.ErrorTextView.Text);
 
-            this.BindCommand(ViewModel, m => m.LoginCommand, a => a.LoginButton, "Click");
+            this.OneWayBindMultiple(ViewModel, m => m.IsUiEnabled,
+                a => a.LoginButton.Enabled,
+                a => a.RegisterButton.Enabled,
+                a => a.UserNameEditText.Enabled,
+                a => a.PasswordEditText.Enabled);
+
+            LoginButton.Events().Click
+                .InvokeCommandWithoutParam(ViewModel, m => m.LoginCommand);
+
+            RegisterButton.Events().Click
+                .InvokeCommandWithoutParam(ViewModel, m => m.RegisterCommand);
         }
     }
 }

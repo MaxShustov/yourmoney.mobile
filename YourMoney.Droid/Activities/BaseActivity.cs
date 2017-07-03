@@ -38,5 +38,12 @@ namespace YourMoney.Droid.Activities
                 throw new NotImplementedException();
             }
         }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            ViewModel.Appeared();
+        }
     }
 }

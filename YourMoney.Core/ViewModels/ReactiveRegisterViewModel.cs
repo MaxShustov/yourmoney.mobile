@@ -85,7 +85,9 @@ namespace YourMoney.Core.ViewModels
         {
             await _userService.Register(UserName, Password, Email);
 
-            _navigationService.ShowViewModel<ReactiveLoginViewModel>();
+            await _userService.Login(UserName, Password);
+
+            _navigationService.ShowViewModel<ReactiveHomeViewModel>();
         }
     }
 }

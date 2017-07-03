@@ -36,6 +36,8 @@ namespace YourMoney.Core.ViewModels
             var unhandledException = LoginCommand.ThrownExceptions
                 .Select(ex => UnhandledErrorMessage);
 
+            RegisterCommand = ReactiveCommand.Create(Register);
+
             unhandledException
                 .Merge(loginError)
                 .ToPropertyEx(this, m => m.Error);
@@ -51,6 +53,8 @@ namespace YourMoney.Core.ViewModels
 
         public ReactiveCommand<Unit, Unit> LoginCommand { get; }
 
+        public ReactiveCommand<Unit, Unit> RegisterCommand { get; }
+
         public extern bool IsUiEnabled { [ObservableAsProperty] get; }
 
         private bool IsValidCredentials(string userName, string password)
@@ -63,6 +67,13 @@ namespace YourMoney.Core.ViewModels
         private async Task LoginAsync()
         {
             await _userService.Login(UserName, Password);
+
+            _navigationService.ShowViewModel<ReactiveHomeViewModel>();
+        }
+
+        private void Register()
+        {
+            _navigationService.ShowViewModel<ReactiveRegisterViewModel>();
         }
     }
 }
