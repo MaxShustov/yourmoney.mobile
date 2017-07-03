@@ -23,10 +23,8 @@ namespace YourMoney.Core
 
             Container = builder.Build();
 
-            //SimpleIoc.Default.Register<RegisterViewModel>();
             //SimpleIoc.Default.Register<HomeViewModel>();
             //SimpleIoc.Default.Register<AddIncomeTransactionViewModel>();
-            //SimpleIoc.Default.Register<SplashViewModel>();
         }
 
         private static void RegisterDependencies(ContainerBuilder builder)

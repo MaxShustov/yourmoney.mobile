@@ -35,7 +35,6 @@ namespace YourMoney.Droid.Activities
             this.Bind(ViewModel, m => m.UserName, a => a.UserNameEditText.Text);
             this.Bind(ViewModel, m => m.Password, a => a.PasswordEditText.Text);
             this.OneWayBind(ViewModel, m => m.Error, a => a.ErrorTextView.Text);
-            this.OneWayBind(ViewModel, m => m.CanLogin, a => a.LoginButton.Enabled);
 
             this.BindCommand(ViewModel, m => m.LoginCommand, a => a.LoginButton, "Click");
         }

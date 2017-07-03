@@ -48,6 +48,7 @@
     <Compile Include="AppStart.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="Exceptions\ForbiddenApiException.cs" />
+    <Compile Include="Extentions\ObservableExtentions.cs" />
     <Compile Include="Helpers\HttpClientExtentions.cs" />
     <Compile Include="Models\CurrentBalanceResponseModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />

@@ -39,6 +39,14 @@ namespace YourMoney.Droid.Activities
             this.Bind(ViewModel, m => m.ConfirmPassword, a => a.ConfirmPassword.Text);
             this.Bind(ViewModel, m => m.Email, a => a.EmailEditText.Text);
             this.OneWayBind(ViewModel, m => m.Error, a => a.ErrorTextView.Text);
+
+            this.OneWayBind(ViewModel, m => m.IsUiEnabled, a => a.UserNameEditText.Enabled);
+            this.OneWayBind(ViewModel, m => m.IsUiEnabled, a => a.ConfirmPassword.Enabled);
+            this.OneWayBind(ViewModel, m => m.IsUiEnabled, a => a.PasswordEditText.Enabled);
+            this.OneWayBind(ViewModel, m => m.IsUiEnabled, a => a.EmailEditText.Enabled);
+            this.OneWayBind(ViewModel, m => m.IsUiEnabled, a => a.RegisteButton.Enabled);
+
+            this.BindCommand(ViewModel, m => m.RegisterCommand, a => a.RegisteButton, "Click");
         }
     }
 }
