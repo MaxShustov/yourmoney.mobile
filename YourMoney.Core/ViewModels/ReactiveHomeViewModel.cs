@@ -1,7 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using YourMoney.Core.Models;
@@ -26,17 +29,33 @@ namespace YourMoney.Core.ViewModels
 
             IncomeCommand = ReactiveCommand.Create(Income);
             OutcomeCommand = ReactiveCommand.Create(Outcome);
+
+            GetTransactionsCommand = ReactiveCommand.CreateFromTask(GetTransactions);
+
+            GetTransactionsCommand
+                .Select(transactions => transactions.OrderByDescending(t => t.Date))
+                .Select(ToObservableCollection)
+                .Select(transactions => new ReadOnlyObservableCollection<Transaction>(transactions))
+                .ToPropertyEx(this, m => m.Transactions);
+
+            GetCurrentBalanceCommand = ReactiveCommand.CreateFromTask(GetCurrentBalance);
+
+            GetCurrentBalanceCommand
+                .Select(b => $"{RegionInfo.CurrentRegion.CurrencySymbol}{b}")
+                .ToPropertyEx(this, m => m.CurrentBalance);
         }
 
         public ReactiveCommand<Unit, Unit> IncomeCommand { get; }
 
         public ReactiveCommand<Unit, Unit> OutcomeCommand { get; }
 
-        [Reactive]
-        public string CurrentBalance { get; set; }
+        public ReactiveCommand<Unit, List<Transaction>> GetTransactionsCommand { get; }
 
-        [Reactive]
-        public ReadOnlyObservableCollection<Transaction> Transactions { get; set; } = new ReadOnlyObservableCollection<Transaction>(new ObservableCollection<Transaction>());
+        public ReactiveCommand<Unit, decimal> GetCurrentBalanceCommand { get; }
+
+        public extern string CurrentBalance { [ObservableAsProperty] get; }
+
+        public extern ReadOnlyObservableCollection<Transaction> Transactions { [ObservableAsProperty] get; }
 
         public override void Appeared()
         {
@@ -56,11 +75,23 @@ namespace YourMoney.Core.ViewModels
 
         private async void GetData()
         {
-            var observableCollection = new ObservableCollection<Transaction>((await _userService.GetTransactions(_userId)).OrderByDescending(t => t.Date));
-            var currentBallance = await _userService.GetCurrentBalance(_userId);
+            await GetTransactionsCommand.Execute();
+            await GetCurrentBalanceCommand.Execute();
+        }
 
-            CurrentBalance = $"{RegionInfo.CurrentRegion.CurrencySymbol}{currentBallance}";
-            Transactions = new ReadOnlyObservableCollection<Transaction>(observableCollection);
+        private Task<List<Transaction>> GetTransactions()
+        {
+            return _userService.GetTransactions(_userId);
+        }
+
+        private ObservableCollection<Transaction> ToObservableCollection(IEnumerable<Transaction> transactions)
+        {
+            return new ObservableCollection<Transaction>(transactions);
+        }
+
+        private Task<decimal> GetCurrentBalance()
+        {
+            return _userService.GetCurrentBalance(_userId);
         }
     }
 }

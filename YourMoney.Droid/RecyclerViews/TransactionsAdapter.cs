@@ -26,7 +26,7 @@ namespace YourMoney.Droid.RecyclerViews
             }
             set
             {
-                _itemSource = value;
+                _itemSource = value ?? new ReadOnlyObservableCollection<Transaction>(new ObservableCollection<Transaction>());
 
                 NotifyDataSetChanged();
             }
