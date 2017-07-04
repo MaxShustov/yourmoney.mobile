@@ -22,8 +22,6 @@ namespace YourMoney.Core
             RegisterDependencies(builder);
 
             Container = builder.Build();
-
-            //SimpleIoc.Default.Register<AddIncomeTransactionViewModel>();
         }
 
         private static void RegisterDependencies(ContainerBuilder builder)
@@ -41,6 +39,7 @@ namespace YourMoney.Core
             builder.RegisterType<SplashViewModel>().SingleInstance();
             builder.RegisterType<ReactiveRegisterViewModel>().SingleInstance();
             builder.RegisterType<ReactiveHomeViewModel>().SingleInstance();
+            builder.RegisterType<ReactiveAddIncomeTransactionViewModel>().SingleInstance();
         }
     }
 }

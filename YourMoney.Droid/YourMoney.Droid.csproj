@@ -205,7 +205,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Activities\AddIncomeActivity.cs" />
+    <Compile Include="Activities\AddIncomeActivity.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
     <Compile Include="Activities\HomeActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />

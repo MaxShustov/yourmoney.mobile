@@ -10,7 +10,7 @@
     android:layout_marginLeft="@dimen/DefaultMargin"
     android:layout_marginRight="@dimen/DefaultMargin">
     <EditText
-        android:id="@+id/input_description"
+        android:id="@+id/DescriptionEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/DescriptionHint" />
@@ -23,7 +23,7 @@
     android:layout_marginLeft="@dimen/DefaultMargin"
     android:layout_marginRight="@dimen/DefaultMargin">
     <EditText
-        android:id="@+id/input_category"
+        android:id="@+id/CategoryEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/CategoryHint" />
@@ -36,13 +36,13 @@
     android:layout_marginLeft="@dimen/DefaultMargin"
     android:layout_marginRight="@dimen/DefaultMargin">
     <EditText
-        android:id="@+id/input_value"
+        android:id="@+id/ValueEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/ValueHint" />
   </android.support.design.widget.TextInputLayout>
   <Button 
-    android:id="@+id/AddTransactionButton"
+    android:id="@+id/AddIncomeButton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/DefaultMargin"

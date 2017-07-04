@@ -70,6 +70,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <None Include="ViewModels\HomeViewModel.cs" />
     <None Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\ReactiveAddIncomeTransactionViewModel.cs" />
     <Compile Include="ViewModels\ReactiveHomeViewModel.cs" />
     <Compile Include="ViewModels\ReactiveLoginViewModel.cs" />
     <None Include="ViewModels\RegisterViewModel.cs" />

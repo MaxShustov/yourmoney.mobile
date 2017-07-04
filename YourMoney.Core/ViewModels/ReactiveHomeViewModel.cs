@@ -70,6 +70,7 @@ namespace YourMoney.Core.ViewModels
 
         private void Income()
         {
+            _navigationService.ShowViewModel<ReactiveAddIncomeTransactionViewModel>();
         }
 
         private void Outcome()
