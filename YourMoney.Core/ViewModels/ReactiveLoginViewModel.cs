@@ -36,6 +36,9 @@ namespace YourMoney.Core.ViewModels
             var unhandledException = LoginCommand.ThrownExceptions
                 .Select(ex => UnhandledErrorMessage);
 
+            LoginCommand
+                .Subscribe(Observer.Create<Unit>(OnSuccessfulLogin));
+
             RegisterCommand = ReactiveCommand.Create(Register);
 
             unhandledException
@@ -64,10 +67,13 @@ namespace YourMoney.Core.ViewModels
                    && password.Length >= 6;
         }
 
-        private async Task LoginAsync()
+        private Task LoginAsync()
         {
-            await _userService.Login(UserName, Password);
+            return _userService.Login(UserName, Password);
+        }
 
+        private void OnSuccessfulLogin(Unit unit)
+        {
             _navigationService.ShowViewModel<ReactiveHomeViewModel>();
         }
 

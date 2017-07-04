@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Android.Content;
 using Plugin.CurrentActivity;
 using ReactiveUI;
 using YourMoney.Core.Services.Abstract;
 using YourMoney.Core.ViewModels.Abstract;
+using YourMoney.Droid.Attributes;
 
 namespace YourMoney.Droid.Services
 {
@@ -29,8 +31,16 @@ namespace YourMoney.Droid.Services
         public void ShowViewModel<TViewModel>()
         {
             var activityType = _navigationMap[typeof(TViewModel)];
+            var navigationAttribute = activityType.GetCustomAttributes<NavigationAttribute>().FirstOrDefault();
 
-            _currentActivity.Activity.StartActivity(activityType);
+            var intent = new Intent(_currentActivity.Activity, activityType);
+
+            if (navigationAttribute != null && !navigationAttribute.History)
+            {
+                intent.AddFlags(ActivityFlags.NoHistory);
+            }
+
+            _currentActivity.Activity.StartActivity(intent);
         }
 
         private IDictionary<Type, Type> GetNavigationMap()

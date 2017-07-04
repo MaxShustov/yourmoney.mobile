@@ -3,10 +3,12 @@ using Android.OS;
 using Android.Widget;
 using ReactiveUI;
 using YourMoney.Core.ViewModels;
+using YourMoney.Droid.Attributes;
 using YourMoney.Droid.Helpers;
 
 namespace YourMoney.Droid.Activities
 {
+    [Navigation(History = false)]
     [Activity(Label = "Login", Theme = "@style/AppTheme")]
     public class LoginActivity : BaseActivity<ReactiveLoginViewModel>
     {

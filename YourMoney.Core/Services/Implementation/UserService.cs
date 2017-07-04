@@ -25,6 +25,7 @@ namespace YourMoney.Core.Services.Implementation
                 Password = password
             };
 
+            var oldUserId = _settingService.UserId;
             var userId = await _userApiClient.Login(loginModel);
 
             _settingService.UserId = userId;
