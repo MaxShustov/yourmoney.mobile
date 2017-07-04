@@ -74,11 +74,6 @@
     <Compile Include="ViewModels\SplashViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="GalaSoft.MvvmLight">
-      <HintPath>..\..\..\..\..\.nuget\packages\MvvmLightLibs\5.3.0\lib\windows81\GalaSoft.MvvmLight.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
