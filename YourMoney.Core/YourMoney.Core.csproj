@@ -66,14 +66,10 @@
     <Compile Include="Services\Implementation\TransactionService.cs" />
     <Compile Include="Services\Implementation\UserService.cs" />
     <Compile Include="ViewModels\Abstract\IViewModel.cs" />
-    <None Include="ViewModels\AddIncomeTransactionViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <None Include="ViewModels\HomeViewModel.cs" />
-    <None Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ReactiveAddIncomeTransactionViewModel.cs" />
     <Compile Include="ViewModels\ReactiveHomeViewModel.cs" />
     <Compile Include="ViewModels\ReactiveLoginViewModel.cs" />
-    <None Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ReactiveRegisterViewModel.cs" />
     <Compile Include="ViewModels\SplashViewModel.cs" />
   </ItemGroup>
