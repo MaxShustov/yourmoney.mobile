@@ -27,6 +27,9 @@ namespace YourMoney.Droid
 		public static void UpdateIdValues()
 		{
 			global::ModernHttpClient.Resource.String.library_name = global::YourMoney.Droid.Resource.String.library_name;
+			global::ReactiveUI.Fody.Helpers.Resource.String.ApplicationName = global::YourMoney.Droid.Resource.String.ApplicationName;
+			global::ReactiveUI.Fody.Helpers.Resource.String.Hello = global::YourMoney.Droid.Resource.String.Hello;
+			global::ReactiveUI.Fody.Helpers.Resource.String.library_name = global::YourMoney.Droid.Resource.String.library_name;
 			global::Splat.Resource.String.library_name = global::YourMoney.Droid.Resource.String.library_name;
 		}
 		
@@ -3313,65 +3316,68 @@ namespace YourMoney.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a003b
-			public const int AddTransactionText = 2131361851;
-			
-			// aapt resource value: 0x7f0a002a
-			public const int ApplicationName = 2131361834;
-			
-			// aapt resource value: 0x7f0a0039
-			public const int CategoryHint = 2131361849;
-			
 			// aapt resource value: 0x7f0a003c
-			public const int ConfirmPasswordHint = 2131361852;
-			
-			// aapt resource value: 0x7f0a0038
-			public const int DescriptionHint = 2131361848;
-			
-			// aapt resource value: 0x7f0a003d
-			public const int EmailHint = 2131361853;
-			
-			// aapt resource value: 0x7f0a0036
-			public const int HomeAddIncomeText = 2131361846;
-			
-			// aapt resource value: 0x7f0a0037
-			public const int HomeAddOutcomeText = 2131361847;
-			
-			// aapt resource value: 0x7f0a0033
-			public const int HomeCategoryText = 2131361843;
-			
-			// aapt resource value: 0x7f0a0032
-			public const int HomeDateText = 2131361842;
-			
-			// aapt resource value: 0x7f0a0034
-			public const int HomeDescriptionText = 2131361844;
-			
-			// aapt resource value: 0x7f0a0035
-			public const int HomeValueText = 2131361845;
-			
-			// aapt resource value: 0x7f0a002d
-			public const int LoginButtonText = 2131361837;
-			
-			// aapt resource value: 0x7f0a0030
-			public const int LoginError = 2131361840;
-			
-			// aapt resource value: 0x7f0a002f
-			public const int OrText = 2131361839;
+			public const int AddTransactionText = 2131361852;
 			
 			// aapt resource value: 0x7f0a002b
-			public const int PasswordHint = 2131361835;
-			
-			// aapt resource value: 0x7f0a002e
-			public const int RegisterButtonText = 2131361838;
-			
-			// aapt resource value: 0x7f0a002c
-			public const int UserNameHint = 2131361836;
+			public const int ApplicationName = 2131361835;
 			
 			// aapt resource value: 0x7f0a003a
-			public const int ValueHint = 2131361850;
+			public const int CategoryHint = 2131361850;
+			
+			// aapt resource value: 0x7f0a003d
+			public const int ConfirmPasswordHint = 2131361853;
+			
+			// aapt resource value: 0x7f0a0039
+			public const int DescriptionHint = 2131361849;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int EmailHint = 2131361854;
+			
+			// aapt resource value: 0x7f0a002a
+			public const int Hello = 2131361834;
+			
+			// aapt resource value: 0x7f0a0037
+			public const int HomeAddIncomeText = 2131361847;
+			
+			// aapt resource value: 0x7f0a0038
+			public const int HomeAddOutcomeText = 2131361848;
+			
+			// aapt resource value: 0x7f0a0034
+			public const int HomeCategoryText = 2131361844;
+			
+			// aapt resource value: 0x7f0a0033
+			public const int HomeDateText = 2131361843;
+			
+			// aapt resource value: 0x7f0a0035
+			public const int HomeDescriptionText = 2131361845;
+			
+			// aapt resource value: 0x7f0a0036
+			public const int HomeValueText = 2131361846;
+			
+			// aapt resource value: 0x7f0a002e
+			public const int LoginButtonText = 2131361838;
 			
 			// aapt resource value: 0x7f0a0031
-			public const int YourBalanceText = 2131361841;
+			public const int LoginError = 2131361841;
+			
+			// aapt resource value: 0x7f0a0030
+			public const int OrText = 2131361840;
+			
+			// aapt resource value: 0x7f0a002c
+			public const int PasswordHint = 2131361836;
+			
+			// aapt resource value: 0x7f0a002f
+			public const int RegisterButtonText = 2131361839;
+			
+			// aapt resource value: 0x7f0a002d
+			public const int UserNameHint = 2131361837;
+			
+			// aapt resource value: 0x7f0a003b
+			public const int ValueHint = 2131361851;
+			
+			// aapt resource value: 0x7f0a0032
+			public const int YourBalanceText = 2131361842;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_action_bar_home_description = 2131361792;
