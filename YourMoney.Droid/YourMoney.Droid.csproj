@@ -313,9 +313,9 @@
     <AndroidResource Include="Resources\drawable\ic_remove.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FodyWeavers.xml">
+    <Content Include="FodyWeavers.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
