@@ -1,0 +1,14 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:YourMoney.UWP.Resources">
+    <Color x:Key="Primary">#5fd4af</Color>
+    <Color x:Key="PrimaryDark">#00796B</Color>
+    <Color x:Key="DarkText">#4f5a69</Color>
+    <Color x:Key="LightText">#FAFAFA</Color>
+    <Color x:Key="Error">#E53935</Color>
+    <Color x:Key="PrimaryAction">#03A9F4</Color>
+    <Color x:Key="PrimaryActionDark">#0288D1</Color>
+    <Color x:Key="SecondaryAction">#F44336</Color>
+    <Color x:Key="SecondaryActionDark">#C62828</Color>
+</ResourceDictionary>

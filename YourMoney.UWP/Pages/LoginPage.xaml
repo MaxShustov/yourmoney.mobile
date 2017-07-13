@@ -7,14 +7,22 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     DataContext="{Binding LoginViewModel, Source={StaticResource ViewModelLocator}}"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="../Resources/TextBoxStyles.xaml"/>
+                <ResourceDictionary Source="../Resources/PasswordBoxStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel VerticalAlignment="Center">
-            <TextBox PlaceholderText="User Name" IsEnabled="{Binding IsUiEnabled}" Text="{Binding UserName, Mode=TwoWay}" VerticalAlignment="Center" Margin="10,0,10,10"/>
-            <PasswordBox PlaceholderText="Password" IsEnabled="{Binding IsUiEnabled}"  Password="{Binding Password, Mode=TwoWay}" VerticalAlignment="Center" Margin="10,0,10,10"/>
-            <Button Command="{Binding LoginCommand}" IsEnabled="{Binding IsUiEnabled}"  HorizontalAlignment="Stretch" Margin="10,0,10,0">Login</Button>
-            <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0">OR</TextBlock>
-            <Button Command="{Binding RegisterCommand}" IsEnabled="{Binding IsUiEnabled}"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,10,10,0">Register</Button>
+            <TextBox x:Name="UserNameTextBox" PlaceholderText="User name" IsEnabled="{Binding IsUiEnabled}" Text="{Binding UserName, Mode=TwoWay}" VerticalAlignment="Center" Margin="10,0,10,10" Style="{StaticResource TextBox}"/>
+            <PasswordBox x:Name="PasswordTextBox" PlaceholderText="Password" IsEnabled="{Binding IsUiEnabled}"  Password="{Binding Password, Mode=TwoWay}" VerticalAlignment="Center" Margin="10,0,10,10" Style="{StaticResource PasswordBox}"/>
+            <Button x:Name="LoginButton" Command="{Binding LoginCommand}" IsEnabled="{Binding IsUiEnabled}"  HorizontalAlignment="Stretch" Margin="10,0,10,0" Style="{StaticResource LightButton}">Login</Button>
+            <TextBlock x:Name="OrTextBlock" HorizontalAlignment="Center" Margin="0,5,0,0">OR</TextBlock>
+            <Button x:Name="RegisterButton" Command="{Binding RegisterCommand}" IsEnabled="{Binding IsUiEnabled}"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,10,10,0" Style="{StaticResource DarkButton}">Register</Button>
         </StackPanel>
     </Grid>
 </Page>
