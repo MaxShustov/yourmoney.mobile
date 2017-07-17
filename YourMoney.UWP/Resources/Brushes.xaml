@@ -10,4 +10,6 @@
     <SolidColorBrush x:Key="DarkTextBrush" Color="{StaticResource DarkText}"/>
     <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDark}"/>
     <SolidColorBrush x:Key="LightTextBrush" Color="{StaticResource LightText}"/>
+    <SolidColorBrush x:Key="ErrorBrush" Color="{StaticResource Error}"/>
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource LightText}"/>
 </ResourceDictionary>

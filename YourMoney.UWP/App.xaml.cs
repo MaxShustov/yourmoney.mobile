@@ -1,5 +1,5 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
+using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -7,7 +7,6 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using YourMoney.Core;
 using YourMoney.Core.Services.Abstract;
-using YourMoney.UWP.Pages;
 using YourMoney.UWP.Services;
 
 namespace YourMoney.UWP

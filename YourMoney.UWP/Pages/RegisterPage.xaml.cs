@@ -1,11 +1,11 @@
 ﻿using System;
+using Windows.UI.Xaml.Controls;
 using Autofac;
 using ReactiveUI;
-using Windows.UI.Xaml.Controls;
 using YourMoney.Core;
 using YourMoney.Core.ViewModels;
 
-namespace YourMoney.UWP.Pages
+namespace YourMoney.UWP
 {
     public sealed partial class RegisterPage : Page, IViewFor<ReactiveRegisterViewModel>
     {
