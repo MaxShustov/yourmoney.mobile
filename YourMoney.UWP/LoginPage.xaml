@@ -9,9 +9,9 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Resources/ButtonStyles.xaml"/>
-                <ResourceDictionary Source="../Resources/TextBoxStyles.xaml"/>
-                <ResourceDictionary Source="../Resources/PasswordBoxStyles.xaml"/>
+                <ResourceDictionary Source="../../Resources/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="../../Resources/TextBoxStyles.xaml"/>
+                <ResourceDictionary Source="../../Resources/PasswordBoxStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <Style x:Key="SmallImage" TargetType="Image">
@@ -28,7 +28,7 @@
     <Grid Background="{StaticResource BackgroundBrush}">
         <RelativePanel>
             <TextBlock x:Name="ErrorTextBlock" Foreground="{StaticResource ErrorBrush}" Text="{Binding Error}" Margin="0,0,0,5" RelativePanel.Above="UserNameTextBox" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-            <Image x:Name="LogoImage" Source="../../Assets/Square310x310Logo.scale-400.png" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+            <Image x:Name="LogoImage" Source="ms-appx:///Assets/Square310x310Logo.scale-400.png" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" />
             <TextBox x:Name="UserNameTextBox" PlaceholderText="User name" IsEnabled="{Binding IsUiEnabled}" Text="{Binding UserName, Mode=TwoWay}" VerticalAlignment="Center" Style="{StaticResource TextBox}" RelativePanel.Above="PasswordTextBox" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
             <PasswordBox x:Name="PasswordTextBox" PlaceholderText="Password" IsEnabled="{Binding IsUiEnabled}"  Password="{Binding Password, Mode=TwoWay}" Style="{StaticResource PasswordBox}" RelativePanel.Above="LoginButton" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
             <Button x:Name="LoginButton" Command="{Binding LoginCommand}" IsEnabled="{Binding IsUiEnabled}" Style="{StaticResource LightButton}" RelativePanel.Above="OrTextBlock" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" HorizontalAlignment="Stretch">Login</Button>
