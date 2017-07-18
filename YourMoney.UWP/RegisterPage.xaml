@@ -27,7 +27,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{StaticResource BackgroundBrush}">
         <RelativePanel>
             <Image x:Name="LogoImage" Source="../../Assets/Square310x310Logo.scale-400.png" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="UserNameTextBox" RelativePanel.AlignTopWithPanel="True" />
             <TextBlock Text="{Binding Error}" Foreground="{StaticResource ErrorBrush}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="UserNameTextBox" Margin="0,0,0,10"/>
