@@ -38,16 +38,24 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="Date:"/>
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Date}" Foreground="Black" SelectionHighlightColor="{x:Null}" Margin="10,0,0,0"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Date}"/>
                         <TextBlock Grid.Row="1" Grid.Column="0" Text="Category:"/>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Category}" Foreground="Black" SelectionHighlightColor="{x:Null}" Margin="10,0,0,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Category}"/>
                         <TextBlock Grid.Row="2" Grid.Column="0" Text="Description:"/>
-                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Description}" Foreground="Black" SelectionHighlightColor="{x:Null}" Margin="10,0,0,0"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Description}"/>
                         <TextBlock Grid.Row="3" Grid.Column="0" Text="Value:"/>
-                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Value}" Foreground="Black" SelectionHighlightColor="{x:Null}" Margin="10,0,0,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Value}"/>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="Padding" Value="10"/>
+                    <Setter Property="Foreground" Value="{StaticResource DarkTextBrush}"/>
+                </Style>
+            </GridView.ItemContainerStyle>
         </GridView>
         <CommandBar Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Background="{StaticResource PrimaryBrush}">
             <CommandBar.Content>

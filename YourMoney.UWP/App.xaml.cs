@@ -85,18 +85,17 @@ namespace YourMoney.UWP
             var lightTextBrush = (SolidColorBrush)dictionary["LightTextBrush"];
             var darkTextBrush = (SolidColorBrush)dictionary["DarkTextBrush"];
 
-            titleBar.BackgroundColor = primaryBrush.Color;
-            titleBar.ForegroundColor = darkTextBrush.Color;
-            titleBar.ButtonBackgroundColor = primaryBrush.Color;
-            titleBar.ButtonForegroundColor = darkTextBrush.Color;
+            titleBar.BackgroundColor = primaryDarkBrush.Color;
+            titleBar.ForegroundColor = lightTextBrush.Color;
+            titleBar.ButtonBackgroundColor = primaryDarkBrush.Color;
+            titleBar.ButtonForegroundColor = lightTextBrush.Color;
             //--
-            titleBar.ButtonHoverBackgroundColor = primaryDarkBrush.Color;
-            titleBar.ButtonHoverForegroundColor = lightTextBrush.Color;
-            titleBar.ButtonPressedBackgroundColor = primaryDarkBrush.Color;
-            titleBar.ButtonPressedForegroundColor = lightTextBrush.Color;
-            titleBar.InactiveBackgroundColor = primaryDarkBrush.Color;
-            titleBar.InactiveForegroundColor = lightTextBrush.Color;
-            //--
+            titleBar.ButtonHoverBackgroundColor = primaryBrush.Color;
+            titleBar.ButtonHoverForegroundColor = darkTextBrush.Color;
+            titleBar.ButtonPressedBackgroundColor = primaryBrush.Color;
+            titleBar.ButtonPressedForegroundColor = darkTextBrush.Color;
+            titleBar.InactiveBackgroundColor = primaryBrush.Color;
+            titleBar.InactiveForegroundColor = darkTextBrush.Color;
             titleBar.ButtonInactiveBackgroundColor = primaryBrush.Color;
             titleBar.ButtonInactiveForegroundColor = darkTextBrush.Color;
         }
