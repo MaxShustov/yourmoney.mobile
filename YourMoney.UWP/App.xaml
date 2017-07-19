@@ -6,5 +6,10 @@
     RequestedTheme="Light">
     <Application.Resources>
         <vm:ViewModelLocator xmlns:vm ="using:YourMoney.UWP"  x:Key="ViewModelLocator"/>
+        <ResourceDictionary x:Key="Resources">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Brushes.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

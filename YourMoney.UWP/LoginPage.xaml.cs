@@ -1,6 +1,6 @@
-﻿using Windows.UI.Xaml.Controls;
-using Autofac;
+﻿using Autofac;
 using ReactiveUI;
+using Windows.UI.Xaml.Controls;
 using YourMoney.Core;
 using YourMoney.Core.ViewModels;
 

@@ -16,7 +16,6 @@
     </Page.Resources>
     <Grid Background="{StaticResource BackgroundBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -24,9 +23,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Your current balance: " Margin="10,20,5,0" HorizontalAlignment="Left" FontSize="20"/>
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CurrentBalance}" Margin="5,20,0,0" HorizontalAlignment="Left" FontSize="20" FontFamily="Segoe UI Light"/>
-        <ListView Background="#FAFAFA" ItemsSource="{Binding Transactions}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+        <ListView Background="#FAFAFA" ItemsSource="{Binding Transactions}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Transaction">
                     <Grid>
@@ -52,12 +49,12 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <CommandBar Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" x:Name="FormattingCommandBar">
+        <CommandBar Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
             <CommandBar.Content>
-                <TextBlock Margin="10,10,0,5" FontSize="18" Text="{Binding CurrentBalance}"/>
+                <TextBlock Margin="10,14,0,5" Text="{Binding FullCurrentBalance}"/>
             </CommandBar.Content>
-            <AppBarButton Icon="Add" Label="Add income" ToolTipService.ToolTip="Add income" FontSize="18"/>
-            <AppBarButton Icon="Remove" Label="Add outcome" ToolTipService.ToolTip="Add outcome" FontSize="18"/>
+            <AppBarButton Icon="Add" Label="Add income" ToolTipService.ToolTip="Add income" Command="{Binding IncomeCommand}" Width="45"/>
+            <AppBarButton Icon="Remove" Label="Add outcome" ToolTipService.ToolTip="Add outcome" Command="{Binding OutcomeCommand}" Width="45"/>
         </CommandBar>
     </Grid>
 </Page>

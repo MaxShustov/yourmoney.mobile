@@ -4,6 +4,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using YourMoney.Core;
 using YourMoney.Core.Services.Abstract;
@@ -22,12 +23,12 @@ namespace YourMoney.UWP
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             AppStart.Initialize(RegisterInnerDependencies);
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
+            //#if DEBUG
+            //            if (System.Diagnostics.Debugger.IsAttached)
+            //            {
+            //                this.DebugSettings.EnableFrameRateCounter = true;
+            //            }
+            //#endif
             Frame rootFrame = Window.Current.Content as Frame;
 
             if (rootFrame == null)
@@ -52,6 +53,8 @@ namespace YourMoney.UWP
 
                 Window.Current.Activate();
             }
+
+            SetWindowTitleColor();
         }
 
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
@@ -69,6 +72,33 @@ namespace YourMoney.UWP
         private void RegisterInnerDependencies(ContainerBuilder builder)
         {
             builder.RegisterType<ViewModelNavigationService>().As<IViewModelNavigationService>().SingleInstance();
+        }
+
+        private void SetWindowTitleColor()
+        {
+            var titleBar = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar;
+
+            var dictionary = (ResourceDictionary)Current.Resources["Resources"];
+
+            var primaryBrush = (SolidColorBrush)dictionary["PrimaryBrush"];
+            var primaryDarkBrush = (SolidColorBrush)dictionary["PrimaryDarkBrush"];
+            var lightTextBrush = (SolidColorBrush)dictionary["LightTextBrush"];
+            var darkTextBrush = (SolidColorBrush)dictionary["DarkTextBrush"];
+
+            titleBar.BackgroundColor = primaryBrush.Color;
+            titleBar.ForegroundColor = darkTextBrush.Color;
+            titleBar.ButtonBackgroundColor = primaryBrush.Color;
+            titleBar.ButtonForegroundColor = darkTextBrush.Color;
+            //--
+            titleBar.ButtonHoverBackgroundColor = primaryDarkBrush.Color;
+            titleBar.ButtonHoverForegroundColor = lightTextBrush.Color;
+            titleBar.ButtonPressedBackgroundColor = primaryDarkBrush.Color;
+            titleBar.ButtonPressedForegroundColor = lightTextBrush.Color;
+            titleBar.InactiveBackgroundColor = primaryDarkBrush.Color;
+            titleBar.InactiveForegroundColor = lightTextBrush.Color;
+            //--
+            titleBar.ButtonInactiveBackgroundColor = primaryBrush.Color;
+            titleBar.ButtonInactiveForegroundColor = darkTextBrush.Color;
         }
     }
 }
