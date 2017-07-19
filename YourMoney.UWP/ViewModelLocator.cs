@@ -8,11 +8,9 @@ namespace YourMoney.UWP
     {
         public ReactiveLoginViewModel LoginViewModel => AppStart.Container.Resolve<ReactiveLoginViewModel>();
 
-        //public LoginViewModel LoginViewModel => SimpleIoc.Default.GetInstance<LoginViewModel>();
-
         public ReactiveRegisterViewModel RegisterViewModel => AppStart.Container.Resolve<ReactiveRegisterViewModel>();
 
-        //public HomeViewModel HomeViewModel => SimpleIoc.Default.GetInstance<HomeViewModel>();
+        public ReactiveHomeViewModel HomeViewModel => AppStart.Container.Resolve<ReactiveHomeViewModel>();
 
         //public AddIncomeTransactionViewModel AddIncomeTransactionViewModel => SimpleIoc.Default.GetInstance<AddIncomeTransactionViewModel>();
     }
