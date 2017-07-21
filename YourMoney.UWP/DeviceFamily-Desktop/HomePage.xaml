@@ -24,29 +24,22 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <GridView Background="#FAFAFA" ItemsSource="{Binding Transactions}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="model:Transaction">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Date:"/>
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Date}"/>
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Category:"/>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Category}"/>
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Description:"/>
-                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Description}"/>
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Value:"/>
-                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Value}"/>
-                    </Grid>
+            <GridView.Resources>
+                <DataTemplate x:Key="TransactionItemTemplate">
+                    <RelativePanel MinWidth="300" MaxWidth="300" MaxHeight="100">
+                        <TextBlock x:Name="DateTextBlock" Text="Date: " Margin="0,0,10,0"/>
+                        <TextBlock x:Name="CategoryTextBlock" Text="Category: " RelativePanel.Below="DateTextBlock" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="ValueTextBlock" Text="Value: " RelativePanel.Below="CategoryTextBlock" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="DescriptionTextBlock" Text="Description: " RelativePanel.Below="ValueTextBlock" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="TransactionDateBlock" Text="{Binding FullDate}" RelativePanel.RightOf="DateTextBlock"/>
+                        <TextBlock x:Name="TransactionCategoryBlock" Text="{Binding Category}" RelativePanel.RightOf="CategoryTextBlock" RelativePanel.Below="TransactionDateBlock"/>
+                        <TextBlock x:Name="TransactionValueBlock" Text="{Binding Value}" RelativePanel.RightOf="ValueTextBlock" RelativePanel.Below="TransactionCategoryBlock"/>
+                        <TextBlock x:Name="TransactionDescriptionBlock" Text="{Binding Description}" RelativePanel.RightOf="DescriptionTextBlock" RelativePanel.Below="TransactionValueBlock" TextWrapping="WrapWholeWords" TextTrimming="CharacterEllipsis"/>
+                    </RelativePanel>
                 </DataTemplate>
+            </GridView.Resources>
+            <GridView.ItemTemplate>
+                <StaticResource ResourceKey="TransactionItemTemplate"/>
             </GridView.ItemTemplate>
             <GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
