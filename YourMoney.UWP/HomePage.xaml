@@ -11,6 +11,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Brushes.xaml"/>
+                <ResourceDictionary Source="Resources/ListViewItemStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -23,38 +24,28 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ListView Background="#FAFAFA" ItemsSource="{Binding Transactions}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+        <ListView Background="#FAFAFA" ItemsSource="{Binding Transactions}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ItemContainerStyle="{StaticResource ListViewItemStyle}" Margin="0,1">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Transaction">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Date:"/>
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Date}" Foreground="Black" SelectionHighlightColor="{x:Null}" Margin="10,0,0,0"/>
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Category:"/>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Category}" Foreground="Black" SelectionHighlightColor="{x:Null}" Margin="10,0,0,0"/>
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Description:"/>
-                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Description}" Foreground="Black" SelectionHighlightColor="{x:Null}" Margin="10,0,0,0"/>
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Value:"/>
-                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Value}" Foreground="Black" SelectionHighlightColor="{x:Null}" Margin="10,0,0,0"/>
-                    </Grid>
+                    <RelativePanel>
+                        <TextBlock x:Name="DateTextBlock" Text="Date: " Margin="0,0,10,0"/>
+                        <TextBlock x:Name="CategoryTextBlock" Text="Category: " RelativePanel.Below="DateTextBlock" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="ValueTextBlock" Text="Value: " RelativePanel.Below="CategoryTextBlock" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="DescriptionTextBlock" Text="Description: " RelativePanel.Below="ValueTextBlock" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="TransactionDateBlock" Text="{Binding FullDate}" RelativePanel.RightOf="DateTextBlock"/>
+                        <TextBlock x:Name="TransactionCategoryBlock" Text="{Binding Category}" RelativePanel.RightOf="CategoryTextBlock" RelativePanel.Below="TransactionDateBlock"/>
+                        <TextBlock x:Name="TransactionValueBlock" Text="{Binding Value}" RelativePanel.RightOf="ValueTextBlock" RelativePanel.Below="TransactionCategoryBlock"/>
+                        <TextBlock x:Name="TransactionDescriptionBlock" Text="{Binding Description}" RelativePanel.RightOf="DescriptionTextBlock" RelativePanel.Below="TransactionValueBlock" TextWrapping="WrapWholeWords" TextTrimming="CharacterEllipsis"/>
+                    </RelativePanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <CommandBar Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
+        <CommandBar Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Background="{StaticResource PrimaryBrush}" Foreground="{StaticResource DarkTextBrush}" BorderBrush="{StaticResource PrimaryDarkBrush}" BorderThickness="0,5,0,0">
             <CommandBar.Content>
                 <TextBlock Margin="10,14,0,5" Text="{Binding FullCurrentBalance}"/>
             </CommandBar.Content>
-            <AppBarButton Icon="Add" Label="Add income" ToolTipService.ToolTip="Add income" Command="{Binding IncomeCommand}" Width="45"/>
-            <AppBarButton Icon="Remove" Label="Add outcome" ToolTipService.ToolTip="Add outcome" Command="{Binding OutcomeCommand}" Width="45"/>
+            <AppBarButton Foreground="{StaticResource DarkTextBrush}" Icon="Add" Label="Add income" ToolTipService.ToolTip="Add income" Command="{Binding IncomeCommand}" Width="45"/>
+            <AppBarButton Foreground="{StaticResource DarkTextBrush}" Icon="Remove" Label="Add outcome" ToolTipService.ToolTip="Add outcome" Command="{Binding OutcomeCommand}" Width="45"/>
         </CommandBar>
     </Grid>
 </Page>
