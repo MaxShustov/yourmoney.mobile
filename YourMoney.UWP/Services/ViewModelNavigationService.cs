@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 using YourMoney.Core.Services.Abstract;
 using YourMoney.Core.ViewModels.Abstract;
 

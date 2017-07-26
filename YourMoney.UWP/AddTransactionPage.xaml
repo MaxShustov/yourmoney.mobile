@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="YourMoney.UWP.AddTransactionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:YourMoney.UWP.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding AddIncomeTransactionViewModel, Source={StaticResource ViewModelLocator}}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/TextBoxStyles.xaml"/>
+                <ResourceDictionary Source="Resources/ButtonStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <RelativePanel VerticalAlignment="Stretch">
+            <TextBox x:Name="DescriptionTextBox" MaxHeight="200" Text="{Binding Description, Mode=TwoWay}" PlaceholderText="Description" Margin="10,10,10,5" InputScope="Text" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" AcceptsReturn="True" Style="{StaticResource TextBox}" MinHeight="150" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            <TextBox x:Name="CategoryTextBox" Text="{Binding Category, Mode=TwoWay}" PlaceholderText="Category" Margin="10,5" RelativePanel.Below="DescriptionTextBox" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Style="{StaticResource TextBox}"/>
+            <TextBox x:Name="ValueTextBox" Text="{Binding Value, Mode=TwoWay}" PlaceholderText="Value" Margin="10,5" RelativePanel.Below="CategoryTextBox" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource TextBox}"/>
+            <Button x:Name="AddTransactionButton" Content="Add Transaction" Command="{Binding AddTransactionCommand}" HorizontalAlignment="Stretch" Margin="10,5,10,10" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Style="{StaticResource LightButton}"/>
+        </RelativePanel>
+    </Grid>
+</Page>

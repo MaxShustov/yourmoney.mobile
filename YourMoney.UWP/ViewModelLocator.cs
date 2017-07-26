@@ -12,6 +12,6 @@ namespace YourMoney.UWP
 
         public ReactiveHomeViewModel HomeViewModel => AppStart.Container.Resolve<ReactiveHomeViewModel>();
 
-        //public AddIncomeTransactionViewModel AddIncomeTransactionViewModel => SimpleIoc.Default.GetInstance<AddIncomeTransactionViewModel>();
+        public ReactiveAddIncomeTransactionViewModel AddIncomeTransactionViewModel => AppStart.Container.Resolve<ReactiveAddIncomeTransactionViewModel>();
     }
 }
