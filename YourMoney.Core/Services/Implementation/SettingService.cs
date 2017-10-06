@@ -5,24 +5,24 @@ namespace YourMoney.Core.Services.Implementation
 {
     public class SettingService : ISettingService
     {
-        private const string UserIdKey = "UserIdKey";
+        private const string TokenKey = "TokenKey";
 
-        private ISettings _settings;
+        private readonly ISettings _settings;
 
         public SettingService(ISettings settings)
         {
             _settings = settings;
         }
 
-        public string UserId
+        public string Token
         {
             get
             {
-                return _settings.GetValueOrDefault<string>(UserIdKey);
+                return _settings.GetValueOrDefault<string>(TokenKey);
             }
             set
             {
-                _settings.AddOrUpdateValue(UserIdKey, value);
+                _settings.AddOrUpdateValue(TokenKey, value);
             }
         }
 

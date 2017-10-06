@@ -18,7 +18,6 @@ namespace YourMoney.Core.ViewModels
         private readonly IUserService _userService;
         private readonly ISettingService _settingService;
         private readonly IViewModelNavigationService _navigationService;
-        private readonly string _userId;
 
         public ReactiveHomeViewModel(IUserService userService, ISettingService settingService, IViewModelNavigationService navigationService)
         {
@@ -26,20 +25,16 @@ namespace YourMoney.Core.ViewModels
             _settingService = settingService;
             _navigationService = navigationService;
 
-            _userId = settingService.UserId;
-
             IncomeCommand = ReactiveCommand.Create(Income);
             OutcomeCommand = ReactiveCommand.Create(Outcome);
-
-            GetTransactionsCommand = ReactiveCommand.CreateFromTask(GetTransactions);
+            GetTransactionsCommand = ReactiveCommand.CreateFromTask<Unit, List<Transaction>>(GetTransactions);
+            GetCurrentBalanceCommand = ReactiveCommand.CreateFromTask<Unit, decimal>(GetCurrentBalance);
 
             GetTransactionsCommand
                 .Select(transactions => transactions.OrderByDescending(t => t.Date))
                 .Select(ToObservableCollection)
                 .Select(transactions => new ReadOnlyObservableCollection<Transaction>(transactions))
                 .ToPropertyEx(this, m => m.Transactions);
-
-            GetCurrentBalanceCommand = ReactiveCommand.CreateFromTask(GetCurrentBalance);
 
             var currentBalanceObservable = GetCurrentBalanceCommand
                 .Select(b => $"{RegionInfo.CurrentRegion.CurrencySymbol}{b}");
@@ -86,19 +81,19 @@ namespace YourMoney.Core.ViewModels
 
         }
 
-        private Task<List<Transaction>> GetTransactions()
+        private Task<List<Transaction>> GetTransactions(Unit _)
         {
-            return _userService.GetTransactions(_userId);
+            return Task.FromResult(new List<Transaction>());
+        }
+
+        private Task<decimal> GetCurrentBalance(Unit _)
+        {
+            return Task.FromResult((decimal)111.0);
         }
 
         private ObservableCollection<Transaction> ToObservableCollection(IEnumerable<Transaction> transactions)
         {
             return new ObservableCollection<Transaction>(transactions);
-        }
-
-        private Task<decimal> GetCurrentBalance()
-        {
-            return _userService.GetCurrentBalance(_userId);
         }
     }
 }

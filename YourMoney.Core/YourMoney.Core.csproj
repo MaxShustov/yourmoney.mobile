@@ -48,9 +48,10 @@
     <Compile Include="AppStart.cs" />
     <Compile Include="Enums\ViewModelState.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
-    <Compile Include="Exceptions\ForbiddenApiException.cs" />
+    <Compile Include="Exceptions\UnauthorizedApiException.cs" />
     <Compile Include="Extentions\ObservableExtentions.cs" />
     <Compile Include="Helpers\HttpClientExtentions.cs" />
+    <Compile Include="Models\BaseResponseModel.cs" />
     <Compile Include="Models\CurrentBalanceResponseModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\LoginModel.cs" />

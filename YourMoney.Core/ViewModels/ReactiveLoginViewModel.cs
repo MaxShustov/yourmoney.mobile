@@ -31,7 +31,7 @@ namespace YourMoney.Core.ViewModels
                 .Select(isExecuting => !isExecuting)
                 .ToPropertyEx(this, m => m.IsUiEnabled);
             var loginError = LoginCommand.ThrownExceptions
-                .OnException<ForbiddenApiException>()
+                .OnException<UnauthorizedApiException>()
                 .Select(ex => LoginErrorMessage);
             var unhandledException = LoginCommand.ThrownExceptions
                 .Select(ex => UnhandledErrorMessage);
@@ -63,8 +63,7 @@ namespace YourMoney.Core.ViewModels
         private bool IsValidCredentials(string userName, string password)
         {
             return !string.IsNullOrWhiteSpace(userName)
-                   && !string.IsNullOrWhiteSpace(password)
-                   && password.Length >= 6;
+                   && !string.IsNullOrWhiteSpace(password);
         }
 
         private Task LoginAsync()

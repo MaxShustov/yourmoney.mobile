@@ -2,6 +2,6 @@
 {
     public class AppConfig
     {
-        public const string Url = "https://vast-peak-15462.herokuapp.com";
+        public const string Url = "https://your-money.herokuapp.com";
     }
 }

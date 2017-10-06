@@ -13,7 +13,7 @@ namespace YourMoney.Core.ViewModels
             _viewModelNavigationService = viewModelNavigationService;
         }
 
-        public bool IsAuthorized => !string.IsNullOrEmpty(_settingService.UserId);
+        public bool IsAuthorized => !string.IsNullOrEmpty(_settingService.Token);
 
         public void ShowFirstViewModel()
         {

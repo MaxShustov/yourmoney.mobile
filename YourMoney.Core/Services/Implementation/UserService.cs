@@ -24,11 +24,10 @@ namespace YourMoney.Core.Services.Implementation
                 UserName = userName,
                 Password = password
             };
+			
+            var token = await _userApiClient.Login(loginModel);
 
-            var oldUserId = _settingService.UserId;
-            var userId = await _userApiClient.Login(loginModel);
-
-            _settingService.UserId = userId;
+            _settingService.Token = token;
         }
 
         public async Task Register(string userName, string password, string email)

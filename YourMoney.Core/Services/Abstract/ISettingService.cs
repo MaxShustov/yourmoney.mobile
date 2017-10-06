@@ -2,6 +2,6 @@
 {
     public interface ISettingService
     {
-        string UserId { get; set; }
+        string Token { get; set; }
     }
 }

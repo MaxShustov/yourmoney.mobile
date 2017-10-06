@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using ReactiveUI;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 using YourMoney.Core;
 using YourMoney.Core.ViewModels;
 
@@ -35,6 +36,20 @@ namespace YourMoney.UWP
             {
                 throw new System.NotImplementedException();
             }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            ViewModel.Disappeared();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            ViewModel.Appeared();
         }
     }
 }
