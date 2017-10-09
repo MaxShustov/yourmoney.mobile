@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using ModernHttpClient;
@@ -24,9 +25,11 @@ namespace YourMoney.Core.ApiClients.Implementation
 
         public async Task<string> Login(string url, LoginModel loginModel)
         {
-            var response = await Post<LoginResponseModel, LoginModel>(url, loginModel);
+	        var response = await Post<LoginResponseModel, LoginModel>(url, loginModel);
 
-            return response.UserId;
+	        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("JWT", response.Token);
+
+	        return response.Token;
         }
 
         public async Task<T> Get<T>(string url)
@@ -71,9 +74,9 @@ namespace YourMoney.Core.ApiClients.Implementation
         {
             if (!httpResponseMessage.IsSuccessStatusCode)
             {
-                if (httpResponseMessage.StatusCode == HttpStatusCode.Forbidden)
+                if (httpResponseMessage.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    throw new ForbiddenApiException();
+                    throw new UnauthorizedApiException();
                 }
 
                 throw new ApiException(httpResponseMessage.StatusCode);

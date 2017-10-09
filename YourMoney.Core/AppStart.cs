@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Ioc;
+﻿using System;
+using Autofac;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using YourMoney.Core.ApiClients.Abstract;
@@ -11,22 +12,34 @@ namespace YourMoney.Core
 {
     public class AppStart
     {
-        public static void Initialize()
+        public static IContainer Container { get; set; }
+
+        public static void Initialize(Action<ContainerBuilder> registerPlatformDependencies = null)
         {
-            SimpleIoc.Default.Register<ISettings>(() => CrossSettings.Current);
+            var builder = new ContainerBuilder();
 
-            SimpleIoc.Default.Register<IApiContext, ApiContext>();
-            SimpleIoc.Default.Register<IUserApiClient, UserApiClient>();
-            SimpleIoc.Default.Register<ITransactionApiClient, TransactionApiClient>();
-            SimpleIoc.Default.Register<IUserService, UserService>();
-            SimpleIoc.Default.Register<ITransactionService, TransactionService>();
-            SimpleIoc.Default.Register<ISettingService, SettingService>();
+            registerPlatformDependencies?.Invoke(builder);
+            RegisterDependencies(builder);
 
-            SimpleIoc.Default.Register<LoginViewModel>();
-            SimpleIoc.Default.Register<RegisterViewModel>();
-            SimpleIoc.Default.Register<HomeViewModel>();
-            SimpleIoc.Default.Register<AddIncomeTransactionViewModel>();
-            SimpleIoc.Default.Register<SplashViewModel>();
+            Container = builder.Build();
+        }
+
+        private static void RegisterDependencies(ContainerBuilder builder)
+        {
+            builder.Register(c => CrossSettings.Current).As<ISettings>();
+
+            builder.RegisterType<ApiContext>().As<IApiContext>();
+            builder.RegisterType<UserApiClient>().As<IUserApiClient>();
+            builder.RegisterType<TransactionApiClient>().As<ITransactionApiClient>();
+            builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<TransactionService>().As<ITransactionService>();
+            builder.RegisterType<SettingService>().As<ISettingService>();
+
+            builder.RegisterType<ReactiveLoginViewModel>().SingleInstance();
+            builder.RegisterType<SplashViewModel>().SingleInstance();
+            builder.RegisterType<ReactiveRegisterViewModel>().SingleInstance();
+            builder.RegisterType<ReactiveHomeViewModel>().SingleInstance();
+            builder.RegisterType<ReactiveAddIncomeTransactionViewModel>().SingleInstance();
         }
     }
 }

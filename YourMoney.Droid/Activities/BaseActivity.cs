@@ -1,29 +1,61 @@
 
+using System;
 using Android.App;
 using Android.Support.V7.App;
-using GalaSoft.MvvmLight.Ioc;
+using Autofac;
+using ReactiveUI;
+using YourMoney.Core;
 using YourMoney.Core.ViewModels.Abstract;
 
 namespace YourMoney.Droid.Activities
 {
     [Activity]
-    public class BaseActivity<T> : AppCompatActivity
-        where T : IViewModel
+    public class BaseActivity<T> : AppCompatActivity, IViewFor<T>
+        where T : class, IViewModel
     {
-        protected T ViewModel => SimpleIoc.Default.GetInstance<T>();
+        object IViewFor.ViewModel
+        {
+            get
+            {
+                return AppStart.Container.Resolve<T>();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public T ViewModel
+        {
+            get
+            {
+                return AppStart.Container.Resolve<T>();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         protected override void OnStart()
         {
-            base.OnRestart();
+            base.OnStart();
 
             ViewModel.Appeared();
         }
 
-        public override void OnAttachedToWindow()
+        protected override void OnStop()
         {
-            base.OnAttachedToWindow();
+            base.OnStop();
 
-            ViewModel.Appearing();
+            ViewModel.Disappeared();
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
         }
     }
 }

@@ -1,16 +1,17 @@
-﻿using GalaSoft.MvvmLight.Ioc;
+﻿using Autofac;
+using YourMoney.Core;
 using YourMoney.Core.ViewModels;
 
 namespace YourMoney.UWP
 {
     public class ViewModelLocator
     {
-        public LoginViewModel LoginViewModel => SimpleIoc.Default.GetInstance<LoginViewModel>();
+        public ReactiveLoginViewModel LoginViewModel => AppStart.Container.Resolve<ReactiveLoginViewModel>();
 
-        public RegisterViewModel RegisterViewModel => SimpleIoc.Default.GetInstance<RegisterViewModel>();
+        public ReactiveRegisterViewModel RegisterViewModel => AppStart.Container.Resolve<ReactiveRegisterViewModel>();
 
-        public HomeViewModel HomeViewModel => SimpleIoc.Default.GetInstance<HomeViewModel>();
+        public ReactiveHomeViewModel HomeViewModel => AppStart.Container.Resolve<ReactiveHomeViewModel>();
 
-        public AddIncomeTransactionViewModel AddIncomeTransactionViewModel => SimpleIoc.Default.GetInstance<AddIncomeTransactionViewModel>();
+        public ReactiveAddIncomeTransactionViewModel AddIncomeTransactionViewModel => AppStart.Container.Resolve<ReactiveAddIncomeTransactionViewModel>();
     }
 }

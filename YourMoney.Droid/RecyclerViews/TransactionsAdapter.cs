@@ -9,16 +9,16 @@ namespace YourMoney.Droid.RecyclerViews
 {
     public class TransactionsAdapter : RecyclerView.Adapter
     {
-        private ObservableCollection<Transaction> _itemSource;
+        private ReadOnlyObservableCollection<Transaction> _itemSource;
 
         public TransactionsAdapter()
         {
-            _itemSource = new ObservableCollection<Transaction>();
+            _itemSource = new ReadOnlyObservableCollection<Transaction>(new ObservableCollection<Transaction>());
         }
 
         public override int ItemCount => _itemSource.Count;
 
-        public ObservableCollection<Transaction> ItemSource
+        public ReadOnlyObservableCollection<Transaction> ItemSource
         {
             get
             {
@@ -26,7 +26,7 @@ namespace YourMoney.Droid.RecyclerViews
             }
             set
             {
-                _itemSource = value;
+                _itemSource = value ?? new ReadOnlyObservableCollection<Transaction>(new ObservableCollection<Transaction>());
 
                 NotifyDataSetChanged();
             }

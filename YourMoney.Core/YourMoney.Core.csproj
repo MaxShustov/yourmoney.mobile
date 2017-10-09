@@ -46,9 +46,12 @@
     <Compile Include="ApiClients\Implementation\UserApiClient.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="AppStart.cs" />
+    <Compile Include="Enums\ViewModelState.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
-    <Compile Include="Exceptions\ForbiddenApiException.cs" />
+    <Compile Include="Exceptions\UnauthorizedApiException.cs" />
+    <Compile Include="Extentions\ObservableExtentions.cs" />
     <Compile Include="Helpers\HttpClientExtentions.cs" />
+    <Compile Include="Models\BaseResponseModel.cs" />
     <Compile Include="Models\CurrentBalanceResponseModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -64,17 +67,17 @@
     <Compile Include="Services\Implementation\TransactionService.cs" />
     <Compile Include="Services\Implementation\UserService.cs" />
     <Compile Include="ViewModels\Abstract\IViewModel.cs" />
-    <Compile Include="ViewModels\AddIncomeTransactionViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\ReactiveAddIncomeTransactionViewModel.cs" />
+    <Compile Include="ViewModels\ReactiveHomeViewModel.cs" />
+    <Compile Include="ViewModels\ReactiveLoginViewModel.cs" />
+    <Compile Include="ViewModels\ReactiveRegisterViewModel.cs" />
     <Compile Include="ViewModels\SplashViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="GalaSoft.MvvmLight">
-      <HintPath>..\..\..\..\..\.nuget\packages\MvvmLightLibs\5.3.0\lib\windows81\GalaSoft.MvvmLight.dll</HintPath>
-    </Reference>
+    <Content Include="FodyWeavers.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

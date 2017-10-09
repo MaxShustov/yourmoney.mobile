@@ -7,7 +7,7 @@ namespace YourMoney.Core.ApiClients.Implementation
 {
     public class UserApiClient : IUserApiClient
     {
-        private const string LoginUrl = "api/users/login";
+        private const string LoginUrl = "api/login";
         private const string RegisterUrl = "api/users/";
         private const string SummaryUrl = "api/users/{0}/summary";
         private const string TransactionsForUserUrl = "api/users/{0}/transactions";

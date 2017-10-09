@@ -1,26 +1,29 @@
-using System.Collections.Generic;
+using System.Reactive;
+using System.Reactive.Linq;
 using Android.App;
 using Android.OS;
 using Android.Support.V7.Widget;
+using Android.Views;
 using Android.Widget;
 using Clans.Fab;
-using GalaSoft.MvvmLight.Helpers;
+using ReactiveUI;
+using YourMoney.Core.Enums;
 using YourMoney.Core.ViewModels;
 using YourMoney.Droid.RecyclerViews;
 
 namespace YourMoney.Droid.Activities
 {
     [Activity(Label = "Home")]
-    public class HomeActivity : BaseActivity<HomeViewModel>
+    public class HomeActivity : BaseActivity<ReactiveHomeViewModel>
     {
-        private IList<Binding> _bindings;
-
-        private RecyclerView _recyclerView;
-        private TextView _currentBalance;
-        private TransactionsAdapter _adapter;
         private LinearLayoutManager _layoutManager;
-        private FloatingActionButton _addIncomeButton;
-        private FloatingActionButton _addOutcomeButton;
+
+        public RecyclerView TransactionRecyclerView { get; private set; }
+        public TextView CurrentBalanceTextView { get; private set; }
+        public FloatingActionButton AddIncomeButton { get; private set; }
+        public FloatingActionButton AddOutcomeButton { get; private set; }
+        public TransactionsAdapter TransactionsAdapter { get; private set; }
+        public FloatingActionMenu FloatingActionMenu { get; private set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -28,29 +31,41 @@ namespace YourMoney.Droid.Activities
 
             SetContentView(Resource.Layout.Home);
 
-            _recyclerView = FindViewById<RecyclerView>(Resource.Id.transactionRecyclerView);
-            _currentBalance = FindViewById<TextView>(Resource.Id.BalanceTextView);
-            _addIncomeButton = FindViewById<FloatingActionButton>(Resource.Id.addIncomeButton);
-            _addOutcomeButton = FindViewById<FloatingActionButton>(Resource.Id.addOutcomeButton);
+            this.WireUpControls();
 
-            _adapter = new TransactionsAdapter();
+            TransactionsAdapter = new TransactionsAdapter();
 
             _layoutManager = new LinearLayoutManager(this);
-            _recyclerView.SetLayoutManager(_layoutManager);
-            _recyclerView.SetAdapter(_adapter);
+
+            TransactionRecyclerView.SetLayoutManager(_layoutManager);
+            TransactionRecyclerView.SetAdapter(TransactionsAdapter);
 
             BindViewModel();
         }
 
         private void BindViewModel()
         {
-            _bindings = new List<Binding>
-            {
-                this.SetBinding(() => ViewModel.CurrentBalance, () => _currentBalance.Text),
-                this.SetBinding(() => ViewModel.Transactions, () => _adapter.ItemSource)
-            };
-            
-            _addIncomeButton.SetCommand("Click", ViewModel.IncomeCommand);
+            AddIncomeButton.Events().Click
+                .Select(e => Unit.Default)
+                .InvokeCommand(ViewModel, m => m.IncomeCommand);
+
+            AddOutcomeButton.Events().Click
+                .Select(e => Unit.Default)
+                .InvokeCommand(ViewModel, m => m.OutcomeCommand);
+
+            this.OneWayBind(ViewModel, m => m.CurrentBalance, a => a.CurrentBalanceTextView.Text);
+            this.OneWayBind(ViewModel, m => m.Transactions, a => a.TransactionsAdapter.ItemSource);
+
+            var disappearedObserver = Observer.Create<ViewModelState>(CloseMenu);
+
+            ViewModel.StateObservable
+                .Where(state => state == ViewModelState.Disappered)
+                .Subscribe(disappearedObserver);
+        }
+
+        private void CloseMenu(ViewModelState state)
+        {
+            FloatingActionMenu.Close(false);
         }
     }
 }

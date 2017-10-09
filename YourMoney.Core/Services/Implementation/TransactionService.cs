@@ -19,8 +19,6 @@ namespace YourMoney.Core.Services.Implementation
 
         public Task AddTransaction(Transaction transaction)
         {
-            var userId = _settingService.UserId;
-            transaction.UserId = userId;
             transaction.Date = DateTime.Now;
 
             return _transactionApiClient.AddTransaction(transaction);

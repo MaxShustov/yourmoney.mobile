@@ -3,16 +3,16 @@ using System.Net;
 
 namespace YourMoney.Core.Exceptions
 {
-    public class ForbiddenApiException : ApiException
+    public class UnauthorizedApiException : ApiException
     {
-        private new const string Message = "Access to resource is forbidden";
+        private new const string Message = "Unauthorized";
 
-        public ForbiddenApiException(Exception ex)
+        public UnauthorizedApiException(Exception ex)
             : base(ex, HttpStatusCode.Forbidden, Message)
         {
         }
 
-        public ForbiddenApiException()
+        public UnauthorizedApiException()
             : base(HttpStatusCode.Forbidden, Message)
         {
         }

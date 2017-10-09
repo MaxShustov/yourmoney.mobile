@@ -1,13 +1,13 @@
-﻿using System;
+﻿using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using GalaSoft.MvvmLight.Ioc;
+using System.Reflection;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 using YourMoney.Core.Services.Abstract;
-using YourMoney.Core.ViewModels;
 using YourMoney.Core.ViewModels.Abstract;
-using YourMoney.UWP.Pages;
 
 namespace YourMoney.UWP.Services
 {
@@ -15,17 +15,9 @@ namespace YourMoney.UWP.Services
     {
         private readonly IDictionary<Type, Type> _keys;
 
-        private string _currentPageKey;
-
         public ViewModelNavigationService()
         {
-            _keys = new Dictionary<Type, Type>
-            {
-                { typeof(LoginViewModel), typeof(LoginPage) },
-                { typeof(RegisterViewModel), typeof(RegisterPage) },
-                { typeof(HomeViewModel), typeof(HomePage) },
-                { typeof(AddIncomeTransactionViewModel), typeof(AddTransactionPage) }
-            };
+            _keys = GetNavigationMap();
         }
 
         public void ShowViewModel<TViewModel>()
@@ -34,41 +26,37 @@ namespace YourMoney.UWP.Services
             var pageType = _keys[viewModelType];
 
             RootFrame.Navigate(pageType);
-
-            _currentPageKey = viewModelType.ToString();
         }
 
         public void GoBack()
         {
-            if (RootFrame.CanGoBack)
-            {
-                var viewModelType = _keys.Single(p => p.Value == RootFrame.BackStack.Last().SourcePageType).Key;
-                var viewModel = (IViewModel)SimpleIoc.Default.GetInstance(viewModelType);
-
-                viewModel.Appearing();
-
-                RootFrame.GoBack();
-
-                viewModel.Appeared();
-            }
         }
-
-        public void NavigateTo(string pageKey)
-        {
-            var pageType = _keys.Single(p => p.Key.ToString() == pageKey).Value;
-
-            RootFrame.Navigate(pageType);
-
-            _currentPageKey = pageKey;
-        }
-
-        public void NavigateTo(string pageKey, object parameter)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public string CurrentPageKey => _currentPageKey;
 
         private Frame RootFrame => Window.Current.Content as Frame;
+
+        private IDictionary<Type, Type> GetNavigationMap()
+        {
+            var viewModelInterface = typeof(IViewModel);
+            var viewinterface = typeof(IViewFor<>);
+
+            var viewModelTypes = typeof(IViewModel).GetTypeInfo().Assembly
+                .GetTypes()
+                .Where(t => t.GetInterfaces().Any(i => i == viewModelInterface));
+
+            var viewTypes = this.GetType().GetTypeInfo().Assembly
+                .GetTypes()
+                .Where(t => t.GetInterfaces().Any(i => i.GenericTypeArguments.Any() && i.GetGenericTypeDefinition() == viewinterface));
+
+            var typeMap = viewModelTypes.ToDictionary(v => v, v =>
+            {
+                var fullViewInterface = viewinterface.MakeGenericType(v);
+
+                return viewTypes.SingleOrDefault(vt => vt.GetInterfaces().Any(i => i == fullViewInterface));
+            })
+            .Where(kv => kv.Value != null)
+            .ToDictionary(kv => kv.Key, kv => kv.Value);
+
+            return typeMap;
+        }
     }
 }

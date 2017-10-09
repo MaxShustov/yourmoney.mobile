@@ -1,24 +1,25 @@
-
-using System.Collections.Generic;
 using Android.App;
 using Android.OS;
 using Android.Widget;
-using GalaSoft.MvvmLight.Helpers;
+using ReactiveUI;
 using YourMoney.Core.ViewModels;
 
 namespace YourMoney.Droid.Activities
 {
     [Activity(Label = "Registration")]
-    public class RegistrationActivity : BaseActivity<RegisterViewModel>
+    public class RegistrationActivity : BaseActivity<ReactiveRegisterViewModel>
     {
-        private IList<Binding> _bindings;
+        public EditText UserNameEditText { get; set; }
 
-        private EditText _userNameEditText;
-        private EditText _passwordEditText;
-        private EditText _confirmPasswordEditText;
-        private EditText _emailEditText;
-        private TextView _errorTextView;
-        private Button _registerButton;
+        public EditText PasswordEditText { get; set; }
+
+        public EditText ConfirmPassword { get; set; }
+
+        public EditText EmailEditText { get; set; }
+
+        public TextView ErrorTextView { get; set; }
+
+        public Button RegisteButton { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -26,28 +27,26 @@ namespace YourMoney.Droid.Activities
 
             SetContentView(Resource.Layout.Registration);
 
-            _userNameEditText = FindViewById<EditText>(Resource.Id.input_userName);
-            _passwordEditText = FindViewById<EditText>(Resource.Id.input_password);
-            _confirmPasswordEditText = FindViewById<EditText>(Resource.Id.input_confirmPassword);
-            _emailEditText = FindViewById<EditText>(Resource.Id.input_email);
-            _errorTextView = FindViewById<TextView>(Resource.Id.ErrorTextView);
-            _registerButton = FindViewById<Button>(Resource.Id.RegisterButton);
+            this.WireUpControls();
 
             BindModel();
         }
 
         private void BindModel()
         {
-            _bindings = new List<Binding>
-            {
-                this.SetBinding(() => ViewModel.UserName, () => _userNameEditText.Text, BindingMode.TwoWay),
-                this.SetBinding(() => ViewModel.Password, () => _passwordEditText.Text, BindingMode.TwoWay),
-                this.SetBinding(() => ViewModel.ConfirmPassword, () => _confirmPasswordEditText.Text, BindingMode.TwoWay),
-                this.SetBinding(() => ViewModel.Email, () => _emailEditText.Text, BindingMode.TwoWay),
-                this.SetBinding(() => ViewModel.Error, () => _errorTextView.Text)
-            };
+            this.Bind(ViewModel, m => m.UserName, a => a.UserNameEditText.Text);
+            this.Bind(ViewModel, m => m.Password, a => a.PasswordEditText.Text);
+            this.Bind(ViewModel, m => m.ConfirmPassword, a => a.ConfirmPassword.Text);
+            this.Bind(ViewModel, m => m.Email, a => a.EmailEditText.Text);
+            this.OneWayBind(ViewModel, m => m.Error, a => a.ErrorTextView.Text);
 
-            _registerButton.SetCommand(nameof(_registerButton.Click), ViewModel.RegisterCommand);
+            this.OneWayBind(ViewModel, m => m.IsUiEnabled, a => a.UserNameEditText.Enabled);
+            this.OneWayBind(ViewModel, m => m.IsUiEnabled, a => a.ConfirmPassword.Enabled);
+            this.OneWayBind(ViewModel, m => m.IsUiEnabled, a => a.PasswordEditText.Enabled);
+            this.OneWayBind(ViewModel, m => m.IsUiEnabled, a => a.EmailEditText.Enabled);
+            this.OneWayBind(ViewModel, m => m.IsUiEnabled, a => a.RegisteButton.Enabled);
+
+            this.BindCommand(ViewModel, m => m.RegisterCommand, a => a.RegisteButton, "Click");
         }
     }
 }

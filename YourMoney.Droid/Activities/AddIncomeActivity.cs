@@ -1,22 +1,21 @@
-
-using System.Collections.Generic;
 using Android.App;
 using Android.OS;
 using Android.Widget;
-using GalaSoft.MvvmLight.Helpers;
+using ReactiveUI;
 using YourMoney.Core.ViewModels;
 
 namespace YourMoney.Droid.Activities
 {
     [Activity(Label = "Add Income")]
-    public class AddIncomeActivity : BaseActivity<AddIncomeTransactionViewModel>
+    public class AddIncomeActivity : BaseActivity<ReactiveAddIncomeTransactionViewModel>
     {
-        private IList<Binding> _bindings;
+        public EditText DescriptionEditText { get; set; }
 
-        private EditText _descriptionEditText;
-        private EditText _categoryEditText;
-        private EditText _valueEditText;
-        private Button _addIncomeButton;
+        public EditText CategoryEditText { get; set; }
+
+        public EditText ValueEditText { get; set; }
+
+        public Button AddIncomeButton { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -24,24 +23,18 @@ namespace YourMoney.Droid.Activities
 
             SetContentView(Resource.Layout.AddIncome);
 
-            _descriptionEditText = FindViewById<EditText>(Resource.Id.input_description);
-            _categoryEditText = FindViewById<EditText>(Resource.Id.input_category);
-            _valueEditText = FindViewById<EditText>(Resource.Id.input_value);
-            _addIncomeButton = FindViewById<Button>(Resource.Id.AddTransactionButton);
+            this.WireUpControls();
 
             BindViewModel();
         }
 
         private void BindViewModel()
         {
-            _bindings = new List<Binding>
-            {
-                this.SetBinding(() => ViewModel.Description, () => _descriptionEditText.Text, BindingMode.TwoWay),
-                this.SetBinding(() => ViewModel.SelectedCategory, () => _categoryEditText.Text, BindingMode.TwoWay),
-                this.SetBinding(() => ViewModel.Value, () => _valueEditText.Text, BindingMode.TwoWay)
-            };
+            this.Bind(ViewModel, m => m.Description, a => a.DescriptionEditText.Text);
+            this.Bind(ViewModel, m => m.Value, a => a.ValueEditText.Text);
+            this.Bind(ViewModel, m => m.Category, a => a.CategoryEditText.Text);
 
-            _addIncomeButton.SetCommand(nameof(_addIncomeButton.Click), ViewModel.AddTransactionCommand);
+            this.BindCommand(ViewModel, m => m.AddTransactionCommand, a => a.AddIncomeButton, nameof(AddIncomeButton.Click));
         }
     }
 }

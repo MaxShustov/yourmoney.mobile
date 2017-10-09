@@ -1,87 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-  <ImageView
-    android:id="@+id/logo_image"
-    android:layout_width="@dimen/LoginIconSize"
-    android:layout_height="@dimen/LoginIconSize"
-    android:src="@drawable/splash_icon"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="@dimen/LoginIconMargin" />
-  <android.support.design.widget.TextInputLayout
-    android:id="@+id/input_layout_userName"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/logo_image"
-    android:layout_marginLeft="@dimen/DefaultMargin"
-    android:layout_marginRight="@dimen/DefaultMargin"
-    android:layout_marginTop="@dimen/DefaultMargin">
-    <EditText
-        android:id="@+id/input_userName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/UserNameHint" />
-  </android.support.design.widget.TextInputLayout>
-  <android.support.design.widget.TextInputLayout
-      android:id="@+id/input_layout_password"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+  <RelativeLayout 
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <ImageView
+      android:id="@+id/logo_image"
+      android:layout_width="@dimen/LoginIconSize"
+      android:layout_height="@dimen/LoginIconSize"
+      android:src="@drawable/splash_icon"
+      android:layout_alignParentTop="true"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="@dimen/LoginIconMargin" />
+    <android.support.design.widget.TextInputLayout
+      android:id="@+id/input_layout_userName"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/input_layout_userName"
+      android:layout_below="@+id/logo_image"
       android:layout_marginLeft="@dimen/DefaultMargin"
       android:layout_marginRight="@dimen/DefaultMargin"
       android:layout_marginTop="@dimen/DefaultMargin">
-    <EditText
-        android:id="@+id/input_password"
+      <EditText
+          android:id="@+id/UserNameEditText"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/UserNameHint" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/PasswordHint"
-        android:inputType="textPassword"/>
-  </android.support.design.widget.TextInputLayout>
-  <android.support.design.widget.TextInputLayout
-      android:id="@+id/input_layout_confirmPassword"
+        android:layout_below="@+id/input_layout_userName"
+        android:layout_marginLeft="@dimen/DefaultMargin"
+        android:layout_marginRight="@dimen/DefaultMargin"
+        android:layout_marginTop="@dimen/DefaultMargin">
+      <EditText
+          android:id="@+id/PasswordEditText"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/PasswordHint"
+          android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_confirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_layout_password"
+        android:layout_marginLeft="@dimen/DefaultMargin"
+        android:layout_marginRight="@dimen/DefaultMargin">
+      <EditText
+          android:id="@+id/ConfirmPassword"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/ConfirmPasswordHint"
+          android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_layout_confirmPassword"
+        android:layout_marginLeft="@dimen/DefaultMargin"
+        android:layout_marginRight="@dimen/DefaultMargin"
+        android:layout_marginTop="@dimen/DefaultMargin">
+      <EditText
+          android:id="@+id/EmailEditText"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/EmailHint"
+          android:inputType="textEmailAddress"/>
+    </android.support.design.widget.TextInputLayout>
+    <TextView
+      android:id="@+id/ErrorTextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_below="@id/input_layout_email"
+      android:textColor="@color/error"
+      android:layout_margin="@dimen/DefaultMargin"
+      android:text="Error test string"/>
+    <Button
+      android:id="@+id/RegisteButton"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@id/input_layout_password"
-      android:layout_marginLeft="@dimen/DefaultMargin"
-      android:layout_marginRight="@dimen/DefaultMargin">
-    <EditText
-        android:id="@+id/input_confirmPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/ConfirmPasswordHint"
-        android:inputType="textPassword" />
-  </android.support.design.widget.TextInputLayout>
-  <android.support.design.widget.TextInputLayout
-      android:id="@+id/input_layout_email"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_below="@id/input_layout_confirmPassword"
-      android:layout_marginLeft="@dimen/DefaultMargin"
-      android:layout_marginRight="@dimen/DefaultMargin"
-      android:layout_marginTop="@dimen/DefaultMargin">
-    <EditText
-        android:id="@+id/input_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/EmailHint"
-        android:inputType="textEmailAddress"/>
-  </android.support.design.widget.TextInputLayout>
-  <TextView
-    android:id="@+id/ErrorTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_below="@id/input_layout_email"
-    android:textColor="@color/error"
-    android:layout_margin="@dimen/DefaultMargin"
-    android:text="Error test string"/>
-  <Button
-    android:id="@+id/RegisterButton"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/ErrorTextView"
-    android:layout_margin="@dimen/DefaultMargin"
-    android:text="@string/RegisterButtonText"/>
-</RelativeLayout>
+      android:layout_below="@+id/ErrorTextView"
+      android:layout_margin="@dimen/DefaultMargin"
+      android:text="@string/RegisterButtonText"/>
+  </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

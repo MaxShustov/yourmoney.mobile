@@ -4,7 +4,7 @@ using YourMoney.Core.ViewModels;
 
 namespace YourMoney.Droid.Activities
 {
-    [Activity(MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/SplashTheme")]
+    [Activity(Icon = "@drawable/icon", Theme = "@style/SplashTheme", MainLauncher = true)]
     public class SplashScreenActivity : BaseActivity<SplashViewModel>
     {
         protected override void OnCreate(Bundle bundle)

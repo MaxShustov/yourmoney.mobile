@@ -3,7 +3,7 @@ using System;
 using Android.App;
 using Android.OS;
 using Android.Runtime;
-using GalaSoft.MvvmLight.Ioc;
+using Autofac;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Plugin.CurrentActivity;
@@ -30,10 +30,13 @@ namespace YourMoney.Droid
 
             MobileCenter.Start("7f6abd3a-30bc-40f0-a2da-101eb68d2ce5", typeof(Analytics));
 
-            SimpleIoc.Default.Register<IViewModelNavigationService, ViewModelNavigationService>();
-            SimpleIoc.Default.Register(() => CrossCurrentActivity.Current);
+            AppStart.Initialize(RegisterAndroidDependencies);
+        }
 
-            AppStart.Initialize();
+        private void RegisterAndroidDependencies(ContainerBuilder builder)
+        {
+            builder.RegisterType<ViewModelNavigationService>().As<IViewModelNavigationService>();
+            builder.Register(c => CrossCurrentActivity.Current).As<ICurrentActivity>();
         }
 
         public override void OnTerminate()

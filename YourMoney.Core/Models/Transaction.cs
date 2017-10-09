@@ -14,6 +14,8 @@ namespace YourMoney.Core.Models
         [JsonProperty("date")]
         public DateTime Date { get; set; }
 
+        public string FullDate => Date.ToString("dd, MMM yyyy hh:mm");
+
         [JsonProperty("value")]
         public decimal Value { get; set; }
 

@@ -1,9 +1,13 @@
 ﻿{
   "supports": {},
   "dependencies": {
+    "Autofac": "4.6.0",
+    "Fody": "2.1.0",
     "modernhttpclient": "2.4.2",
-    "MvvmLightLibs": "5.3.0",
+    "NETStandard.Library": "1.6.0",
     "Newtonsoft.Json": "10.0.2",
+    "reactiveui-core": "7.4.0",
+    "ReactiveUI.Fody": "2.2.10",
     "Xam.Plugins.Settings": "2.5.8"
   },
   "frameworks": {
