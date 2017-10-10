@@ -30,9 +30,11 @@ namespace YourMoney.Core
 
             builder.RegisterType<ApiContext>().As<IApiContext>();
             builder.RegisterType<UserApiClient>().As<IUserApiClient>();
+            builder.RegisterType<CategoriesApiClient>().As<ICategoriesApiClient>();
             builder.RegisterType<TransactionApiClient>().As<ITransactionApiClient>();
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<TransactionService>().As<ITransactionService>();
+            builder.RegisterType<CategoriesService>().As<ICategoriesService>();
             builder.RegisterType<SettingService>().As<ISettingService>();
 
             builder.RegisterType<ReactiveLoginViewModel>().SingleInstance();
