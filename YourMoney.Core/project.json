@@ -1,6 +1,7 @@
 ﻿{
   "supports": {},
   "dependencies": {
+    "Acr.UserDialogs": "6.4.0",
     "Autofac": "4.6.0",
     "Fody": "2.1.0",
     "modernhttpclient": "2.4.2",

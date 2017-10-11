@@ -1,15 +1,16 @@
 ﻿{
   "dependencies": {
+    "Acr.UserDialogs": "6.4.1",
     "Autofac": "4.6.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
     "Xam.Plugins.Settings": "2.5.8"
   },
   "frameworks": {
-    "uap10.0": {}
+    "uap10.0.10586": {}
   },
   "runtimes": {
-    "win10-arm": { },
-    "win10-x86": { },
-    "win10-x64": { }
+    "win10-arm": {},
+    "win10-x86": {},
+    "win10-x64": {}
   }
 }

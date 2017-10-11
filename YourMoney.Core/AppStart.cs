@@ -1,4 +1,5 @@
 ﻿using System;
+using Acr.UserDialogs;
 using Autofac;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
@@ -27,6 +28,7 @@ namespace YourMoney.Core
         private static void RegisterDependencies(ContainerBuilder builder)
         {
             builder.Register(c => CrossSettings.Current).As<ISettings>();
+            builder.Register(c => UserDialogs.Instance).As<IUserDialogs>();
 
             builder.RegisterType<ApiContext>().As<IApiContext>();
             builder.RegisterType<UserApiClient>().As<IUserApiClient>();

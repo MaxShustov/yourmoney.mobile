@@ -1,6 +1,7 @@
 ﻿using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using YourMoney.Core.Enums;
@@ -13,11 +14,15 @@ namespace YourMoney.Core.ViewModels
     {
         private readonly ITransactionService _transactionService;
         private readonly IViewModelNavigationService _navigationService;
+        private readonly ICategoriesService _categoriesService;
+        private readonly IUserDialogs _userDialogs;
 
-        public ReactiveAddIncomeTransactionViewModel(ITransactionService transactionService, IViewModelNavigationService navigationService)
+        public ReactiveAddIncomeTransactionViewModel(ITransactionService transactionService, IViewModelNavigationService navigationService, ICategoriesService categoriesService, IUserDialogs userDialogs)
         {
             _transactionService = transactionService;
             _navigationService = navigationService;
+            _categoriesService = categoriesService;
+            _userDialogs = userDialogs;
 
             var isValidStringData = this.WhenAnyValue(m => m.Category, m => m.Description)
                 .Select(t => IsValidStringData(t.Item1, t.Item2));
@@ -28,6 +33,9 @@ namespace YourMoney.Core.ViewModels
             var canAddTransaction = isValidStringData.Merge(isValidValue);
 
             AddTransactionCommand = ReactiveCommand.CreateFromTask(AddTransactionAsync, canAddTransaction);
+
+            AddTransactionCommand.ThrownExceptions
+                .Do(ex => _userDialogs.Alert(ex.Message));
 
             AddTransactionCommand
                 .Subscribe(Observer.Create<Unit>(OnAddTransactionComplete));
