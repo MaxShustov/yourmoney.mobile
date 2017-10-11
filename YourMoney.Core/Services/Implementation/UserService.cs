@@ -41,17 +41,5 @@ namespace YourMoney.Core.Services.Implementation
 
             await _userApiClient.Register(registerModel);
         }
-
-        public async Task<decimal> GetCurrentBalance(string userId)
-        {
-            var currentBalance = await _userApiClient.GetCurrentBalance(userId);
-
-            return currentBalance.CurrentBalance;
-        }
-
-        public Task<List<Transaction>> GetTransactions(string userId)
-        {
-            return _userApiClient.GetTransactionForUser(userId);
-        }
     }
 }

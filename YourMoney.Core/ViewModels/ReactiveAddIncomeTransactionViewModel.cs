@@ -1,4 +1,5 @@
-﻿using System.Reactive;
+﻿using System;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
@@ -34,8 +35,7 @@ namespace YourMoney.Core.ViewModels
 
             AddTransactionCommand = ReactiveCommand.CreateFromTask(AddTransactionAsync, canAddTransaction);
 
-            AddTransactionCommand.ThrownExceptions
-                .Do(ex => _userDialogs.Alert(ex.Message));
+            AddTransactionCommand.ThrownExceptions.Subscribe(ex => _userDialogs.Alert(ex.Message));
 
             AddTransactionCommand
                 .Subscribe(Observer.Create<Unit>(OnAddTransactionComplete));
@@ -56,7 +56,7 @@ namespace YourMoney.Core.ViewModels
 
         public ReactiveCommand<Unit, Unit> AddTransactionCommand { get; }
 
-        private Task AddTransactionAsync()
+        private async Task AddTransactionAsync()
         {
             var transaction = new Transaction
             {
@@ -65,7 +65,13 @@ namespace YourMoney.Core.ViewModels
                 Category = Category
             };
 
-            return _transactionService.AddTransaction(transaction);
+            //try
+            //{
+                await _transactionService.AddTransaction(transaction);
+            //}
+            //catch (Exception ex)
+            //{
+            //}
         }
 
         private bool IsValidStringData(string category, string description)

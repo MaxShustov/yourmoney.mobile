@@ -10,7 +10,7 @@ namespace YourMoney.Core.ApiClients.Implementation
         private const string LoginUrl = "api/login";
         private const string RegisterUrl = "api/users/";
         private const string SummaryUrl = "api/users/{0}/summary";
-        private const string TransactionsForUserUrl = "api/users/{0}/transactions";
+        private const string TransactionsForUserUrl = "api/transactions";
 
         private readonly IApiContext _apiContext;
 

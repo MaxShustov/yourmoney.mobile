@@ -30,7 +30,8 @@ namespace YourMoney.Core
             builder.Register(c => CrossSettings.Current).As<ISettings>();
             builder.Register(c => UserDialogs.Instance).As<IUserDialogs>();
 
-            builder.RegisterType<ApiContext>().As<IApiContext>();
+            builder.RegisterType<ApiContext>().As<IApiContext>().SingleInstance();
+
             builder.RegisterType<UserApiClient>().As<IUserApiClient>();
             builder.RegisterType<CategoriesApiClient>().As<ICategoriesApiClient>();
             builder.RegisterType<TransactionApiClient>().As<ITransactionApiClient>();

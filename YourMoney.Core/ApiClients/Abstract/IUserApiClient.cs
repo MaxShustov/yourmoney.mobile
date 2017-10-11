@@ -9,9 +9,5 @@ namespace YourMoney.Core.ApiClients.Abstract
         Task<string> Login(LoginModel loginModel);
 
         Task Register(RegisterModel registerModel);
-
-        Task<CurrentBalanceResponseModel> GetCurrentBalance(string userId);
-
-        Task<List<Transaction>> GetTransactionForUser(string userId);
     }
 }

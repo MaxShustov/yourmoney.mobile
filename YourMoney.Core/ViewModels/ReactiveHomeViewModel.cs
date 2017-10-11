@@ -18,16 +18,18 @@ namespace YourMoney.Core.ViewModels
         private readonly IUserService _userService;
         private readonly ISettingService _settingService;
         private readonly IViewModelNavigationService _navigationService;
+        private readonly ITransactionService _transactionService;
 
-        public ReactiveHomeViewModel(IUserService userService, ISettingService settingService, IViewModelNavigationService navigationService)
+        public ReactiveHomeViewModel(IUserService userService, ISettingService settingService, IViewModelNavigationService navigationService, ITransactionService transactionService)
         {
             _userService = userService;
             _settingService = settingService;
             _navigationService = navigationService;
+            _transactionService = transactionService;
 
             IncomeCommand = ReactiveCommand.Create(Income);
             OutcomeCommand = ReactiveCommand.Create(Outcome);
-            GetTransactionsCommand = ReactiveCommand.CreateFromTask<Unit, List<Transaction>>(GetTransactions);
+            GetTransactionsCommand = ReactiveCommand.CreateFromTask<Unit, IEnumerable<Transaction>>(GetTransactions);
             GetCurrentBalanceCommand = ReactiveCommand.CreateFromTask<Unit, decimal>(GetCurrentBalance);
 
             GetTransactionsCommand
@@ -61,7 +63,7 @@ namespace YourMoney.Core.ViewModels
 
         public ReactiveCommand<Unit, Unit> OutcomeCommand { get; }
 
-        public ReactiveCommand<Unit, List<Transaction>> GetTransactionsCommand { get; }
+        public ReactiveCommand<Unit, IEnumerable<Transaction>> GetTransactionsCommand { get; }
 
         public ReactiveCommand<Unit, decimal> GetCurrentBalanceCommand { get; }
 
@@ -81,14 +83,14 @@ namespace YourMoney.Core.ViewModels
 
         }
 
-        private Task<List<Transaction>> GetTransactions(Unit _)
+        private Task<IEnumerable<Transaction>> GetTransactions(Unit _)
         {
-            return Task.FromResult(new List<Transaction>());
+            return _transactionService.GetTransactions();
         }
 
         private Task<decimal> GetCurrentBalance(Unit _)
         {
-            return Task.FromResult((decimal)111.0);
+            return _transactionService.GetTotalSum();
         }
 
         private ObservableCollection<Transaction> ToObservableCollection(IEnumerable<Transaction> transactions)

@@ -9,9 +9,5 @@ namespace YourMoney.Core.Services.Abstract
         Task Login(string userName, string password);
 
         Task Register(string userName, string password, string email);
-
-        Task<decimal> GetCurrentBalance(string userId);
-
-        Task<List<Transaction>> GetTransactions(string userId);
     }
 }
