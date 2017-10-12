@@ -3,8 +3,10 @@ using Acr.UserDialogs;
 using Autofac;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
+using ReactiveUI;
 using YourMoney.Core.ApiClients.Abstract;
 using YourMoney.Core.ApiClients.Implementation;
+using YourMoney.Core.Observers;
 using YourMoney.Core.Services.Abstract;
 using YourMoney.Core.Services.Implementation;
 using YourMoney.Core.ViewModels;
@@ -17,6 +19,8 @@ namespace YourMoney.Core
 
         public static void Initialize(Action<ContainerBuilder> registerPlatformDependencies = null)
         {
+            RxApp.DefaultExceptionHandler = new ExceptionObserver();
+
             var builder = new ContainerBuilder();
 
             registerPlatformDependencies?.Invoke(builder);

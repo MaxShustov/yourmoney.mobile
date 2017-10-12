@@ -75,12 +75,15 @@ namespace YourMoney.Core.ViewModels
 
         private void Income()
         {
-            _navigationService.ShowViewModel<ReactiveAddIncomeTransactionViewModel>();
+            var a = 0;
+            var b = 7 / a;
+
+            _navigationService.ShowViewModel<ReactiveAddIncomeTransactionViewModel>(true);
         }
 
         private void Outcome()
         {
-
+            _navigationService.ShowViewModel<ReactiveAddIncomeTransactionViewModel>(false);
         }
 
         private Task<IEnumerable<Transaction>> GetTransactions(Unit _)

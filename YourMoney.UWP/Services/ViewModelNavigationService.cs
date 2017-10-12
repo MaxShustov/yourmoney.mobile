@@ -6,6 +6,8 @@ using System.Reflection;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
+using Autofac;
+using YourMoney.Core;
 using YourMoney.Core.Services.Abstract;
 using YourMoney.Core.ViewModels.Abstract;
 
@@ -30,6 +32,10 @@ namespace YourMoney.UWP.Services
 
         public void GoBack()
         {
+            if (RootFrame.CanGoBack)
+            {
+                RootFrame.GoBack();
+            }
         }
 
         private Frame RootFrame => Window.Current.Content as Frame;
@@ -57,6 +63,17 @@ namespace YourMoney.UWP.Services
             .ToDictionary(kv => kv.Key, kv => kv.Value);
 
             return typeMap;
+        }
+
+        public void ShowViewModel<TViewModel>(object navigationParameter)
+        {
+            var viewModelType = typeof(TViewModel);
+            var pageType = _keys[viewModelType];
+
+            var viewModel = (IViewModel)AppStart.Container.Resolve(viewModelType);
+            viewModel.InitWithParam(navigationParameter);
+
+            RootFrame.Navigate(pageType);
         }
     }
 }
