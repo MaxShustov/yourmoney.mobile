@@ -35,5 +35,10 @@ namespace YourMoney.Core.ViewModels
         {
             State = ViewModelState.Disappered;
         }
+
+        public virtual void InitWithParam(object navigationParam)
+        {
+            
+        }
     }
 }

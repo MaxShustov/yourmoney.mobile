@@ -1,9 +1,12 @@
 ﻿using System;
+using Acr.UserDialogs;
 using Autofac;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
+using ReactiveUI;
 using YourMoney.Core.ApiClients.Abstract;
 using YourMoney.Core.ApiClients.Implementation;
+using YourMoney.Core.Observers;
 using YourMoney.Core.Services.Abstract;
 using YourMoney.Core.Services.Implementation;
 using YourMoney.Core.ViewModels;
@@ -16,6 +19,8 @@ namespace YourMoney.Core
 
         public static void Initialize(Action<ContainerBuilder> registerPlatformDependencies = null)
         {
+            RxApp.DefaultExceptionHandler = new ExceptionObserver();
+
             var builder = new ContainerBuilder();
 
             registerPlatformDependencies?.Invoke(builder);
@@ -27,12 +32,16 @@ namespace YourMoney.Core
         private static void RegisterDependencies(ContainerBuilder builder)
         {
             builder.Register(c => CrossSettings.Current).As<ISettings>();
+            builder.Register(c => UserDialogs.Instance).As<IUserDialogs>();
 
-            builder.RegisterType<ApiContext>().As<IApiContext>();
+            builder.RegisterType<ApiContext>().As<IApiContext>().SingleInstance();
+
             builder.RegisterType<UserApiClient>().As<IUserApiClient>();
+            builder.RegisterType<CategoriesApiClient>().As<ICategoriesApiClient>();
             builder.RegisterType<TransactionApiClient>().As<ITransactionApiClient>();
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<TransactionService>().As<ITransactionService>();
+            builder.RegisterType<CategoriesService>().As<ICategoriesService>();
             builder.RegisterType<SettingService>().As<ISettingService>();
 
             builder.RegisterType<ReactiveLoginViewModel>().SingleInstance();

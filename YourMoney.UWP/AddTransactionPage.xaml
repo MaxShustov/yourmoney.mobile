@@ -16,12 +16,12 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <RelativePanel VerticalAlignment="Stretch">
             <TextBox x:Name="DescriptionTextBox" MaxHeight="200" Text="{Binding Description, Mode=TwoWay}" PlaceholderText="Description" Margin="10,10,10,5" InputScope="Text" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" AcceptsReturn="True" Style="{StaticResource TextBox}" MinHeight="150" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-            <TextBox x:Name="CategoryTextBox" Text="{Binding Category, Mode=TwoWay}" PlaceholderText="Category" Margin="10,5" RelativePanel.Below="DescriptionTextBox" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Style="{StaticResource TextBox}"/>
-            <TextBox x:Name="ValueTextBox" Text="{Binding Value, Mode=TwoWay}" PlaceholderText="Value" Margin="10,5" RelativePanel.Below="CategoryTextBox" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource TextBox}"/>
+            <ComboBox x:Name="CategoriesComboBox" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" ItemsSource="{Binding Categories}" Header="Categories"  Margin="10,5" RelativePanel.Below="DescriptionTextBox" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+            <TextBox x:Name="ValueTextBox" InputScope="Digits" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Value" Margin="10,5" RelativePanel.Below="CategoriesComboBox" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource TextBox}"/>
             <Button x:Name="AddTransactionButton" Content="Add Transaction" Command="{Binding AddTransactionCommand}" HorizontalAlignment="Stretch" Margin="10,5,10,10" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Style="{StaticResource LightButton}"/>
         </RelativePanel>
     </Grid>

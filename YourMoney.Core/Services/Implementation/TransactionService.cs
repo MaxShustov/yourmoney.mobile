@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using YourMoney.Core.ApiClients.Abstract;
 using YourMoney.Core.Models;
@@ -22,6 +23,16 @@ namespace YourMoney.Core.Services.Implementation
             transaction.Date = DateTime.Now;
 
             return _transactionApiClient.AddTransaction(transaction);
+        }
+
+        public Task<IEnumerable<Transaction>> GetTransactions()
+        {
+            return _transactionApiClient.GetTransactions();
+        }
+
+        public Task<decimal> GetTotalSum()
+        {
+            return _transactionApiClient.GetTotalSum();
         }
     }
 }

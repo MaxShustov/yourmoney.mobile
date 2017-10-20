@@ -2,6 +2,8 @@
 {
     public interface IViewModel
     {
+        void InitWithParam(object navigationParam);
+
         void Appearing();
 
         void Appeared();

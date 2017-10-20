@@ -4,6 +4,8 @@
     {
         void ShowViewModel<TViewModel>();
 
+        void ShowViewModel<TViewModel>(object navigationParameter);
+
         void GoBack();
     }
 }

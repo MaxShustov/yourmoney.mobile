@@ -39,9 +39,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiClients\Abstract\IApiContext.cs" />
+    <Compile Include="ApiClients\Abstract\ICategoriesApiClient.cs" />
     <Compile Include="ApiClients\Abstract\ITransactionApiClient.cs" />
     <Compile Include="ApiClients\Abstract\IUserApiClient.cs" />
     <Compile Include="ApiClients\Implementation\ApiContext.cs" />
+    <Compile Include="ApiClients\Implementation\CategoriesApiClient.cs" />
     <Compile Include="ApiClients\Implementation\TransactionApiClient.cs" />
     <Compile Include="ApiClients\Implementation\UserApiClient.cs" />
     <Compile Include="AppConfig.cs" />
@@ -52,17 +54,22 @@
     <Compile Include="Extentions\ObservableExtentions.cs" />
     <Compile Include="Helpers\HttpClientExtentions.cs" />
     <Compile Include="Models\BaseResponseModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\CurrentBalanceResponseModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LoginResponseModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\TotalSumModel.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Observers\ExceptionObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Abstract\ICategoriesService.cs" />
     <Compile Include="Services\Abstract\ISettingService.cs" />
     <Compile Include="Services\Abstract\ITransactionService.cs" />
     <Compile Include="Services\Abstract\IViewModelNavigationService.cs" />
     <Compile Include="Services\Abstract\IUserService.cs" />
+    <Compile Include="Services\Implementation\CategoriesService.cs" />
     <Compile Include="Services\Implementation\SettingService.cs" />
     <Compile Include="Services\Implementation\TransactionService.cs" />
     <Compile Include="Services\Implementation\UserService.cs" />
