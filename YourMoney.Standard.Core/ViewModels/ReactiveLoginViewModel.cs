@@ -2,6 +2,7 @@
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveUI;
+using YourMoney.Standard.Core.Observers;
 using YourMoney.Standard.Core.Services.Abstract;
 
 namespace YourMoney.Standard.Core.ViewModels
@@ -35,6 +36,9 @@ namespace YourMoney.Standard.Core.ViewModels
 
             var unhandledException = LoginCommand.ThrownExceptions
                 .Select(ex => UnhandledErrorMessage);
+
+            LoginCommand.ThrownExceptions
+                .Subscribe(ExceptionObserver);
 
             LoginCommand
                 .Subscribe(Observer.Create<Unit>(OnSuccessfulLogin));

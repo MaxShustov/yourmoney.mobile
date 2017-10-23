@@ -6,10 +6,10 @@ namespace YourMoney.Standard.Core.Api.Interfaces
 {
     public interface IUsersApi
     {
-        [Get("/login")]
-        Task<LoginResponseModel> Login(LoginRequestModel loginRequestModel);
+        [Post("/login")]
+        Task<LoginResponseModel> Login([Body] LoginRequestModel loginRequestModel);
 
         [Post("/users")]
-        Task Register(RegisterRequestModel registerRequestModel);
+        Task Register([Body] RegisterRequestModel registerRequestModel);
     }
 }

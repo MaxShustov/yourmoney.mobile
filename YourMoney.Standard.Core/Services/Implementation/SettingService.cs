@@ -14,14 +14,8 @@ namespace YourMoney.Standard.Core.Services.Implementation
 
         public string Token
         {
-            get
-            {
-                return _settings.GetValueOrDefault(nameof(Token), string.Empty);
-            }
-            set
-            {
-                _settings.AddOrUpdateValue(nameof(Token), value);
-            }
+            get => _settings.GetValueOrDefault(nameof(Token), string.Empty);
+            set => _settings.AddOrUpdateValue(nameof(Token), value);
         }
 
     }

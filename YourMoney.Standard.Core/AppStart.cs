@@ -5,7 +5,9 @@ using Autofac;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using ReactiveUI;
-using YourMoney.Core.Observers;
+using YourMoney.Standard.Core.Api;
+using YourMoney.Standard.Core.Observers;
+using YourMoney.Standard.Core.Services.Abstract;
 
 namespace YourMoney.Standard.Core
 {
@@ -31,6 +33,9 @@ namespace YourMoney.Standard.Core
 
             builder.Register(c => CrossSettings.Current).As<ISettings>();
             builder.Register(c => UserDialogs.Instance).As<IUserDialogs>();
+
+            builder.Register(c => HttpClientFactory.GetHttpClient(c.Resolve<ISettingService>()))
+                .SingleInstance();
 
             builder.RegisterAssemblyTypes(assembly)
                 .Where(t => t.Name.EndsWith("Service"))

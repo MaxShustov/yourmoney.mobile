@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace YourMoney.Core.Observers
+namespace YourMoney.Standard.Core.Observers
 {
     public class ExceptionObserver : IObserver<Exception>
     {

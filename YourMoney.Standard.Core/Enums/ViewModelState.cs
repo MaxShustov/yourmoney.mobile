@@ -2,6 +2,7 @@
 {
     public enum ViewModelState
     {
+        NonVisible,
         Appeared,
         Disappered
     }

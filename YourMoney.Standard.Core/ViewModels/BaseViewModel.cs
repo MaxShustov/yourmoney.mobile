@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Reactive;
 using ReactiveUI;
 using YourMoney.Standard.Core.Enums;
+using YourMoney.Standard.Core.Observers;
 using YourMoney.Standard.Core.ViewModels.Abstract;
 
 namespace YourMoney.Standard.Core.ViewModels
@@ -9,9 +11,13 @@ namespace YourMoney.Standard.Core.ViewModels
     {
         private ViewModelState _state;
 
+        protected IObserver<Exception> ExceptionObserver;
+
         protected BaseViewModel()
         {
             StateObservable = this.WhenAnyValue(m => m.State);
+
+            ExceptionObserver = new ExceptionObserver();
         }
 
         public IObservable<ViewModelState> StateObservable { get; }

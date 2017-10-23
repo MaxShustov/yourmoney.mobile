@@ -30,7 +30,7 @@ namespace YourMoney.Standard.Core.ViewModels
             OutcomeCommand = ReactiveCommand.Create(Outcome);
             GetTransactionsCommand = ReactiveCommand.CreateFromTask<Unit, IEnumerable<TransactionModel>>(GetTransactions);
             GetCurrentBalanceCommand = ReactiveCommand.CreateFromTask<Unit, decimal>(GetCurrentBalance);
-
+            
             _transactions = GetTransactionsCommand
                 .Select(transactions => transactions.OrderByDescending(t => t.Date))
                 .Select(ToObservableCollection)
@@ -38,7 +38,7 @@ namespace YourMoney.Standard.Core.ViewModels
                 .ToProperty(this, m => m.Transactions);
 
             var currentBalanceObservable = GetCurrentBalanceCommand
-                .Select(b => $"{RegionInfo.CurrentRegion.CurrencySymbol}{b}");
+                .Select(b => $"{b:C2}");
 
             _currentBalance = currentBalanceObservable
                 .ToProperty(this, m => m.CurrentBalance, string.Empty);
@@ -74,9 +74,6 @@ namespace YourMoney.Standard.Core.ViewModels
 
         private void Income()
         {
-            var a = 0;
-            var b = 7 / a;
-
             _navigationService.ShowViewModel<ReactiveAddIncomeTransactionViewModel>(true);
         }
 
