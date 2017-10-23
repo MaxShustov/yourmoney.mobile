@@ -1,6 +1,6 @@
 ﻿using Autofac;
-using YourMoney.Core;
-using YourMoney.Core.ViewModels;
+using YourMoney.Standard.Core;
+using YourMoney.Standard.Core.ViewModels;
 
 namespace YourMoney.UWP
 {

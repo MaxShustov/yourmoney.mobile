@@ -2,8 +2,8 @@
 using ReactiveUI;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using YourMoney.Core;
-using YourMoney.Core.ViewModels;
+using YourMoney.Standard.Core;
+using YourMoney.Standard.Core.ViewModels;
 
 namespace YourMoney.UWP
 {
@@ -16,26 +16,14 @@ namespace YourMoney.UWP
 
         object IViewFor.ViewModel
         {
-            get
-            {
-                return ViewModel;
-            }
-            set
-            {
-                throw new System.NotImplementedException();
-            }
+            get => ViewModel;
+            set => throw new System.NotImplementedException();
         }
 
         public ReactiveLoginViewModel ViewModel
         {
-            get
-            {
-                return AppStart.Container.Resolve<ReactiveLoginViewModel>();
-            }
-            set
-            {
-                throw new System.NotImplementedException();
-            }
+            get => AppStart.Container.Resolve<ReactiveLoginViewModel>();
+            set => throw new System.NotImplementedException();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

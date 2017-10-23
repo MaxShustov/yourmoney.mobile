@@ -5,11 +5,10 @@ using System.Linq;
 using System.Reflection;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Animation;
 using Autofac;
-using YourMoney.Core;
-using YourMoney.Core.Services.Abstract;
-using YourMoney.Core.ViewModels.Abstract;
+using YourMoney.Standard.Core;
+using YourMoney.Standard.Core.Services.Abstract;
+using YourMoney.Standard.Core.ViewModels.Abstract;
 
 namespace YourMoney.UWP.Services
 {

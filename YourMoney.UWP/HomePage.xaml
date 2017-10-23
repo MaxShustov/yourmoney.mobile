@@ -5,6 +5,7 @@
     xmlns:model="using:YourMoney.Core.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:YourMoney.Standard.Core.Api.Models"
     DataContext="{Binding HomeViewModel, Source={StaticResource ViewModelLocator}}"
     mc:Ignorable="d">
     <Page.Resources>
@@ -26,7 +27,7 @@
         </Grid.ColumnDefinitions>
         <ListView Background="#FAFAFA" ItemsSource="{Binding Transactions}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ItemContainerStyle="{StaticResource ListViewItemStyle}" Margin="0,1">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:Transaction">
+                <DataTemplate x:DataType="models:TransactionModel">
                     <RelativePanel>
                         <TextBlock x:Name="DateTextBlock" Text="Date: " Margin="0,0,10,0"/>
                         <TextBlock x:Name="CategoryTextBlock" Text="Category: " RelativePanel.Below="DateTextBlock" Margin="0,0,10,0"/>
