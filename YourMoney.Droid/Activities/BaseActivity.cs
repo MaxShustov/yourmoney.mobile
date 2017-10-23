@@ -1,11 +1,10 @@
-
 using System;
 using Android.App;
 using Android.Support.V7.App;
 using Autofac;
 using ReactiveUI;
-using YourMoney.Core;
-using YourMoney.Core.ViewModels.Abstract;
+using YourMoney.Standard.Core;
+using YourMoney.Standard.Core.ViewModels.Abstract;
 
 namespace YourMoney.Droid.Activities
 {
@@ -15,28 +14,14 @@ namespace YourMoney.Droid.Activities
     {
         object IViewFor.ViewModel
         {
-            get
-            {
-                return AppStart.Container.Resolve<T>();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get => AppStart.Container.Resolve<T>();
+            set => throw new NotImplementedException();
         }
 
         public T ViewModel
         {
-            get
-            {
-                return AppStart.Container.Resolve<T>();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get => AppStart.Container.Resolve<T>();
+            set => throw new NotImplementedException();
         }
 
         protected override void OnStart()
@@ -51,11 +36,6 @@ namespace YourMoney.Droid.Activities
             base.OnStop();
 
             ViewModel.Disappeared();
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
         }
     }
 }

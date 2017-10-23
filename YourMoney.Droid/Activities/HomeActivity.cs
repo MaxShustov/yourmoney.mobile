@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Reactive.Linq;
 using Android.App;
@@ -7,9 +8,9 @@ using Android.Views;
 using Android.Widget;
 using Clans.Fab;
 using ReactiveUI;
-using YourMoney.Core.Enums;
-using YourMoney.Core.ViewModels;
 using YourMoney.Droid.RecyclerViews;
+using YourMoney.Standard.Core.Enums;
+using YourMoney.Standard.Core.ViewModels;
 
 namespace YourMoney.Droid.Activities
 {

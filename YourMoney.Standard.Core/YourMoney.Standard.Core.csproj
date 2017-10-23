@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
+      <PackageTargetFallback>portable-net45+win8+wpa81+wp8</PackageTargetFallback>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +15,7 @@
     <PackageReference Include="Acr.UserDialogs" Version="6.5.1" />
     <PackageReference Include="Autofac" Version="4.6.2" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="reactiveui" Version="8.0.0-alpha0108" />
+    <PackageReference Include="reactiveui" Version="7.4.0" />
     <PackageReference Include="refit" Version="4.0.1" />
     <PackageReference Include="Splat" Version="2.0.0" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />

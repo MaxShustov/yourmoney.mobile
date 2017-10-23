@@ -1,5 +1,4 @@
 using System;
-
 using Android.App;
 using Android.OS;
 using Android.Runtime;
@@ -7,9 +6,10 @@ using Autofac;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Plugin.CurrentActivity;
-using YourMoney.Core;
-using YourMoney.Core.Services.Abstract;
+using Plugin.Settings;
 using YourMoney.Droid.Services;
+using YourMoney.Standard.Core.Services.Abstract;
+using YourMoney.Standard.Core;
 
 namespace YourMoney.Droid
 {

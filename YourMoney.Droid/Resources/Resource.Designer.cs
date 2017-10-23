@@ -26,6 +26,43 @@ namespace YourMoney.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::AndroidHUD.Resource.Attribute.ahBarColor = global::YourMoney.Droid.Resource.Attribute.ahBarColor;
+			global::AndroidHUD.Resource.Attribute.ahBarLength = global::YourMoney.Droid.Resource.Attribute.ahBarLength;
+			global::AndroidHUD.Resource.Attribute.ahBarWidth = global::YourMoney.Droid.Resource.Attribute.ahBarWidth;
+			global::AndroidHUD.Resource.Attribute.ahCircleColor = global::YourMoney.Droid.Resource.Attribute.ahCircleColor;
+			global::AndroidHUD.Resource.Attribute.ahDelayMillis = global::YourMoney.Droid.Resource.Attribute.ahDelayMillis;
+			global::AndroidHUD.Resource.Attribute.ahRadius = global::YourMoney.Droid.Resource.Attribute.ahRadius;
+			global::AndroidHUD.Resource.Attribute.ahRimColor = global::YourMoney.Droid.Resource.Attribute.ahRimColor;
+			global::AndroidHUD.Resource.Attribute.ahRimWidth = global::YourMoney.Droid.Resource.Attribute.ahRimWidth;
+			global::AndroidHUD.Resource.Attribute.ahSpinSpeed = global::YourMoney.Droid.Resource.Attribute.ahSpinSpeed;
+			global::AndroidHUD.Resource.Attribute.ahText = global::YourMoney.Droid.Resource.Attribute.ahText;
+			global::AndroidHUD.Resource.Attribute.ahTextColor = global::YourMoney.Droid.Resource.Attribute.ahTextColor;
+			global::AndroidHUD.Resource.Attribute.ahTextSize = global::YourMoney.Droid.Resource.Attribute.ahTextSize;
+			global::AndroidHUD.Resource.Drawable.ic_errorstatus = global::YourMoney.Droid.Resource.Drawable.ic_errorstatus;
+			global::AndroidHUD.Resource.Drawable.ic_successstatus = global::YourMoney.Droid.Resource.Drawable.ic_successstatus;
+			global::AndroidHUD.Resource.Drawable.roundedbg = global::YourMoney.Droid.Resource.Drawable.roundedbg;
+			global::AndroidHUD.Resource.Drawable.roundedbgdark = global::YourMoney.Droid.Resource.Drawable.roundedbgdark;
+			global::AndroidHUD.Resource.Id.loadingImage = global::YourMoney.Droid.Resource.Id.loadingImage;
+			global::AndroidHUD.Resource.Id.loadingProgressBar = global::YourMoney.Droid.Resource.Id.loadingProgressBar;
+			global::AndroidHUD.Resource.Id.loadingProgressWheel = global::YourMoney.Droid.Resource.Id.loadingProgressWheel;
+			global::AndroidHUD.Resource.Id.textViewStatus = global::YourMoney.Droid.Resource.Id.textViewStatus;
+			global::AndroidHUD.Resource.Layout.loading = global::YourMoney.Droid.Resource.Layout.loading;
+			global::AndroidHUD.Resource.Layout.loadingimage = global::YourMoney.Droid.Resource.Layout.loadingimage;
+			global::AndroidHUD.Resource.Layout.loadingprogress = global::YourMoney.Droid.Resource.Layout.loadingprogress;
+			global::AndroidHUD.Resource.String.library_name = global::YourMoney.Droid.Resource.String.library_name;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel = global::YourMoney.Droid.Resource.Styleable.ProgressWheel;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahBarColor = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahBarColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahBarLength = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahBarLength;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahBarWidth = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahBarWidth;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahCircleColor = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahCircleColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahDelayMillis = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahDelayMillis;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahRadius = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahRadius;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahRimColor = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahRimColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahRimWidth = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahRimWidth;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahSpinSpeed = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahSpinSpeed;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahText = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahText;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextColor = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahTextColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
 			global::ModernHttpClient.Resource.String.library_name = global::YourMoney.Droid.Resource.String.library_name;
 			global::ReactiveUI.Fody.Helpers.Resource.String.ApplicationName = global::YourMoney.Droid.Resource.String.ApplicationName;
 			global::ReactiveUI.Fody.Helpers.Resource.String.Hello = global::YourMoney.Droid.Resource.String.Hello;
@@ -232,6 +269,42 @@ namespace YourMoney.Droid
 			
 			// aapt resource value: 0x7f010073
 			public const int activityChooserViewStyle = 2130772083;
+			
+			// aapt resource value: 0x7f010183
+			public const int ahBarColor = 2130772355;
+			
+			// aapt resource value: 0x7f01018b
+			public const int ahBarLength = 2130772363;
+			
+			// aapt resource value: 0x7f01018a
+			public const int ahBarWidth = 2130772362;
+			
+			// aapt resource value: 0x7f010188
+			public const int ahCircleColor = 2130772360;
+			
+			// aapt resource value: 0x7f010187
+			public const int ahDelayMillis = 2130772359;
+			
+			// aapt resource value: 0x7f010189
+			public const int ahRadius = 2130772361;
+			
+			// aapt resource value: 0x7f010184
+			public const int ahRimColor = 2130772356;
+			
+			// aapt resource value: 0x7f010185
+			public const int ahRimWidth = 2130772357;
+			
+			// aapt resource value: 0x7f010186
+			public const int ahSpinSpeed = 2130772358;
+			
+			// aapt resource value: 0x7f010180
+			public const int ahText = 2130772352;
+			
+			// aapt resource value: 0x7f010181
+			public const int ahTextColor = 2130772353;
+			
+			// aapt resource value: 0x7f010182
+			public const int ahTextSize = 2130772354;
 			
 			// aapt resource value: 0x7f010097
 			public const int alertDialogButtonGroupStyle = 2130772119;
@@ -2385,8 +2458,26 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
+			// aapt resource value: 0x7f020073
+			public const int avd_hide_password_1 = 2130837619;
+			
+			// aapt resource value: 0x7f020074
+			public const int avd_hide_password_2 = 2130837620;
+			
+			// aapt resource value: 0x7f020075
+			public const int avd_hide_password_3 = 2130837621;
+			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
+			
+			// aapt resource value: 0x7f020076
+			public const int avd_show_password_1 = 2130837622;
+			
+			// aapt resource value: 0x7f020077
+			public const int avd_show_password_2 = 2130837623;
+			
+			// aapt resource value: 0x7f020078
+			public const int avd_show_password_3 = 2130837624;
 			
 			// aapt resource value: 0x7f020055
 			public const int background_splash = 2130837589;
@@ -2416,55 +2507,67 @@ namespace YourMoney.Droid
 			public const int ic_add = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_list = 2130837598;
+			public const int ic_errorstatus = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int ic_remove = 2130837599;
+			public const int ic_list = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int icon = 2130837600;
+			public const int ic_remove = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int navigation_empty_icon = 2130837601;
+			public const int ic_successstatus = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int notification_action_background = 2130837602;
+			public const int icon = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int notification_bg = 2130837603;
+			public const int navigation_empty_icon = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int notification_bg_low = 2130837604;
+			public const int notification_action_background = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int notification_bg_low_normal = 2130837605;
+			public const int notification_bg = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int notification_bg_low_pressed = 2130837606;
+			public const int notification_bg_low = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int notification_bg_normal = 2130837607;
+			public const int notification_bg_low_normal = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int notification_bg_normal_pressed = 2130837608;
+			public const int notification_bg_low_pressed = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int notification_icon_background = 2130837609;
-			
-			// aapt resource value: 0x7f02006d
-			public const int notification_template_icon_bg = 2130837613;
-			
-			// aapt resource value: 0x7f02006e
-			public const int notification_template_icon_low_bg = 2130837614;
+			public const int notification_bg_normal = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int notification_tile_bg = 2130837610;
+			public const int notification_bg_normal_pressed = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int notify_panel_notification_icon_bg = 2130837611;
+			public const int notification_icon_background = 2130837611;
+			
+			// aapt resource value: 0x7f020071
+			public const int notification_template_icon_bg = 2130837617;
+			
+			// aapt resource value: 0x7f020072
+			public const int notification_template_icon_low_bg = 2130837618;
 			
 			// aapt resource value: 0x7f02006c
-			public const int splash_icon = 2130837612;
+			public const int notification_tile_bg = 2130837612;
+			
+			// aapt resource value: 0x7f02006d
+			public const int notify_panel_notification_icon_bg = 2130837613;
+			
+			// aapt resource value: 0x7f02006e
+			public const int roundedbg = 2130837614;
+			
+			// aapt resource value: 0x7f02006f
+			public const int roundedbgdark = 2130837615;
+			
+			// aapt resource value: 0x7f020070
+			public const int splash_icon = 2130837616;
 			
 			static Drawable()
 			{
@@ -2488,77 +2591,77 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f070079
 			public const int CategoryEditText = 2131165305;
 			
-			// aapt resource value: 0x7f0700b7
-			public const int CategoryLabelTextView = 2131165367;
+			// aapt resource value: 0x7f0700bb
+			public const int CategoryLabelTextView = 2131165371;
 			
-			// aapt resource value: 0x7f0700b8
-			public const int CategoryTextView = 2131165368;
+			// aapt resource value: 0x7f0700bc
+			public const int CategoryTextView = 2131165372;
 			
-			// aapt resource value: 0x7f0700b1
-			public const int ConfirmPassword = 2131165361;
+			// aapt resource value: 0x7f0700b5
+			public const int ConfirmPassword = 2131165365;
 			
 			// aapt resource value: 0x7f07008a
 			public const int CurrentBalanceTextView = 2131165322;
 			
-			// aapt resource value: 0x7f0700b5
-			public const int DateLabelTextView = 2131165365;
+			// aapt resource value: 0x7f0700b9
+			public const int DateLabelTextView = 2131165369;
 			
-			// aapt resource value: 0x7f0700b6
-			public const int DateTimeTextView = 2131165366;
+			// aapt resource value: 0x7f0700ba
+			public const int DateTimeTextView = 2131165370;
 			
 			// aapt resource value: 0x7f070077
 			public const int DescriptionEditText = 2131165303;
 			
-			// aapt resource value: 0x7f0700b9
-			public const int DescriptionLabelTextView = 2131165369;
+			// aapt resource value: 0x7f0700bd
+			public const int DescriptionLabelTextView = 2131165373;
 			
-			// aapt resource value: 0x7f0700ba
-			public const int DescriptionTextView = 2131165370;
+			// aapt resource value: 0x7f0700be
+			public const int DescriptionTextView = 2131165374;
 			
-			// aapt resource value: 0x7f0700b3
-			public const int EmailEditText = 2131165363;
+			// aapt resource value: 0x7f0700b7
+			public const int EmailEditText = 2131165367;
 			
-			// aapt resource value: 0x7f070094
-			public const int ErrorTextView = 2131165332;
+			// aapt resource value: 0x7f070098
+			public const int ErrorTextView = 2131165336;
 			
 			// aapt resource value: 0x7f07008d
 			public const int FloatingActionMenu = 2131165325;
 			
-			// aapt resource value: 0x7f070095
-			public const int LoginButton = 2131165333;
+			// aapt resource value: 0x7f070099
+			public const int LoginButton = 2131165337;
 			
-			// aapt resource value: 0x7f070096
-			public const int OrTextView = 2131165334;
-			
-			// aapt resource value: 0x7f070093
-			public const int PasswordEditText = 2131165331;
-			
-			// aapt resource value: 0x7f0700b4
-			public const int RegisteButton = 2131165364;
+			// aapt resource value: 0x7f07009a
+			public const int OrTextView = 2131165338;
 			
 			// aapt resource value: 0x7f070097
-			public const int RegisterButton = 2131165335;
+			public const int PasswordEditText = 2131165335;
+			
+			// aapt resource value: 0x7f0700b8
+			public const int RegisteButton = 2131165368;
+			
+			// aapt resource value: 0x7f07009b
+			public const int RegisterButton = 2131165339;
 			
 			// aapt resource value: 0x7f07008c
 			public const int TransactionRecyclerView = 2131165324;
 			
-			// aapt resource value: 0x7f070091
-			public const int UserNameEditText = 2131165329;
+			// aapt resource value: 0x7f070095
+			public const int UserNameEditText = 2131165333;
 			
 			// aapt resource value: 0x7f07007b
 			public const int ValueEditText = 2131165307;
 			
-			// aapt resource value: 0x7f0700bb
-			public const int ValueLabelTextView = 2131165371;
+			// aapt resource value: 0x7f0700bf
+			public const int ValueLabelTextView = 2131165375;
 			
-			// aapt resource value: 0x7f0700bc
-			public const int ValueTextView = 2131165372;
+			// aapt resource value: 0x7f0700c0
+			public const int ValueTextView = 2131165376;
 			
 			// aapt resource value: 0x7f070089
 			public const int YourBalanceTextView = 2131165321;
 			
-			// aapt resource value: 0x7f07009b
-			public const int action0 = 2131165339;
+			// aapt resource value: 0x7f07009f
+			public const int action0 = 2131165343;
 			
 			// aapt resource value: 0x7f070067
 			public const int action_bar = 2131165287;
@@ -2581,17 +2684,17 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f070044
 			public const int action_bar_title = 2131165252;
 			
-			// aapt resource value: 0x7f070098
-			public const int action_container = 2131165336;
+			// aapt resource value: 0x7f07009c
+			public const int action_container = 2131165340;
 			
 			// aapt resource value: 0x7f070068
 			public const int action_context_bar = 2131165288;
 			
-			// aapt resource value: 0x7f07009f
-			public const int action_divider = 2131165343;
+			// aapt resource value: 0x7f0700a3
+			public const int action_divider = 2131165347;
 			
-			// aapt resource value: 0x7f070099
-			public const int action_image = 2131165337;
+			// aapt resource value: 0x7f07009d
+			public const int action_image = 2131165341;
 			
 			// aapt resource value: 0x7f070003
 			public const int action_menu_divider = 2131165187;
@@ -2608,11 +2711,11 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f070046
 			public const int action_mode_close_button = 2131165254;
 			
-			// aapt resource value: 0x7f07009a
-			public const int action_text = 2131165338;
+			// aapt resource value: 0x7f07009e
+			public const int action_text = 2131165342;
 			
-			// aapt resource value: 0x7f0700a8
-			public const int actions = 2131165352;
+			// aapt resource value: 0x7f0700ac
+			public const int actions = 2131165356;
 			
 			// aapt resource value: 0x7f070047
 			public const int activity_chooser_view_content = 2131165255;
@@ -2641,8 +2744,8 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f07004e
 			public const int buttonPanel = 2131165262;
 			
-			// aapt resource value: 0x7f07009c
-			public const int cancel_action = 2131165340;
+			// aapt resource value: 0x7f0700a0
+			public const int cancel_action = 2131165344;
 			
 			// aapt resource value: 0x7f070031
 			public const int center = 2131165233;
@@ -2656,8 +2759,8 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f07005e
 			public const int checkbox = 2131165278;
 			
-			// aapt resource value: 0x7f0700a4
-			public const int chronometer = 2131165348;
+			// aapt resource value: 0x7f0700a8
+			public const int chronometer = 2131165352;
 			
 			// aapt resource value: 0x7f07003a
 			public const int clip_horizontal = 2131165242;
@@ -2710,8 +2813,8 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f070022
 			public const int end = 2131165218;
 			
-			// aapt resource value: 0x7f0700ae
-			public const int end_padder = 2131165358;
+			// aapt resource value: 0x7f0700b2
+			public const int end_padder = 2131165362;
 			
 			// aapt resource value: 0x7f07002b
 			public const int enterAlways = 2131165227;
@@ -2755,8 +2858,8 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f07004c
 			public const int icon = 2131165260;
 			
-			// aapt resource value: 0x7f0700a9
-			public const int icon_group = 2131165353;
+			// aapt resource value: 0x7f0700ad
+			public const int icon_group = 2131165357;
 			
 			// aapt resource value: 0x7f070026
 			public const int ifRoom = 2131165222;
@@ -2764,29 +2867,29 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f070049
 			public const int image = 2131165257;
 			
-			// aapt resource value: 0x7f0700a5
-			public const int info = 2131165349;
+			// aapt resource value: 0x7f0700a9
+			public const int info = 2131165353;
 			
 			// aapt resource value: 0x7f070078
 			public const int input_layout_category = 2131165304;
 			
-			// aapt resource value: 0x7f0700b0
-			public const int input_layout_confirmPassword = 2131165360;
+			// aapt resource value: 0x7f0700b4
+			public const int input_layout_confirmPassword = 2131165364;
 			
 			// aapt resource value: 0x7f070076
 			public const int input_layout_description = 2131165302;
 			
-			// aapt resource value: 0x7f0700b2
-			public const int input_layout_email = 2131165362;
+			// aapt resource value: 0x7f0700b6
+			public const int input_layout_email = 2131165366;
 			
-			// aapt resource value: 0x7f070090
-			public const int input_layout_login = 2131165328;
+			// aapt resource value: 0x7f070094
+			public const int input_layout_login = 2131165332;
 			
-			// aapt resource value: 0x7f070092
-			public const int input_layout_password = 2131165330;
+			// aapt resource value: 0x7f070096
+			public const int input_layout_password = 2131165334;
 			
-			// aapt resource value: 0x7f0700af
-			public const int input_layout_userName = 2131165359;
+			// aapt resource value: 0x7f0700b3
+			public const int input_layout_userName = 2131165363;
 			
 			// aapt resource value: 0x7f07007a
 			public const int input_layout_value = 2131165306;
@@ -2800,11 +2903,11 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f070035
 			public const int left = 2131165237;
 			
-			// aapt resource value: 0x7f0700aa
-			public const int line1 = 2131165354;
+			// aapt resource value: 0x7f0700ae
+			public const int line1 = 2131165358;
 			
-			// aapt resource value: 0x7f0700ac
-			public const int line3 = 2131165356;
+			// aapt resource value: 0x7f0700b0
+			public const int line3 = 2131165360;
 			
 			// aapt resource value: 0x7f070010
 			public const int listMode = 2131165200;
@@ -2812,17 +2915,26 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f07004b
 			public const int list_item = 2131165259;
 			
+			// aapt resource value: 0x7f070091
+			public const int loadingImage = 2131165329;
+			
 			// aapt resource value: 0x7f07008f
-			public const int logo_image = 2131165327;
+			public const int loadingProgressBar = 2131165327;
+			
+			// aapt resource value: 0x7f070092
+			public const int loadingProgressWheel = 2131165330;
+			
+			// aapt resource value: 0x7f070093
+			public const int logo_image = 2131165331;
 			
 			// aapt resource value: 0x7f070042
 			public const int marquee = 2131165250;
 			
-			// aapt resource value: 0x7f0700be
-			public const int masked = 2131165374;
+			// aapt resource value: 0x7f0700c2
+			public const int masked = 2131165378;
 			
-			// aapt resource value: 0x7f07009e
-			public const int media_actions = 2131165342;
+			// aapt resource value: 0x7f0700a2
+			public const int media_actions = 2131165346;
 			
 			// aapt resource value: 0x7f070023
 			public const int middle = 2131165219;
@@ -2845,14 +2957,14 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f070011
 			public const int normal = 2131165201;
 			
-			// aapt resource value: 0x7f0700a7
-			public const int notification_background = 2131165351;
+			// aapt resource value: 0x7f0700ab
+			public const int notification_background = 2131165355;
 			
-			// aapt resource value: 0x7f0700a1
-			public const int notification_main_column = 2131165345;
+			// aapt resource value: 0x7f0700a5
+			public const int notification_main_column = 2131165349;
 			
-			// aapt resource value: 0x7f0700a0
-			public const int notification_main_column_container = 2131165344;
+			// aapt resource value: 0x7f0700a4
+			public const int notification_main_column_container = 2131165348;
 			
 			// aapt resource value: 0x7f070038
 			public const int parallax = 2131165240;
@@ -2875,11 +2987,11 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f070036
 			public const int right = 2131165238;
 			
-			// aapt resource value: 0x7f0700a6
-			public const int right_icon = 2131165350;
+			// aapt resource value: 0x7f0700aa
+			public const int right_icon = 2131165354;
 			
-			// aapt resource value: 0x7f0700a2
-			public const int right_side = 2131165346;
+			// aapt resource value: 0x7f0700a6
+			public const int right_side = 2131165350;
 			
 			// aapt resource value: 0x7f07001c
 			public const int screen = 2131165212;
@@ -2974,8 +3086,8 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f070037
 			public const int start = 2131165239;
 			
-			// aapt resource value: 0x7f07009d
-			public const int status_bar_latest_event_content = 2131165341;
+			// aapt resource value: 0x7f0700a1
+			public const int status_bar_latest_event_content = 2131165345;
 			
 			// aapt resource value: 0x7f070061
 			public const int submenuarrow = 2131165281;
@@ -2986,17 +3098,20 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f070012
 			public const int tabMode = 2131165202;
 			
-			// aapt resource value: 0x7f0700ad
-			public const int text = 2131165357;
+			// aapt resource value: 0x7f0700b1
+			public const int text = 2131165361;
 			
-			// aapt resource value: 0x7f0700ab
-			public const int text2 = 2131165355;
+			// aapt resource value: 0x7f0700af
+			public const int text2 = 2131165359;
 			
 			// aapt resource value: 0x7f070055
 			public const int textSpacerNoButtons = 2131165269;
 			
 			// aapt resource value: 0x7f070054
 			public const int textSpacerNoTitle = 2131165268;
+			
+			// aapt resource value: 0x7f070090
+			public const int textViewStatus = 2131165328;
 			
 			// aapt resource value: 0x7f070088
 			public const int text_input_password_toggle = 2131165320;
@@ -3007,8 +3122,8 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f07000d
 			public const int textinput_error = 2131165197;
 			
-			// aapt resource value: 0x7f0700a3
-			public const int time = 2131165347;
+			// aapt resource value: 0x7f0700a7
+			public const int time = 2131165351;
 			
 			// aapt resource value: 0x7f07004d
 			public const int title = 2131165261;
@@ -3043,8 +3158,8 @@ namespace YourMoney.Droid
 			// aapt resource value: 0x7f07000e
 			public const int view_offset_helper = 2131165198;
 			
-			// aapt resource value: 0x7f0700bd
-			public const int visible = 2131165373;
+			// aapt resource value: 0x7f0700c1
+			public const int visible = 2131165377;
 			
 			// aapt resource value: 0x7f070028
 			public const int withText = 2131165224;
@@ -3235,73 +3350,82 @@ namespace YourMoney.Droid
 			public const int Home = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int Login = 2130903083;
+			public const int loading = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int Main = 2130903084;
+			public const int loadingimage = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int notification_action = 2130903085;
+			public const int loadingprogress = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int notification_action_tombstone = 2130903086;
+			public const int Login = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int notification_media_action = 2130903087;
+			public const int Main = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int notification_media_cancel_action = 2130903088;
+			public const int notification_action = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int notification_template_big_media = 2130903089;
+			public const int notification_action_tombstone = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int notification_template_big_media_custom = 2130903090;
+			public const int notification_media_action = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int notification_template_big_media_narrow = 2130903091;
+			public const int notification_media_cancel_action = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int notification_template_big_media_narrow_custom = 2130903092;
+			public const int notification_template_big_media = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int notification_template_custom_big = 2130903093;
+			public const int notification_template_big_media_custom = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int notification_template_icon_group = 2130903094;
+			public const int notification_template_big_media_narrow = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int notification_template_lines_media = 2130903095;
+			public const int notification_template_big_media_narrow_custom = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int notification_template_media = 2130903096;
+			public const int notification_template_custom_big = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int notification_template_media_custom = 2130903097;
+			public const int notification_template_icon_group = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int notification_template_part_chronometer = 2130903098;
+			public const int notification_template_lines_media = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int notification_template_part_time = 2130903099;
+			public const int notification_template_media = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int Registration = 2130903100;
+			public const int notification_template_media_custom = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int select_dialog_item_material = 2130903101;
+			public const int notification_template_part_chronometer = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int select_dialog_multichoice_material = 2130903102;
+			public const int notification_template_part_time = 2130903102;
 			
 			// aapt resource value: 0x7f03003f
-			public const int select_dialog_singlechoice_material = 2130903103;
+			public const int Registration = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int support_simple_spinner_dropdown_item = 2130903104;
+			public const int select_dialog_item_material = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public const int transactionItemTemplate = 2130903105;
+			public const int select_dialog_multichoice_material = 2130903105;
+			
+			// aapt resource value: 0x7f030042
+			public const int select_dialog_singlechoice_material = 2130903106;
+			
+			// aapt resource value: 0x7f030043
+			public const int support_simple_spinner_dropdown_item = 2130903107;
+			
+			// aapt resource value: 0x7f030044
+			public const int transactionItemTemplate = 2130903108;
 			
 			static Layout()
 			{
@@ -6289,6 +6413,56 @@ namespace YourMoney.Droid
 			
 			// aapt resource value: 0
 			public const int PopupWindowBackgroundState_state_above_anchor = 0;
+			
+			public static int[] ProgressWheel = new int[] {
+					2130772352,
+					2130772353,
+					2130772354,
+					2130772355,
+					2130772356,
+					2130772357,
+					2130772358,
+					2130772359,
+					2130772360,
+					2130772361,
+					2130772362,
+					2130772363};
+			
+			// aapt resource value: 3
+			public const int ProgressWheel_ahBarColor = 3;
+			
+			// aapt resource value: 11
+			public const int ProgressWheel_ahBarLength = 11;
+			
+			// aapt resource value: 10
+			public const int ProgressWheel_ahBarWidth = 10;
+			
+			// aapt resource value: 8
+			public const int ProgressWheel_ahCircleColor = 8;
+			
+			// aapt resource value: 7
+			public const int ProgressWheel_ahDelayMillis = 7;
+			
+			// aapt resource value: 9
+			public const int ProgressWheel_ahRadius = 9;
+			
+			// aapt resource value: 4
+			public const int ProgressWheel_ahRimColor = 4;
+			
+			// aapt resource value: 5
+			public const int ProgressWheel_ahRimWidth = 5;
+			
+			// aapt resource value: 6
+			public const int ProgressWheel_ahSpinSpeed = 6;
+			
+			// aapt resource value: 0
+			public const int ProgressWheel_ahText = 0;
+			
+			// aapt resource value: 1
+			public const int ProgressWheel_ahTextColor = 1;
+			
+			// aapt resource value: 2
+			public const int ProgressWheel_ahTextSize = 2;
 			
 			public static int[] RecycleListView = new int[] {
 					2130772163,

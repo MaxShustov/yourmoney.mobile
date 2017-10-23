@@ -5,9 +5,9 @@ using System.Reflection;
 using Android.Content;
 using Plugin.CurrentActivity;
 using ReactiveUI;
-using YourMoney.Core.Services.Abstract;
-using YourMoney.Core.ViewModels.Abstract;
 using YourMoney.Droid.Attributes;
+using YourMoney.Standard.Core.Services.Abstract;
+using YourMoney.Standard.Core.ViewModels.Abstract;
 
 namespace YourMoney.Droid.Services
 {
@@ -21,6 +21,11 @@ namespace YourMoney.Droid.Services
             _currentActivity = currentActivity;
 
             _navigationMap = GetNavigationMap();
+        }
+
+        public void ShowViewModel<TViewModel>(object navigationParameter)
+        {
+            throw new NotImplementedException();
         }
 
         public void GoBack()

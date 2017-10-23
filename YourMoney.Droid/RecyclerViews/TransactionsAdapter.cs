@@ -2,31 +2,28 @@
 using System.Globalization;
 using Android.Support.V7.Widget;
 using Android.Views;
-using YourMoney.Core.Models;
 using YourMoney.Droid.RecyclerViews.ViewHolders;
+using YourMoney.Standard.Core.Api.Models;
 
 namespace YourMoney.Droid.RecyclerViews
 {
     public class TransactionsAdapter : RecyclerView.Adapter
     {
-        private ReadOnlyObservableCollection<Transaction> _itemSource;
+        private ReadOnlyObservableCollection<TransactionModel> _itemSource;
 
         public TransactionsAdapter()
         {
-            _itemSource = new ReadOnlyObservableCollection<Transaction>(new ObservableCollection<Transaction>());
+            _itemSource = new ReadOnlyObservableCollection<TransactionModel>(new ObservableCollection<TransactionModel>());
         }
 
         public override int ItemCount => _itemSource.Count;
 
-        public ReadOnlyObservableCollection<Transaction> ItemSource
+        public ReadOnlyObservableCollection<TransactionModel> ItemSource
         {
-            get
-            {
-                return _itemSource;
-            }
+            get => _itemSource;
             set
             {
-                _itemSource = value ?? new ReadOnlyObservableCollection<Transaction>(new ObservableCollection<Transaction>());
+                _itemSource = value ?? new ReadOnlyObservableCollection<TransactionModel>(new ObservableCollection<TransactionModel>());
 
                 NotifyDataSetChanged();
             }

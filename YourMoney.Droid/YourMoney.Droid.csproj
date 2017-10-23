@@ -33,9 +33,13 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-    <BundleAssemblies>False</BundleAssemblies>
+    <BundleAssemblies>false</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <Debugger>Xamarin</Debugger>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidSupportedAbis />
+    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -59,13 +63,27 @@
     <EnableProguard>False</EnableProguard>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.6.0\lib\netstandard1.1\Autofac.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Acr.Support.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Acr.Support.2.1.0\lib\MonoAndroid10\Acr.Support.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Acr.UserDialogs.6.4.0\lib\MonoAndroid10\Acr.UserDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Acr.UserDialogs.6.4.0\lib\MonoAndroid10\Acr.UserDialogs.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="AndHUD, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AndHUD.1.2.0\lib\MonoAndroid\AndHUD.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\netstandard1.1\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="FloatingActionButton-Xamarin, Version=1.6.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FAB.XamarinAndroid.1.6.4.0\lib\MonoAndroid50\FloatingActionButton-Xamarin.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.WebUtilities, Version=1.1.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.WebUtilities.1.1.2\lib\netstandard1.3\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Mobile, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.Mobile.0.12.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.dll</HintPath>
@@ -84,6 +102,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Primitives, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.1.1.1\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=1.1.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.Headers.1.1.2\lib\netstandard1.1\Microsoft.Net.Http.Headers.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -95,8 +119,7 @@
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="OkHttp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\OkHttp.dll</HintPath>
@@ -106,13 +129,11 @@
       <HintPath>..\packages\Plugin.CurrentActivity.1.0.1\lib\MonoAndroid10\Plugin.CurrentActivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Plugin.Settings, Version=2.5.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Settings.2.5.8\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Plugin.Settings, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Settings.Abstractions, Version=2.5.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Settings.2.5.8\lib\MonoAndroid10\Plugin.Settings.Abstractions.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Plugin.Settings.Abstractions, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveUI, Version=7.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\reactiveui-core.7.4.0\lib\MonoAndroid403\ReactiveUI.dll</HintPath>
@@ -126,11 +147,16 @@
       <HintPath>..\packages\ReactiveUI.Fody.2.2.10\lib\MonoAndroid\ReactiveUI.Fody.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Splat, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Splat.1.6.0\lib\monoandroid\Splat.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Refit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Refit.4.0.1\lib\netstandard1.4\Refit.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Splat.1.6.2\lib\monoandroid\Splat.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
@@ -149,6 +175,12 @@
     <Reference Include="System.Reactive.PlatformServices, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.PlatformServices.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.3.0\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.4.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
@@ -214,6 +246,7 @@
     <Compile Include="Activities\SplashScreenActivity.cs" />
     <Compile Include="Attributes\NavigationAttribute.cs" />
     <Compile Include="Helpers\ReactiveExtentions.cs" />
+    <Compile Include="Helpers\Settings.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="RecyclerViews\TransactionsAdapter.cs" />
     <Compile Include="RecyclerViews\ViewHolders\TransactionViewHolder.cs" />
@@ -230,6 +263,7 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -305,9 +339,9 @@
     <AndroidResource Include="Resources\values\dimens.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YourMoney.Core\YourMoney.Core.csproj">
-      <Project>{30e702aa-39cd-4cf4-9444-6a5070d48b5c}</Project>
-      <Name>YourMoney.Core</Name>
+    <ProjectReference Include="..\YourMoney.Standard.Core\YourMoney.Standard.Core.csproj">
+      <Project>{34361c28-952d-4e96-b63e-26c2f93d185a}</Project>
+      <Name>YourMoney.Standard.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -345,6 +379,7 @@
     <Error Condition="!Exists('..\packages\Xamarin.Android.Support.Design.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.Design.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Android.Support.Design.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.Design.targets'))" />
     <Error Condition="!Exists('..\packages\Xamarin.Android.Support.v7.CardView.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.v7.CardView.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Android.Support.v7.CardView.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.v7.CardView.targets'))" />
     <Error Condition="!Exists('..\packages\Fody.2.1.0\build\netstandard1.0\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.1.0\build\netstandard1.0\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets'))" />
   </Target>
   <Import Project="..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets')" />
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.Annotations.targets')" />
@@ -361,7 +396,7 @@
   <Import Project="..\packages\Xamarin.Android.Support.Design.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.Design.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Design.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.Design.targets')" />
   <Import Project="..\packages\Xamarin.Android.Support.v7.CardView.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.v7.CardView.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v7.CardView.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.v7.CardView.targets')" />
   <Import Project="..\packages\Fody.2.1.0\build\netstandard1.0\Fody.targets" Condition="Exists('..\packages\Fody.2.1.0\build\netstandard1.0\Fody.targets')" />
-  
+  <Import Project="..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets" Condition="Exists('..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.
 		<Target Name="BeforeBuild">
