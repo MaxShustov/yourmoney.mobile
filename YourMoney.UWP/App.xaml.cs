@@ -7,8 +7,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using YourMoney.Core;
-using YourMoney.Core.Services.Abstract;
+using YourMoney.Standard.Core;
+using YourMoney.Standard.Core.Services.Abstract;
 using YourMoney.UWP.Services;
 
 namespace YourMoney.UWP

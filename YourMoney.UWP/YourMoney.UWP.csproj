@@ -231,9 +231,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YourMoney.Core\YourMoney.Core.csproj">
-      <Project>{30e702aa-39cd-4cf4-9444-6a5070d48b5c}</Project>
-      <Name>YourMoney.Core</Name>
+    <ProjectReference Include="..\YourMoney.Standard.Core\YourMoney.Standard.Core.csproj">
+      <Project>{34361c28-952d-4e96-b63e-26c2f93d185a}</Project>
+      <Name>YourMoney.Standard.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
