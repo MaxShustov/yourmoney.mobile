@@ -1,6 +1,5 @@
 ﻿using Foundation;
 using UIKit;
-using YourMoney.iOS.ViewControllers;
 
 namespace YourMoney.iOS
 {
@@ -17,17 +16,16 @@ namespace YourMoney.iOS
             set;
         }
 
+        public static UIStoryboard Storyboard = UIStoryboard.FromName("Login", null);
+
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            // Override point for customization after application launch.
-            // If not required for your application you can safely delete this method
-
-#if ENABLE_TEST_CLOUD
-            Xamarin.Calabash.Start();
-#endif
-
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
-            Window.RootViewController = new LoginViewController();
+
+            var viewController = Storyboard.InstantiateInitialViewController() as UIViewController;
+
+            Window.RootViewController = viewController;
+
             Window.MakeKeyAndVisible();
 
             return true;

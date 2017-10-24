@@ -7,11 +7,12 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace YourMoney.iOS
 {
-    [Register ("ViewController")]
-    partial class ViewController
+    [Register ("LoginViewController")]
+    partial class LoginViewController
     {
         void ReleaseDesignerOutlets ()
         {
