@@ -7,6 +7,7 @@ using Plugin.Settings.Abstractions;
 using ReactiveUI;
 using YourMoney.Standard.Core.Api;
 using YourMoney.Standard.Core.Observers;
+using YourMoney.Standard.Core.Repositories;
 using YourMoney.Standard.Core.Services.Abstract;
 
 namespace YourMoney.Standard.Core
@@ -33,6 +34,10 @@ namespace YourMoney.Standard.Core
 
             builder.Register(c => CrossSettings.Current).As<ISettings>();
             builder.Register(c => UserDialogs.Instance).As<IUserDialogs>();
+
+            builder.RegisterType<TransactionsDbContext>()
+                .AsSelf()
+                .SingleInstance();
 
             builder.Register(c => HttpClientFactory.GetHttpClient(c.Resolve<ISettingService>()))
                 .SingleInstance();

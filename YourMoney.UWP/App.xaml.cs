@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using YourMoney.Standard.Core;
 using YourMoney.Standard.Core.Services.Abstract;
+using YourMoney.Standard.Core.Utils;
 using YourMoney.UWP.Services;
 
 namespace YourMoney.UWP
@@ -98,6 +99,7 @@ namespace YourMoney.UWP
         private void RegisterInnerDependencies(ContainerBuilder builder)
         {
             builder.RegisterType<ViewModelNavigationService>().As<IViewModelNavigationService>().SingleInstance();
+            builder.RegisterType<PathProvider>().As<IPathProvider>();
         }
 
         private void SetWindowTitleColor()
