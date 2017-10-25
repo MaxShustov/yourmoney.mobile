@@ -19,7 +19,7 @@ namespace YourMoney.Migration.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452");
 
-            modelBuilder.Entity("YourMoney.Standard.Core.Api.Models.TransactionModel", b =>
+            modelBuilder.Entity("YourMoney.Standard.Core.Entities.Transaction", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();

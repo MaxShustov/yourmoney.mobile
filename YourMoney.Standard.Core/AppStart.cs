@@ -2,6 +2,7 @@
 using System.Reflection;
 using Acr.UserDialogs;
 using Autofac;
+using Microsoft.EntityFrameworkCore;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using ReactiveUI;
@@ -26,6 +27,10 @@ namespace YourMoney.Standard.Core
             RegisterDependencies(builder);
 
             Container = builder.Build();
+
+            var context = Container.Resolve<TransactionsDbContext>();
+
+            context.Database.Migrate();
         }
 
         private static void RegisterDependencies(ContainerBuilder builder)

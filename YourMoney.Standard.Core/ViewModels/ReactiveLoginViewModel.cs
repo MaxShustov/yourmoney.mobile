@@ -1,11 +1,7 @@
-﻿using System;
-using System.Reactive;
+﻿using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using ReactiveUI;
-using YourMoney.Standard.Core.Api.Models;
-using YourMoney.Standard.Core.Observers;
 using YourMoney.Standard.Core.Repositories;
 using YourMoney.Standard.Core.Services.Abstract;
 
@@ -81,31 +77,9 @@ namespace YourMoney.Standard.Core.ViewModels
                    && !string.IsNullOrWhiteSpace(password);
         }
 
-        private async Task LoginAsync()
+        private Task LoginAsync()
         {
-            await _transactionsDbContext.Database.MigrateAsync();
-
-            var transactions = await _transactionsDbContext.Transactions.AsNoTracking().ToListAsync();
-
-            await _transactionsDbContext.Transactions.AddAsync(new TransactionModel
-            {
-                Id = "1",
-                Value = 1,
-                Date = DateTime.Now,
-                Description = "test"
-            });
-
-            _transactionsDbContext.Transactions.Add(new TransactionModel()
-            {
-                Id = "2",
-                Value = 2,
-                Date = DateTime.Now,
-                Description = "test2"
-            });
-
-            await _transactionsDbContext.SaveChangesAsync();
-
-            await _userService.Login(UserName, Password);
+            return _userService.Login(UserName, Password);
         }
 
         private void OnSuccessfulLogin(Unit unit)
