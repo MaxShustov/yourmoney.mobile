@@ -8,7 +8,7 @@ using YourMoney.Standard.Core.Entities;
 
 namespace YourMoney.Standard.Core.Repositories.Abstract
 {
-    public interface IGenericRepository<TEntity, TKey>
+    public interface IGenericRepository<TEntity, in TKey>
         where TEntity : class, IBaseEnitity<TKey>
     {
         Task<TEntity> GetByIdAsync(TKey key);
