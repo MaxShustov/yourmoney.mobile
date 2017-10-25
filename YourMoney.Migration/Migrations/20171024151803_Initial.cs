@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace YourMoney.Migration.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Initial : Microsoft.EntityFrameworkCore.Migrations.Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

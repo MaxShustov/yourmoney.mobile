@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using YourMoney.Standard.Core.Api.Models;
+using YourMoney.Standard.Core.Entities;
 using YourMoney.Standard.Core.Utils;
 
 namespace YourMoney.Standard.Core.Repositories
@@ -18,19 +18,19 @@ namespace YourMoney.Standard.Core.Repositories
             
         }
 
-        public DbSet<TransactionModel> Transactions { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //var path = _pathProvider.GetDbPath();
-            var path = "test.db";
+            var path = string.Empty;
 
             optionsBuilder.UseSqlite($"Filename={path}");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TransactionModel>()
+            modelBuilder.Entity<Transaction>()
                 .HasKey(m => m.Id);
         }
     }

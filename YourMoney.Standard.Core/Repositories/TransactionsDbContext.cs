@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using YourMoney.Standard.Core.Api.Models;
+using YourMoney.Standard.Core.Entities;
 using YourMoney.Standard.Core.Utils;
 
 namespace YourMoney.Standard.Core.Repositories
@@ -13,7 +13,7 @@ namespace YourMoney.Standard.Core.Repositories
             _pathProvider = pathProvider;
         }
 
-        public DbSet<TransactionModel> Transactions { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,7 +24,7 @@ namespace YourMoney.Standard.Core.Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TransactionModel>()
+            modelBuilder.Entity<Transaction>()
                 .HasKey(m => m.Id);
         }
     }
