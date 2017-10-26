@@ -12,9 +12,10 @@ using YourMoney.Standard.Core.Repositories;
 namespace YourMoney.Migration.Migrations
 {
     [DbContext(typeof(TransactionsDbContext))]
-    partial class TransactionsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171025133417_AddSyncState")]
+    partial class AddSyncState
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

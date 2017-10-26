@@ -38,7 +38,8 @@ namespace YourMoney.Standard.Core
             Container = builder.Build();
 
             var context = Container.Resolve<TransactionsDbContext>();
-            
+
+            context.Database.EnsureCreated();
             context.Database.Migrate();
         }
 

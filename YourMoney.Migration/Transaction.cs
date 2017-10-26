@@ -1,11 +1,13 @@
 ﻿using System;
 using Newtonsoft.Json;
+using YourMoney.Standard.Core.Enums;
 
 namespace YourMoney.Standard.Core.Entities
 {
     public class Transaction: IBaseEnitity<string>
     {
         public string Id { get; set; }
+        public EntitySyncState SyncState { get; set; }
 
         public string Description { get; set; }
         
