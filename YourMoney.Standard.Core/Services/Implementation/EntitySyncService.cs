@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -32,9 +33,10 @@ namespace YourMoney.Standard.Core.Services.Implementation
             
             var localEntities = await _entityRepository
                 .Filter(e => e.SyncState != EntitySyncState.Synced)
-                .ToListAsync();
+                .ToListAsync()
+                .ConfigureAwait(false);
 
-            var updatedRemoteEntities = (await _apiClient.GetAsync(lastSyncDate)).ToList();
+            var updatedRemoteEntities = (await _apiClient.GetAsync(lastSyncDate).ConfigureAwait(false)).ToList();
 
             var entitiesToInsert = updatedRemoteEntities.Where(re => localEntities.All(e => !e.Id.Equals(re.Id)));
             var entitiesToUpdate = updatedRemoteEntities.Where(re => localEntities.Any(e => e.SyncState != EntitySyncState.Deleted && e.Id.Equals(re.Id)));
@@ -43,37 +45,28 @@ namespace YourMoney.Standard.Core.Services.Implementation
             {
                 try
                 {
-                    foreach (var entity in entitiesToInsert)
-                    {
-                        await _entityRepository.AddAsync(entity);
-                    }
+                    var updateLocalTask = UpdateLocalEntities(
+                        entitiesToInsert,
+                        entitiesToUpdate,
+                        Enumerable.Empty<TEntity>());
 
-                    foreach (var entity in entitiesToUpdate)
-                    {
-                        await _entityRepository.UpdateAsync(entity);
-                    }
+                    var updateRemoteTask = UpdateRemoteEntities(
+                        localEntities.Where(e => e.SyncState == EntitySyncState.Added),
+                        localEntities.Where(e => e.SyncState == EntitySyncState.Updated),
+                        localEntities.Where(e => e.SyncState == EntitySyncState.Deleted));
 
-                    foreach (var entity in localEntities.Where(e => e.SyncState == EntitySyncState.Added))
-                    {
-                        await _apiClient.AddAsync(entity);
-                    }
+                    await Task.WhenAll(updateLocalTask, updateRemoteTask)
+                        .ConfigureAwait(false);
 
-                    foreach (var entity in localEntities.Where(e => e.SyncState == EntitySyncState.Deleted))
-                    {
-                        await _apiClient.AddAsync(entity);
-                    }
+                    await Task.WhenAll(
+                        localEntities.Select(e =>
+                        {
+                            e.SyncState = EntitySyncState.Synced;
 
-                    foreach (var entity in localEntities.Where(e => e.SyncState == EntitySyncState.Deleted))
-                    {
-                        await _apiClient.DeleteAsync(entity);
-                    }
-
-                    foreach (var localEntity in localEntities)
-                    {
-                        localEntity.SyncState = EntitySyncState.Synced;
-
-                        await _entityRepository.UpdateAsync(localEntity);
-                    }
+                            return e;
+                        })
+                        .Select(e => _entityRepository.UpdateAsync(e)))
+                        .ConfigureAwait(false);
 
                     transaction.Commit();
                 }
@@ -82,15 +75,29 @@ namespace YourMoney.Standard.Core.Services.Implementation
                     transaction.Rollback();
 
                     //TODO Log exception
+                    Debug.WriteLine(ex.Message);
                 }
             }
             
             _settingService.LastUpdateTime = DateTime.UtcNow;
         }
 
-        private IEnumerable<TEntity> GetEntitiesToInsert(IEnumerable<TEntity> localEntities, IEnumerable<TEntity> entities)
+        private Task UpdateLocalEntities(IEnumerable<TEntity> toInsert, IEnumerable<TEntity> toUpdate, IEnumerable<TEntity> toDelete)
         {
-            return localEntities.Except(entities);
+            var insertTasks = toInsert.Select(e => _entityRepository.AddAsync(e));
+            var updateTasks = toUpdate.Select(e => _entityRepository.UpdateAsync(e));
+            var deleteTasks = toDelete.Select(e => _entityRepository.DeleteAsync(e));
+
+            return Task.WhenAll(insertTasks.Concat(updateTasks).Concat(deleteTasks));
+        }
+
+        private Task UpdateRemoteEntities(IEnumerable<TEntity> toAdd, IEnumerable<TEntity> toUpdate, IEnumerable<TEntity> toDelete)
+        {
+            var addTasks = toAdd.Select(e => _apiClient.AddAsync(e));
+            var updateTasks = toUpdate.Select(e => _apiClient.UpdateAsync(e));
+            var deleteTasks = toDelete.Select(e => _apiClient.DeleteAsync(e));
+
+            return Task.WhenAll(addTasks.Concat(updateTasks).Concat(deleteTasks));
         }
     }
 }

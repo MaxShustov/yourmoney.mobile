@@ -29,13 +29,9 @@ namespace YourMoney.Standard.Core.Services.Implementation
             return _transactionsApi.CreateTransaction(transaction);
         }
 
-        public async Task<IEnumerable<TransactionModel>> GetTransactions()
+        public Task<IEnumerable<TransactionModel>> GetTransactions()
         {
-            await _syncService.Sync();
-
-            var transactions = await _transactionsApi.GetTransactions();
-
-            return transactions;
+            return _transactionsApi.GetTransactions();
         }
 
         public async Task<decimal> GetTotalSum()

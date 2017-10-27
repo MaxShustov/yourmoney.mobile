@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Reactive;
@@ -7,6 +8,7 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using ReactiveUI;
 using YourMoney.Standard.Core.Api.Models;
+using YourMoney.Standard.Core.Entities;
 using YourMoney.Standard.Core.Enums;
 using YourMoney.Standard.Core.Services.Abstract;
 
@@ -16,21 +18,24 @@ namespace YourMoney.Standard.Core.ViewModels
     {
         private readonly IViewModelNavigationService _navigationService;
         private readonly ITransactionService _transactionService;
+        private readonly IEntitySyncService<Transaction, string> _transactionSyncService;
 
         private readonly ObservableAsPropertyHelper<ReadOnlyObservableCollection<TransactionModel>> _transactions;
         private readonly ObservableAsPropertyHelper<string> _currentBalance;
         private readonly ObservableAsPropertyHelper<string> _fullCurrentBalance;
 
-        public ReactiveHomeViewModel(IViewModelNavigationService navigationService, ITransactionService transactionService)
+        public ReactiveHomeViewModel(IViewModelNavigationService navigationService, ITransactionService transactionService, IEntitySyncService<Transaction, string> transactionSyncService)
         {
             _navigationService = navigationService;
             _transactionService = transactionService;
+            _transactionSyncService = transactionSyncService;
 
             IncomeCommand = ReactiveCommand.Create(Income);
             OutcomeCommand = ReactiveCommand.Create(Outcome);
             GetTransactionsCommand = ReactiveCommand.CreateFromTask<Unit, IEnumerable<TransactionModel>>(GetTransactions);
             GetCurrentBalanceCommand = ReactiveCommand.CreateFromTask<Unit, decimal>(GetCurrentBalance);
-            
+            SyncCommand = ReactiveCommand.CreateFromTask(_transactionSyncService.Sync, outputScheduler: RxApp.TaskpoolScheduler);
+
             _transactions = GetTransactionsCommand
                 .Select(transactions => transactions.OrderByDescending(t => t.Date))
                 .Select(ToObservableCollection)
@@ -46,6 +51,13 @@ namespace YourMoney.Standard.Core.ViewModels
             _fullCurrentBalance = currentBalanceObservable
                 .Select(s => $"Your balance is: {s}")
                 .ToProperty(this, m => m.FullCurrentBalance, string.Empty);
+
+            SyncCommand
+                .Do(_ => Debug.WriteLine("----Synced!!!"))
+                .InvokeCommand(GetTransactionsCommand);
+
+            SyncCommand
+                .InvokeCommand(GetCurrentBalanceCommand);
 
             StateObservable
                 .Where(state => state == ViewModelState.Appeared)
@@ -63,6 +75,8 @@ namespace YourMoney.Standard.Core.ViewModels
         public ReactiveCommand<Unit, Unit> OutcomeCommand { get; }
 
         public ReactiveCommand<Unit, IEnumerable<TransactionModel>> GetTransactionsCommand { get; }
+
+        public ReactiveCommand<Unit, Unit> SyncCommand { get; }
 
         public ReactiveCommand<Unit, decimal> GetCurrentBalanceCommand { get; }
 

@@ -30,7 +30,7 @@ namespace YourMoney.Standard.Core.ApiClients.Implementation
 
         public async Task<IEnumerable<Transaction>> GetAsync(DateTime? updatedDate)
         {
-            var transactions = await _transactionsApi.GetTransactions(updatedDate);
+            var transactions = await _transactionsApi.GetTransactions(updatedDate).ConfigureAwait(false);
 
             return _mapper.Map<IEnumerable<Transaction>>(transactions);
         }
