@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AutoMapper;
 using Refit;
 using YourMoney.Standard.Core.Api.Interfaces;
+using YourMoney.Standard.Core.Api.Models;
 using YourMoney.Standard.Core.ApiClients.Abstract;
 using YourMoney.Standard.Core.Entities;
 
@@ -25,9 +28,9 @@ namespace YourMoney.Standard.Core.ApiClients.Implementation
             throw new System.NotImplementedException();
         }
 
-        public async Task<IEnumerable<Transaction>> GetAsync()
+        public async Task<IEnumerable<Transaction>> GetAsync(DateTime? updatedDate)
         {
-            var transactions = await _transactionsApi.GetTransactions();
+            var transactions = await _transactionsApi.GetTransactions(updatedDate);
 
             return _mapper.Map<IEnumerable<Transaction>>(transactions);
         }

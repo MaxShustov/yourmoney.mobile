@@ -1,4 +1,5 @@
-﻿using YourMoney.Standard.Core.Enums;
+﻿using System;
+using YourMoney.Standard.Core.Enums;
 
 namespace YourMoney.Standard.Core.Entities
 {
@@ -7,5 +8,7 @@ namespace YourMoney.Standard.Core.Entities
         TKey Id { get; set; }
 
         EntitySyncState SyncState { get; set; }
+
+        DateTime UpdateDate { get; set; }
     }
 }

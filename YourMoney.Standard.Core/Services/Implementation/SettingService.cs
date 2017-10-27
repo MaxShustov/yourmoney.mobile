@@ -1,4 +1,5 @@
-﻿using Plugin.Settings.Abstractions;
+﻿using System;
+using Plugin.Settings.Abstractions;
 using YourMoney.Standard.Core.Services.Abstract;
 
 namespace YourMoney.Standard.Core.Services.Implementation
@@ -18,5 +19,10 @@ namespace YourMoney.Standard.Core.Services.Implementation
             set => _settings.AddOrUpdateValue(nameof(Token), value);
         }
 
+        public DateTime LastUpdateTime
+        {
+            get => _settings.GetValueOrDefault(nameof(LastUpdateTime), DateTime.MinValue);
+            set => _settings.AddOrUpdateValue(nameof(LastUpdateTime), value);
+        }
     }
 }

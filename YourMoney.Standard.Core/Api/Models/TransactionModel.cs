@@ -24,5 +24,8 @@ namespace YourMoney.Standard.Core.Api.Models
         
         [JsonProperty("userId")]
         public string UserId { get; set; }
+
+        [JsonProperty("updatedDate")]
+        public DateTime UpdatedDate { get; set; }
     }
 }

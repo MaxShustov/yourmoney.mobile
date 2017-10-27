@@ -10,6 +10,7 @@ namespace YourMoney.Standard.Core.Repositories.Abstract
 {
     public interface IGenericRepository<TEntity, in TKey>
         where TEntity : class, IBaseEnitity<TKey>
+        where TKey: IEquatable<TKey>
     {
         Task<TEntity> GetByIdAsync(TKey key);
         TEntity GetById(TKey key);

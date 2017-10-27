@@ -12,6 +12,7 @@ namespace YourMoney.Standard.Core.Repositories.Implementation
 {
     public class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey>
         where TEntity : class, IBaseEnitity<TKey>
+        where TKey: IEquatable<TKey>
     {
         protected readonly TransactionsDbContext Context;
         protected readonly DbSet<TEntity> Entities;

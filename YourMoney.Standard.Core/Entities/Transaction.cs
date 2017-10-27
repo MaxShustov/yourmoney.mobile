@@ -1,5 +1,4 @@
 ﻿using System;
-using Newtonsoft.Json;
 using YourMoney.Standard.Core.Enums;
 
 namespace YourMoney.Standard.Core.Entities
@@ -8,6 +7,8 @@ namespace YourMoney.Standard.Core.Entities
     {
         public string Id { get; set; }
         public EntitySyncState SyncState { get; set; }
+
+        public DateTime UpdateDate { get; set; }
 
         public string Description { get; set; }
         

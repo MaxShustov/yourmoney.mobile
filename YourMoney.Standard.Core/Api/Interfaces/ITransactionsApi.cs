@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Refit;
 using YourMoney.Standard.Core.Api.Models;
@@ -9,7 +10,7 @@ namespace YourMoney.Standard.Core.Api.Interfaces
     public interface ITransactionsApi
     {
         [Get("/transactions")]
-        Task<IEnumerable<TransactionModel>> GetTransactions();
+        Task<IEnumerable<TransactionModel>> GetTransactions([AliasAs("updateDate")] DateTime? updatedDate = null);
 
         [Post("/transactions")]
         Task CreateTransaction(TransactionModel transaction);
