@@ -22,7 +22,13 @@ namespace YourMoney.iOS.ViewControllers.Login
 		UIKit.UITextField LoginTextField { get; set; }
 
 		[Outlet]
+		UIKit.UIImageView LogoImageView { get; set; }
+
+		[Outlet]
 		UIKit.UITextField PasswordTextField { get; set; }
+
+		[Outlet]
+		UIKit.UIButton RegisterButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -31,9 +37,9 @@ namespace YourMoney.iOS.ViewControllers.Login
 				ClickMeButton = null;
 			}
 
-			if (PasswordTextField != null) {
-				PasswordTextField.Dispose ();
-				PasswordTextField = null;
+			if (ErrorLabel != null) {
+				ErrorLabel.Dispose ();
+				ErrorLabel = null;
 			}
 
 			if (LoginTextField != null) {
@@ -41,9 +47,19 @@ namespace YourMoney.iOS.ViewControllers.Login
 				LoginTextField = null;
 			}
 
-			if (ErrorLabel != null) {
-				ErrorLabel.Dispose ();
-				ErrorLabel = null;
+			if (PasswordTextField != null) {
+				PasswordTextField.Dispose ();
+				PasswordTextField = null;
+			}
+
+			if (LogoImageView != null) {
+				LogoImageView.Dispose ();
+				LogoImageView = null;
+			}
+
+			if (RegisterButton != null) {
+				RegisterButton.Dispose ();
+				RegisterButton = null;
 			}
 		}
 	}

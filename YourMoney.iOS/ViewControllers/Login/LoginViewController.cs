@@ -17,6 +17,9 @@ namespace YourMoney.iOS.ViewControllers.Login
         {
             base.ViewDidLoad();
 
+            Theme.AsPrimaryButton(ClickMeButton);
+            Theme.AsDarkButton(RegisterButton);
+
             this.Bind(ViewModel, vm => vm.UserName, v => v.LoginTextField.Text);
             this.Bind(ViewModel, vm => vm.Password, v => v.PasswordTextField.Text);
             this.Bind(ViewModel, vm => vm.Error, v => v.ErrorLabel.Text);
