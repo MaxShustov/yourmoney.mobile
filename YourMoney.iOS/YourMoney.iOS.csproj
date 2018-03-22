@@ -179,12 +179,15 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-128.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-256.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Icon-512.png" />
+    <ImageAsset Include="Resources\Images.xcassets\SplashIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\SplashIcon.imageset\splash_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="ViewControllers\Login\" />
     <Folder Include="Services\" />
+    <Folder Include="Resources\Images.xcassets\SplashIcon.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -209,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="ViewControllers\Login\LoginViewController.xib" />
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets" Condition="Exists('..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets')" />
