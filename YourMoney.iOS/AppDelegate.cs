@@ -1,5 +1,10 @@
 ﻿using Foundation;
 using UIKit;
+using YourMoney.iOS.ViewControllers.Login;
+using YourMoney.Standard.Core;
+using Autofac;
+using YourMoney.iOS.Services;
+using YourMoney.Standard.Core.Services.Abstract;
 
 namespace YourMoney.iOS
 {
@@ -18,13 +23,20 @@ namespace YourMoney.iOS
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
+            AppStart.Initialize(RegisterIosDependencies);
+
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            //Window.RootViewController = viewController;
+            Window.RootViewController = new LoginViewController();
 
             Window.MakeKeyAndVisible();
 
             return true;
+        }
+
+        private void RegisterIosDependencies(ContainerBuilder builder)
+        {
+            builder.RegisterType<ViewModelNavigationService>().As<IViewModelNavigationService>();
         }
 
         public override void OnResignActivation(UIApplication application)
