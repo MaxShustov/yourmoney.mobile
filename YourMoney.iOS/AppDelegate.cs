@@ -16,15 +16,11 @@ namespace YourMoney.iOS
             set;
         }
 
-        public static UIStoryboard Storyboard = UIStoryboard.FromName("Login", null);
-
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            var viewController = Storyboard.InstantiateInitialViewController() as UIViewController;
-
-            Window.RootViewController = viewController;
+            //Window.RootViewController = viewController;
 
             Window.MakeKeyAndVisible();
 
