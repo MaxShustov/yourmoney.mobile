@@ -17,6 +17,8 @@ namespace YourMoney.iOS.ViewControllers.Login
         {
             base.ViewDidLoad();
 
+            NavigationController.NavigationBarHidden = true;
+
             Theme.AsPrimaryButton(ClickMeButton);
             Theme.AsDarkButton(RegisterButton);
 
@@ -24,13 +26,18 @@ namespace YourMoney.iOS.ViewControllers.Login
             this.Bind(ViewModel, vm => vm.Password, v => v.PasswordTextField.Text);
             this.Bind(ViewModel, vm => vm.Error, v => v.ErrorLabel.Text);
 
+            this.OneWayBind(ViewModel, vm => vm.IsUiEnabled, v => v.LoginTextField.Enabled);
+            this.OneWayBind(ViewModel, vm => vm.IsUiEnabled, v => v.PasswordTextField.Enabled);
+            this.OneWayBind(ViewModel, vm => vm.IsUiEnabled, v => v.ClickMeButton.Enabled);
+            this.OneWayBind(ViewModel, vm => vm.IsUiEnabled, v => v.RegisterButton.Enabled);
+
             this.BindCommand(ViewModel, vm => vm.LoginCommand, v => v.ClickMeButton, nameof(ClickMeButton.TouchUpInside));
+            this.BindCommand(ViewModel, vm => vm.RegisterCommand, v => v.RegisterButton, nameof(RegisterButton.TouchUpInside));
         }
 
         public override void DidReceiveMemoryWarning()
         {
             base.DidReceiveMemoryWarning();
-            // Release any cached data, images, etc that aren't in use.
         }
     }
 }

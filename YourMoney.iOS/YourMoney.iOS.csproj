@@ -188,6 +188,7 @@
     <Folder Include="ViewControllers\Login\" />
     <Folder Include="Services\" />
     <Folder Include="Resources\Images.xcassets\SplashIcon.imageset\" />
+    <Folder Include="ViewControllers\Home\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />

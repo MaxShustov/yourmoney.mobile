@@ -27,7 +27,10 @@ namespace YourMoney.iOS
 
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            Window.RootViewController = new LoginViewController();
+            var rootViewController = new LoginViewController();
+            var navigationViewController = new UINavigationController(rootViewController);
+
+            Window.RootViewController = navigationViewController;
 
             Window.MakeKeyAndVisible();
 
