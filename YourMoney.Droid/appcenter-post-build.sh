@@ -1,14 +1,14 @@
 echo "Found NUnit test projects:"
-find $APPCENTER_SOURCE_DIRECTORY -regex '.*Test.*\.csproj' -exec echo {} \;
+find $APPCENTER_SOURCE_DIRECTORY -regex '.*Core.Tests.*\.csproj' -exec echo {} \;
 echo
 echo "Building NUnit test projects:"
-find $APPCENTER_SOURCE_DIRECTORY -regex '.*Test.*\.csproj' -exec msbuild {} \;
+find $APPCENTER_SOURCE_DIRECTORY -regex '.*Core.Tests.*\.csproj' -exec msbuild {} \;
 echo
 echo "Compiled projects to run NUnit tests:"
-find $APPCENTER_SOURCE_DIRECTORY -regex '.*bin.*Test.*\.dll' -exec echo {} \;
+find $APPCENTER_SOURCE_DIRECTORY -regex '.*bin.*Core.Tests.*\.dll' -exec echo {} \;
 echo
 echo "Running NUnit tests:"
-find $APPCENTER_SOURCE_DIRECTORY -regex '.*bin.*Test.*\.dll' -exec nunit3-console {} \;
+find $APPCENTER_SOURCE_DIRECTORY -regex '.*bin.*Core.Tests.*\.dll' -exec nunit3-console {} \;
 echo
 echo "NUnit tests result:"
-find . -name 'TestResult.xml' -exec cat {} \;
+find . -name 'TestResult.xml' -exec cat {} ';' -exec cp {} $APPCENTER_OUTPUT_DIRECTORY \;
