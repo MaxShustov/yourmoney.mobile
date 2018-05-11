@@ -11,5 +11,11 @@ namespace YourMoney.Core.Tests
         {
             Assert.IsTrue(true);
         }
+
+        [Test]
+        public void TestIfBuildStopWhenTestsFailed()
+        {
+            Assert.IsTrue(false);
+        }
     }
 }
