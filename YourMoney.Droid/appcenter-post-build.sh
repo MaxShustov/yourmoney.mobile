@@ -1,3 +1,5 @@
+set -e
+
 echo "Found NUnit test projects:"
 find $APPCENTER_SOURCE_DIRECTORY -regex '.*Core.Tests.*\.csproj' -exec echo {} \;
 echo
