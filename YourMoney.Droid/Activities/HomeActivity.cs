@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Clans.Fab;
 using ReactiveUI;
+using ReactiveUI.AndroidSupport;
 using YourMoney.Droid.RecyclerViews;
 using YourMoney.Standard.Core.Enums;
 using YourMoney.Standard.Core.ViewModels;
@@ -46,13 +47,13 @@ namespace YourMoney.Droid.Activities
 
         private void BindViewModel()
         {
-            AddIncomeButton.Events().Click
-                .Select(e => Unit.Default)
-                .InvokeCommand(ViewModel, m => m.IncomeCommand);
+            //AddIncomeButton.Events().Click
+            //    .Select(e => Unit.Default)
+            //    .InvokeCommand(ViewModel, m => m.IncomeCommand);
 
-            AddOutcomeButton.Events().Click
-                .Select(e => Unit.Default)
-                .InvokeCommand(ViewModel, m => m.OutcomeCommand);
+            //AddOutcomeButton.Events().Click
+                //            .Select(_ => Unit.Default)
+                //.InvokeCommand(ViewModel, m => m.OutcomeCommand);
 
             this.OneWayBind(ViewModel, m => m.CurrentBalance, a => a.CurrentBalanceTextView.Text);
             this.OneWayBind(ViewModel, m => m.Transactions, a => a.TransactionsAdapter.ItemSource);

@@ -2,6 +2,7 @@ using Android.App;
 using Android.OS;
 using Android.Widget;
 using ReactiveUI;
+using ReactiveUI.AndroidSupport;
 using YourMoney.Standard.Core.ViewModels;
 
 namespace YourMoney.Droid.Activities
