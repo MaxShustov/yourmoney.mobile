@@ -27,26 +27,35 @@ namespace YourMoney.Standard.Core.ViewModels
             _navigationService = navigationService;
 
             var canLogin = this.WhenAnyValue(m => m.UserName, m => m.Password)
-                .Select(t => IsValidCredentials(t.Item1, t.Item2));
+                               .ObserveOn(RxApp.MainThreadScheduler)
+                               .Select(t => IsValidCredentials(t.Item1, t.Item2));
 
             LoginCommand = ReactiveCommand.CreateFromObservable<Unit>(LoginAsync, canLogin);
 
-            _isUiEnabled = LoginCommand.IsExecuting
+            _isUiEnabled = LoginCommand
+                .IsExecuting
+                .ObserveOn(RxApp.MainThreadScheduler)
                 .Select(isExecuting => !isExecuting)
                 .ToProperty(this, m => m.IsUiEnabled, true);
 
-            var unhandledException = LoginCommand.ThrownExceptions
+            var unhandledException = LoginCommand
+                .ThrownExceptions
+                .ObserveOn(RxApp.MainThreadScheduler)
                 .Select(ex => UnhandledErrorMessage);
 
-            LoginCommand.ThrownExceptions
+            LoginCommand
+                .ThrownExceptions
+                .ObserveOn(RxApp.MainThreadScheduler)
                 .Subscribe(ExceptionObserver);
 
             LoginCommand
+                .ObserveOn(RxApp.MainThreadScheduler)
                 .Subscribe(Observer.Create<Unit>(OnSuccessfulLogin));
 
             RegisterCommand = ReactiveCommand.Create(Register);
 
             _error = unhandledException
+                .ObserveOn(RxApp.MainThreadScheduler)
                 .ToProperty(this, m => m.Error, string.Empty);
         }
 

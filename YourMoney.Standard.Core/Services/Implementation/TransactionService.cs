@@ -8,6 +8,7 @@ using YourMoney.Standard.Core.Services.Abstract;
 using System;
 using System.Reactive;
 using System.Reactive.Linq;
+using ReactiveUI;
 
 namespace YourMoney.Standard.Core.Services.Implementation
 {
@@ -34,6 +35,7 @@ namespace YourMoney.Standard.Core.Services.Implementation
         {
             return _transactionsApi
                 .GetTotalSum()
+                .ObserveOn(RxApp.TaskpoolScheduler)
                 .Select(m => m.TotalSum);
         }
     }

@@ -5,6 +5,7 @@ using YourMoney.Standard.Core.Api.Models;
 using YourMoney.Standard.Core.Services.Abstract;
 using System.Reactive.Linq;
 using System;
+using ReactiveUI;
 
 namespace YourMoney.Standard.Core.Services.Implementation
 {
@@ -21,6 +22,7 @@ namespace YourMoney.Standard.Core.Services.Implementation
         {
             return _categoriesApi
                 .GetCategories()
+                .ObserveOn(RxApp.TaskpoolScheduler)
                 .Select(categories => categories.Where(c => c.IsIncome));
         }
 
@@ -28,6 +30,7 @@ namespace YourMoney.Standard.Core.Services.Implementation
         {
             return _categoriesApi
                 .GetCategories()
+                .ObserveOn(RxApp.TaskpoolScheduler)
                 .Select(categories => categories.Where(c => !c.IsIncome));
         }
     }

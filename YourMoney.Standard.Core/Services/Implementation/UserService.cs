@@ -4,6 +4,7 @@ using YourMoney.Standard.Core.Api.Models;
 using YourMoney.Standard.Core.Services.Abstract;
 using System.Reactive.Linq;
 using System.Reactive;
+using ReactiveUI;
 
 namespace YourMoney.Standard.Core.Services.Implementation
 {
@@ -23,6 +24,7 @@ namespace YourMoney.Standard.Core.Services.Implementation
             var loginRequestModel = new LoginRequestModel(userName, password);
 
             return _usersApi.Login(loginRequestModel)
+                            .ObserveOn(RxApp.TaskpoolScheduler)
                             .Select(m => m.Token)
                             .Do(t => _settingService.Token = t)
                             .Select(u => Unit.Default);
