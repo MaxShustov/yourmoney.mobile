@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using ReactiveUI;
 using YourMoney.Standard.Core.Observers;
 using YourMoney.Standard.Core.Services.Abstract;
+using System;
 
 namespace YourMoney.Standard.Core.ViewModels
 {
@@ -28,7 +29,7 @@ namespace YourMoney.Standard.Core.ViewModels
             var canLogin = this.WhenAnyValue(m => m.UserName, m => m.Password)
                 .Select(t => IsValidCredentials(t.Item1, t.Item2));
 
-            LoginCommand = ReactiveCommand.CreateFromTask(LoginAsync, canLogin);
+            LoginCommand = ReactiveCommand.CreateFromObservable<Unit>(LoginAsync, canLogin);
 
             _isUiEnabled = LoginCommand.IsExecuting
                 .Select(isExecuting => !isExecuting)
@@ -75,7 +76,7 @@ namespace YourMoney.Standard.Core.ViewModels
                    && !string.IsNullOrWhiteSpace(password);
         }
 
-        private Task LoginAsync()
+        private IObservable<Unit> LoginAsync()
         {
             return _userService.Login(UserName, Password);
         }

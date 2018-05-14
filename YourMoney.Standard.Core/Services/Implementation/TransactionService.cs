@@ -5,6 +5,9 @@ using Refit;
 using YourMoney.Standard.Core.Api.Interfaces;
 using YourMoney.Standard.Core.Api.Models;
 using YourMoney.Standard.Core.Services.Abstract;
+using System;
+using System.Reactive;
+using System.Reactive.Linq;
 
 namespace YourMoney.Standard.Core.Services.Implementation
 {
@@ -12,26 +15,26 @@ namespace YourMoney.Standard.Core.Services.Implementation
     {
         private readonly ITransactionsApi _transactionsApi;
 
-        public TransactionService(HttpClient httpClient)
+        public TransactionService(ITransactionsApi transactionsApi)
         {
-            _transactionsApi = RestService.For<ITransactionsApi>(httpClient);
+            _transactionsApi = transactionsApi;
         }
 
-        public Task AddTransaction(TransactionModel transaction)
+        public IObservable<Unit> AddTransaction(TransactionModel transaction)
         {
             return _transactionsApi.CreateTransaction(transaction);
         }
 
-        public Task<IEnumerable<TransactionModel>> GetTransactions()
+        public IObservable<IEnumerable<TransactionModel>> GetTransactions()
         {
             return _transactionsApi.GetTransactions();
         }
 
-        public async Task<decimal> GetTotalSum()
+        public IObservable<decimal> GetTotalSum()
         {
-            var totalSumResponseModel = await _transactionsApi.GetTotalSum();
-
-            return totalSumResponseModel.TotalSum;
+            return _transactionsApi
+                .GetTotalSum()
+                .Select(m => m.TotalSum);
         }
     }
 }

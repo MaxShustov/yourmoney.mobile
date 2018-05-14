@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Refit;
 using YourMoney.Standard.Core.Api.Models;
+using System.Reactive.Linq;
+using System;
 
 namespace YourMoney.Standard.Core.Api.Interfaces
 {
@@ -9,6 +11,6 @@ namespace YourMoney.Standard.Core.Api.Interfaces
     public interface ICategoriesApi
     {
         [Get("/categories")]
-        Task<IEnumerable<CategoryModel>> GetCategories();
+        IObservable<IEnumerable<CategoryModel>> GetCategories();
     }
 }

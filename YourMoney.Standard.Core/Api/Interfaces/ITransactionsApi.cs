@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Refit;
 using YourMoney.Standard.Core.Api.Models;
+using System;
+using System.Reactive;
 
 namespace YourMoney.Standard.Core.Api.Interfaces
 {
@@ -9,12 +11,12 @@ namespace YourMoney.Standard.Core.Api.Interfaces
     public interface ITransactionsApi
     {
         [Get("/transactions")]
-        Task<IEnumerable<TransactionModel>> GetTransactions();
+        IObservable<IEnumerable<TransactionModel>> GetTransactions();
 
         [Post("/transactions")]
-        Task CreateTransaction(TransactionModel transaction);
+        IObservable<Unit> CreateTransaction(TransactionModel transaction);
 
         [Get("/transactions/summary")]
-        Task<TotalSumResponseModel> GetTotalSum();
+        IObservable<TotalSumResponseModel> GetTotalSum();
     }
 }

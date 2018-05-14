@@ -9,6 +9,7 @@ using ReactiveUI;
 using YourMoney.Standard.Core.Api.Models;
 using YourMoney.Standard.Core.Enums;
 using YourMoney.Standard.Core.Services.Abstract;
+using System;
 
 namespace YourMoney.Standard.Core.ViewModels
 {
@@ -28,8 +29,8 @@ namespace YourMoney.Standard.Core.ViewModels
 
             IncomeCommand = ReactiveCommand.Create(Income);
             OutcomeCommand = ReactiveCommand.Create(Outcome);
-            GetTransactionsCommand = ReactiveCommand.CreateFromTask<Unit, IEnumerable<TransactionModel>>(GetTransactions);
-            GetCurrentBalanceCommand = ReactiveCommand.CreateFromTask<Unit, decimal>(GetCurrentBalance);
+            GetTransactionsCommand = ReactiveCommand.CreateFromObservable<Unit, IEnumerable<TransactionModel>>(GetTransactions);
+            GetCurrentBalanceCommand = ReactiveCommand.CreateFromObservable<Unit, decimal>(GetCurrentBalance);
             
             _transactions = GetTransactionsCommand
                 .Select(transactions => transactions.OrderByDescending(t => t.Date))
@@ -82,12 +83,12 @@ namespace YourMoney.Standard.Core.ViewModels
             _navigationService.ShowViewModel<ReactiveAddIncomeTransactionViewModel>(false);
         }
 
-        private Task<IEnumerable<TransactionModel>> GetTransactions(Unit _)
+        private IObservable<IEnumerable<TransactionModel>> GetTransactions(Unit _)
         {
             return _transactionService.GetTransactions();
         }
 
-        private Task<decimal> GetCurrentBalance(Unit _)
+        private IObservable<decimal> GetCurrentBalance(Unit _)
         {
             return _transactionService.GetTotalSum();
         }

@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ReactiveUI;
 using YourMoney.Standard.Core.Services.Abstract;
+using System;
+using System.Reactive;
 
 namespace YourMoney.Standard.Core.ViewModels
 {
@@ -67,7 +69,7 @@ namespace YourMoney.Standard.Core.ViewModels
                     m => m.Email)
                 .Select(t => IsValidData(t.Item1, t.Item2, t.Item3, t.Item4));
 
-            var command = ReactiveCommand.CreateFromTask(RegisterAsync, canRegister);
+            var command = ReactiveCommand.CreateFromObservable<Unit>(RegisterAsync, canRegister);
             var unhandledException = command.ThrownExceptions.Select(ex => ExceptionErrorMessage);
             var cleanError = command.IsExecuting.Select(_ => string.Empty);
 
@@ -103,13 +105,12 @@ namespace YourMoney.Standard.Core.ViewModels
             return Regex.IsMatch(email, EmailRegex, RegexOptions.IgnoreCase);
         }
 
-        private async Task RegisterAsync()
+        private IObservable<Unit> RegisterAsync()
         {
-            await _userService.Register(UserName, Password, Email);
+            return _userService.Register(UserName, Password, Email)
+                        .SelectMany(_ => _userService.Login(UserName, Password))
+                        .Do(_ => _navigationService.ShowViewModel<ReactiveHomeViewModel>());
 
-            await _userService.Login(UserName, Password);
-
-            _navigationService.ShowViewModel<ReactiveHomeViewModel>();
         }
     }
 }

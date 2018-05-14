@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Refit;
 using YourMoney.Standard.Core.Api.Interfaces;
 using YourMoney.Standard.Core.Api.Models;
 using YourMoney.Standard.Core.Services.Abstract;
+using System.Reactive.Linq;
+using System;
 
 namespace YourMoney.Standard.Core.Services.Implementation
 {
@@ -13,23 +12,23 @@ namespace YourMoney.Standard.Core.Services.Implementation
     {
         private readonly ICategoriesApi _categoriesApi;
 
-        public CategoryService(HttpClient httpClient)
+        public CategoryService(ICategoriesApi categoriesApi)
         {
-            _categoriesApi = RestService.For<ICategoriesApi>(httpClient);
+            _categoriesApi = categoriesApi;
         }
 
-        public async Task<IEnumerable<CategoryModel>> GetIncomeCategories()
+        public IObservable<IEnumerable<CategoryModel>> GetIncomeCategories()
         {
-            var categories = await _categoriesApi.GetCategories();
-
-            return categories.Where(c => c.IsIncome);
+            return _categoriesApi
+                .GetCategories()
+                .Select(categories => categories.Where(c => c.IsIncome));
         }
 
-        public async Task<IEnumerable<CategoryModel>> GetOutcomeCategories()
+        public IObservable<IEnumerable<CategoryModel>> GetOutcomeCategories()
         {
-            var categories = await _categoriesApi.GetCategories();
-
-            return categories.Where(c => !c.IsIncome);
+            return _categoriesApi
+                .GetCategories()
+                .Select(categories => categories.Where(c => !c.IsIncome));
         }
     }
 }

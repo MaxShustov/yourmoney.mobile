@@ -8,6 +8,8 @@ using ReactiveUI;
 using YourMoney.Standard.Core.Api;
 using YourMoney.Standard.Core.Observers;
 using YourMoney.Standard.Core.Services.Abstract;
+using YourMoney.Standard.Core.Api.Interfaces;
+using System.Net.Http;
 
 namespace YourMoney.Standard.Core
 {
@@ -36,6 +38,10 @@ namespace YourMoney.Standard.Core
 
             builder.Register(c => HttpClientFactory.GetHttpClient(c.Resolve<ISettingService>()))
                 .SingleInstance();
+
+            builder.Register(c => RestApiFactory.GetApiClient<IUsersApi>(c.Resolve<HttpClient>()));
+            builder.Register(c => RestApiFactory.GetApiClient<ICategoriesApi>(c.Resolve<HttpClient>()));
+            builder.Register(c => RestApiFactory.GetApiClient<ITransactionsApi>(c.Resolve<HttpClient>()));
 
             builder.RegisterAssemblyTypes(assembly)
                 .Where(t => t.Name.EndsWith("Service"))

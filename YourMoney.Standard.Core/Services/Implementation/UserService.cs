@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Refit;
 using YourMoney.Standard.Core.Api.Interfaces;
 using YourMoney.Standard.Core.Api.Models;
 using YourMoney.Standard.Core.Services.Abstract;
+using System.Reactive.Linq;
+using System.Reactive;
 
 namespace YourMoney.Standard.Core.Services.Implementation
 {
@@ -13,22 +12,23 @@ namespace YourMoney.Standard.Core.Services.Implementation
         private readonly ISettingService _settingService;
         private readonly IUsersApi _usersApi;
 
-        public UserService(ISettingService settingService, HttpClient httpClient)
+        public UserService(ISettingService settingService, IUsersApi usersApi)
         {
             _settingService = settingService;
-            _usersApi = RestService.For<IUsersApi>(httpClient);
+            _usersApi = usersApi;
         }
 
-        public async Task Login(string userName, string password)
+        public IObservable<Unit> Login(string userName, string password)
         {
             var loginRequestModel = new LoginRequestModel(userName, password);
 
-            var loginResponseModel = await _usersApi.Login(loginRequestModel);
-
-            _settingService.Token = loginResponseModel.Token;
+            return _usersApi.Login(loginRequestModel)
+                            .Select(m => m.Token)
+                            .Do(t => _settingService.Token = t)
+                            .Select(u => Unit.Default);
         }
 
-        public Task Register(string userName, string password, string email)
+        public IObservable<Unit> Register(string userName, string password, string email)
         {
             var resgisterRequestModel = new RegisterRequestModel(userName, password, email);
 

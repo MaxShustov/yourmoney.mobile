@@ -40,8 +40,8 @@ namespace YourMoney.Standard.Core.ViewModels
 
             var canAddTransaction = isValidCategory.Merge(isValidValue);
 
-            AddTransactionCommand = ReactiveCommand.CreateFromTask(AddTransactionAsync, canAddTransaction);
-            GetCategories = ReactiveCommand.CreateFromTask<Unit, IEnumerable<CategoryModel>>(GetCategoriesAsync);
+            AddTransactionCommand = ReactiveCommand.CreateFromObservable<Unit>(AddTransactionAsync, canAddTransaction);
+            GetCategories = ReactiveCommand.CreateFromObservable<Unit, IEnumerable<CategoryModel>>(GetCategoriesAsync);
 
             _categories = GetCategories
                 .Select(categories => new ObservableCollection<CategoryModel>(categories))
@@ -86,7 +86,7 @@ namespace YourMoney.Standard.Core.ViewModels
 
         public ReactiveCommand<Unit, IEnumerable<CategoryModel>> GetCategories { get; }
 
-        private Task<IEnumerable<CategoryModel>> GetCategoriesAsync(Unit _)
+        private IObservable<IEnumerable<CategoryModel>> GetCategoriesAsync(Unit _)
         {
             return _isIncome 
                 ? _categoriesService.GetIncomeCategories()
@@ -101,7 +101,7 @@ namespace YourMoney.Standard.Core.ViewModels
             }
         }
 
-        private Task AddTransactionAsync()
+        private IObservable<Unit> AddTransactionAsync()
         {
             var sign = _isIncome ? 1 : -1;
 

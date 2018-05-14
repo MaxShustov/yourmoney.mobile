@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using YourMoney.Standard.Core.Api.Models;
+using System;
 
 namespace YourMoney.Standard.Core.Services.Abstract
 {
     public interface ICategoriesService
     {
-        Task<IEnumerable<CategoryModel>> GetIncomeCategories();
+        IObservable<IEnumerable<CategoryModel>> GetIncomeCategories();
 
-        Task<IEnumerable<CategoryModel>> GetOutcomeCategories();
+        IObservable<IEnumerable<CategoryModel>> GetOutcomeCategories();
     }
 }
