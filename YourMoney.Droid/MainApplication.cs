@@ -3,8 +3,6 @@ using Android.App;
 using Android.OS;
 using Android.Runtime;
 using Autofac;
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
 using Plugin.CurrentActivity;
 using Plugin.Settings;
 using YourMoney.Droid.Services;
@@ -12,6 +10,7 @@ using YourMoney.Standard.Core.Services.Abstract;
 using YourMoney.Standard.Core;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
 
 namespace YourMoney.Droid
 {

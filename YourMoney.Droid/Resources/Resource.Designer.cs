@@ -63,7 +63,6 @@ namespace YourMoney.Droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahText = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahText;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextColor = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahTextColor;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::YourMoney.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
-			global::ModernHttpClient.Resource.String.library_name = global::YourMoney.Droid.Resource.String.library_name;
 			global::Splat.Resource.String.library_name = global::YourMoney.Droid.Resource.String.library_name;
 		}
 		

@@ -96,12 +96,6 @@
     <Reference Include="Xamarin.Android.Arch.Core.Common">
       <HintPath>..\packages\Xamarin.Android.Arch.Core.Common.1.0.0\lib\MonoAndroid80\Xamarin.Android.Arch.Core.Common.dll</HintPath>
     </Reference>
-    <Reference Include="ModernHttpClient">
-      <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\ModernHttpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="OkHttp">
-      <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\OkHttp.dll</HintPath>
-    </Reference>
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.4.8.1\lib\netstandard1.1\Autofac.dll</HintPath>
     </Reference>
@@ -213,32 +207,14 @@
     <Reference Include="FloatingActionButton-Xamarin">
       <HintPath>..\packages\FAB.XamarinAndroid.1.6.4.0\lib\MonoAndroid50\FloatingActionButton-Xamarin.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Mobile.Analytics.Android.Bindings">
-      <HintPath>..\packages\Microsoft.Azure.Mobile.Analytics.0.18.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Analytics.Android.Bindings.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Mobile.Analytics">
-      <HintPath>..\packages\Microsoft.Azure.Mobile.Analytics.0.18.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Mobile.Android.Bindings">
-      <HintPath>..\packages\Microsoft.Azure.Mobile.0.18.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Android.Bindings.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Mobile">
-      <HintPath>..\packages\Microsoft.Azure.Mobile.0.18.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Extensions.Primitives">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Net.Http.Headers">
       <HintPath>..\packages\Microsoft.Net.Http.Headers.2.0.3\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
     </Reference>
-    <Reference Include="ModernHttpClient">
-      <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\ModernHttpClient.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="OkHttp">
-      <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\OkHttp.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.Settings.Abstractions">
       <HintPath>..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.Abstractions.dll</HintPath>
@@ -476,7 +452,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets')" />
-  <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
   <Import Project="..\packages\Xamarin.Android.Arch.Core.Common.1.0.0\build\MonoAndroid80\Xamarin.Android.Arch.Core.Common.targets" Condition="Exists('..\packages\Xamarin.Android.Arch.Core.Common.1.0.0\build\MonoAndroid80\Xamarin.Android.Arch.Core.Common.targets')" />
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.27.0.2\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.27.0.2\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets')" />
   <Import Project="..\packages\Xamarin.Android.Arch.Lifecycle.Common.1.0.3\build\MonoAndroid80\Xamarin.Android.Arch.Lifecycle.Common.targets" Condition="Exists('..\packages\Xamarin.Android.Arch.Lifecycle.Common.1.0.3\build\MonoAndroid80\Xamarin.Android.Arch.Lifecycle.Common.targets')" />
@@ -495,4 +470,11 @@
   <Import Project="..\packages\Xamarin.Android.Support.v7.AppCompat.27.0.2\build\MonoAndroid81\Xamarin.Android.Support.v7.AppCompat.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v7.AppCompat.27.0.2\build\MonoAndroid81\Xamarin.Android.Support.v7.AppCompat.targets')" />
   <Import Project="..\packages\Xamarin.Android.Support.Design.27.0.2\build\MonoAndroid81\Xamarin.Android.Support.Design.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Design.27.0.2\build\MonoAndroid81\Xamarin.Android.Support.Design.targets')" />
   <Import Project="..\packages\Refit.4.4.17\build\netstandard1.4\refit.targets" Condition="Exists('..\packages\Refit.4.4.17\build\netstandard1.4\refit.targets')" />
+  <Import Project="..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets'))" />
+  </Target>
 </Project>
