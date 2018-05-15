@@ -10,10 +10,11 @@ using Plugin.Settings;
 using YourMoney.Droid.Services;
 using YourMoney.Standard.Core.Services.Abstract;
 using YourMoney.Standard.Core;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter;
 
 namespace YourMoney.Droid
 {
-    //You can specify additional application information in this attribute
     [Application]
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
@@ -25,10 +26,12 @@ namespace YourMoney.Droid
         public override void OnCreate()
         {
             base.OnCreate();
-            RegisterActivityLifecycleCallbacks(this);
-            //A great place to initialize Xamarin.Insights and Dependency Services!
 
-            MobileCenter.Start("7f6abd3a-30bc-40f0-a2da-101eb68d2ce5", typeof(Analytics));
+            CrossCurrentActivity.Current.Init(this);
+
+            RegisterActivityLifecycleCallbacks(this);
+
+            AppCenter.Start("2408931e-943c-41f9-9adf-d44fdcaa8206", typeof(Analytics), typeof(Crashes));
 
             AppStart.Initialize(RegisterAndroidDependencies);
         }
@@ -47,7 +50,6 @@ namespace YourMoney.Droid
 
         public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
         {
-            CrossCurrentActivity.Current.Activity = activity;
         }
 
         public void OnActivityDestroyed(Activity activity)
@@ -60,7 +62,7 @@ namespace YourMoney.Droid
 
         public void OnActivityResumed(Activity activity)
         {
-            CrossCurrentActivity.Current.Activity = activity;
+            CrossCurrentActivity.Current.Init(this);
         }
 
         public void OnActivitySaveInstanceState(Activity activity, Bundle outState)
