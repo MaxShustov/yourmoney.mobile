@@ -46,11 +46,15 @@ namespace YourMoney.Droid.Activities
                 a => a.UserNameEditText.Enabled,
                 a => a.PasswordEditText.Enabled);
 
-            //LoginButton.Events().Click
-            //    .InvokeCommandWithoutParam(ViewModel, m => m.LoginCommand);
+            LoginButton
+                .Events()
+                .Click
+                .InvokeCommandWithoutParam(ViewModel, m => m.LoginCommand);
 
-            //RegisterButton.Events().Click
-                //.InvokeCommandWithoutParam(ViewModel, m => m.RegisterCommand);
+            RegisterButton
+                .Events()
+                .Click
+                .InvokeCommandWithoutParam(ViewModel, m => m.RegisterCommand);
         }
     }
 }

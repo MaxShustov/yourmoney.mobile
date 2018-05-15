@@ -12,6 +12,7 @@ using ReactiveUI.AndroidSupport;
 using YourMoney.Droid.RecyclerViews;
 using YourMoney.Standard.Core.Enums;
 using YourMoney.Standard.Core.ViewModels;
+using YourMoney.Droid.Helpers;
 
 namespace YourMoney.Droid.Activities
 {
@@ -47,13 +48,15 @@ namespace YourMoney.Droid.Activities
 
         private void BindViewModel()
         {
-            //AddIncomeButton.Events().Click
-            //    .Select(e => Unit.Default)
-            //    .InvokeCommand(ViewModel, m => m.IncomeCommand);
+            AddIncomeButton
+                .Events()
+                .Click
+                .InvokeCommandWithoutParam(ViewModel, m => m.IncomeCommand);
 
-            //AddOutcomeButton.Events().Click
-                //            .Select(_ => Unit.Default)
-                //.InvokeCommand(ViewModel, m => m.OutcomeCommand);
+            AddOutcomeButton
+                .Events()
+                .Click
+                .InvokeCommandWithoutParam(ViewModel, m => m.OutcomeCommand);
 
             this.OneWayBind(ViewModel, m => m.CurrentBalance, a => a.CurrentBalanceTextView.Text);
             this.OneWayBind(ViewModel, m => m.Transactions, a => a.TransactionsAdapter.ItemSource);

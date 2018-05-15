@@ -34,7 +34,7 @@ namespace YourMoney.Droid.Activities
             this.Bind(ViewModel, m => m.Description, a => a.DescriptionEditText.Text);
             this.Bind(ViewModel, m => m.Value, a => a.ValueEditText.Text);
 
-            //this.BindCommand(ViewModel, m => m.AddTransactionCommand, a => a.AddIncomeButton, nameof(AddIncomeButton.Click));
+            this.BindCommand(ViewModel, m => m.AddTransactionCommand, a => a.AddIncomeButton, nameof(AddIncomeButton.Click));
         }
     }
 }

@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Refit" Version="4.3.0" />
     <PackageReference Include="Splat" Version="4.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
-    <PackageReference Include="ReactiveUI" Version="8.0.1" />
+    <PackageReference Include="ReactiveUI" Version="8.2.1" />
+    <PackageReference Include="Refit" Version="4.4.17" />
   </ItemGroup>
 
 </Project>
