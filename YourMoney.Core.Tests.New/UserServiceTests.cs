@@ -1,9 +1,12 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Reactive;
+using System.Reactive.Concurrency;
 using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using Microsoft.Reactive.Testing;
 using Moq;
+using ReactiveUI.Testing;
 using YourMoney.Standard.Core.Api.Interfaces;
 using YourMoney.Standard.Core.Api.Models;
 using YourMoney.Standard.Core.Services.Abstract;
@@ -14,24 +17,42 @@ namespace YourMoney.Core.Tests.New
     [TestFixture]
     public class UserServiceTests: ReactiveTest
     {
-        [Test]
-        public void TestCase()
+        private Mock<ISettingService> _settingServiceMock;
+        private Mock<IUsersApi> _userApiMock;
+        private IUserService _userService;
+        private TestScheduler _schedulerProvider;
+
+        [SetUp]
+        public void SetUp()
         {
-            var scheduler = new TestScheduler();
+            _schedulerProvider = new TestScheduler();
 
-            var settingMock = new Mock<ISettingService>();
-            var userApi = new Mock<IUsersApi>();
-            var observable = Observable.Return(new LoginResponseModel()).Delay(TimeSpan.FromTicks(1), scheduler);
-            userApi.Setup(api => api.Login(It.IsAny<LoginRequestModel>())).Returns(observable);
+            _settingServiceMock = new Mock<ISettingService>();
+            _userApiMock = new Mock<IUsersApi>();
 
-            var observer = scheduler.CreateObserver<Unit>();
-            var userService = new UserService(settingMock.Object, userApi.Object);
-            userService.Login(string.Empty, string.Empty)
-                .Subscribe(observer);
-            
-            scheduler.AdvanceBy(TimeSpan.FromSeconds(2).Ticks);
+            _userService = new UserService(_settingServiceMock.Object, _userApiMock.Object);
+        }
 
-            Assert.AreEqual(1, observer.Messages.Count);
+        [Test]
+        public void NewTest()
+        {
+            using (TestUtils.WithScheduler(_schedulerProvider))
+            {
+                var subject = new Subject<LoginResponseModel>();
+                _userApiMock.Setup(api => api.Login(It.IsAny<LoginRequestModel>())).Returns(subject);
+                _schedulerProvider.Schedule(() => subject.OnNext(new LoginResponseModel()));
+
+                var observer = _schedulerProvider.CreateObserver<Unit>();
+                _userService.Login(string.Empty, string.Empty).Subscribe(observer);
+
+                Assert.AreEqual(0, observer.Messages.Count);
+
+                _schedulerProvider.AdvanceBy(10);
+
+                Assert.AreEqual(1, observer.Messages.Count);
+                Assert.AreEqual(Unit.Default, observer.Messages[0].Value.Value);
+            }
         }
     }
 }
+

@@ -97,7 +97,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
     <Compile Include="UserServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
