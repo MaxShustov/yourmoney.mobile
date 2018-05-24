@@ -12,7 +12,7 @@ using YourMoney.Standard.Core.Api.Models;
 using YourMoney.Standard.Core.Services.Abstract;
 using YourMoney.Standard.Core.Services.Implementation;
 
-namespace YourMoney.Core.Tests.New
+namespace YourMoney.Core.Tests
 {
     [TestFixture]
     public class UserServiceTests: ReactiveTest
