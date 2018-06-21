@@ -1,18 +1,18 @@
-﻿using NUnit.Framework;
-using System.Reactive;
+﻿using System.Reactive;
 using System.Reactive.Concurrency;
 using System.Reactive.Subjects;
+using System.Runtime.InteropServices;
 using Microsoft.Reactive.Testing;
 using Moq;
+using NUnit.Framework;
 using ReactiveUI.Testing;
 using YourMoney.Standard.Core.Api.Interfaces;
 using YourMoney.Standard.Core.Api.Models;
 using YourMoney.Standard.Core.Services.Abstract;
 using YourMoney.Standard.Core.Services.Implementation;
-using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
-namespace YourMoney.Core.Tests.New
+namespace YourMoney.Core.Tests
 {
     [TestFixture]
     public class UserServiceTests: ReactiveTest
