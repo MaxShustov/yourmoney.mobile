@@ -34,10 +34,10 @@ namespace YourMoney.Droid.RecyclerViews
             var transactionViewHolder = (TransactionViewHolder)holder;
             var transaction = ItemSource[position];
 
-            transactionViewHolder.DateTextView.Text = transaction.Date.ToString(CultureInfo.CurrentUICulture);
+            transactionViewHolder.DateTextView.Text = transaction.Date.ToString(CultureInfo.CurrentCulture);
             transactionViewHolder.CategoryTextView.Text = transaction.Category;
             transactionViewHolder.DescriptionTextView.Text = transaction.Description;
-            transactionViewHolder.ValueTextView.Text = transaction.Value.ToString(CultureInfo.CurrentUICulture);
+            transactionViewHolder.ValueTextView.Text = transaction.Value.ToString(CultureInfo.CurrentCulture);
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

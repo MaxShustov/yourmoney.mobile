@@ -8,6 +8,7 @@ using YourMoney.Standard.Core.ViewModels.Abstract;
 
 namespace YourMoney.Droid.Activities
 {
+    
     [Activity]
     public class BaseActivity<T> : AppCompatActivity, IViewFor<T>
         where T : class, IViewModel

@@ -12,6 +12,8 @@ using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 
+[assembly: System.Security.SecurityCritical]
+
 namespace YourMoney.Droid
 {
     [Application]
