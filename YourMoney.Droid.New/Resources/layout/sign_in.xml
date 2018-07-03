@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+  <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/top_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.5"
+        android:background="@drawable/bg_primary_gradient"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintStart_toStartOf="@id/top_view"
+        app:layout_constraintEnd_toEndOf="@id/top_view"
+        app:layout_constraintTop_toTopOf="@id/top_view"
+        app:layout_constraintBottom_toBottomOf="@id/top_view"
+        app:srcCompat="@drawable/colorless_icon_yourmoney"
+        app:layout_constraintVertical_bias="0.4"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/center_guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <LinearLayout
+        android:id="@+id/input_fields"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/double_default_margin"
+        android:layout_marginEnd="@dimen/double_default_margin"
+        app:layout_constraintTop_toBottomOf="@id/center_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:paddingBottom="42dp"
+        android:paddingStart="@dimen/double_default_margin"
+        android:paddingEnd="@dimen/double_default_margin"
+        android:paddingTop="@dimen/double_default_margin"
+        android:elevation="6dp">
+
+      <TextView
+          android:id="@+id/textView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Sign In"
+          android:gravity="center"
+          android:textSize="20sp"/>
+
+      <android.support.design.widget.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginTop="@dimen/double_default_margin"
+          app:hintTextAppearance="@style/TextInputStyle.Hint">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="hint"
+            android:textColor="@color/darkText"/>
+      </android.support.design.widget.TextInputLayout>
+
+      <android.support.design.widget.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:hintTextAppearance="@style/TextInputStyle.Hint">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="hint"
+            android:textColor="@color/darkText"/>
+
+      </android.support.design.widget.TextInputLayout>
+
+      <TextView
+          android:layout_height="wrap_content"
+          android:layout_width="match_parent"
+          android:text="Error!"
+          android:layout_marginTop="@dimen/double_default_margin"
+          android:textColor="@color/error"
+          android:gravity="center"
+          android:textSize="16sp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sign_in_button"
+        android:layout_width="230dp"
+        android:layout_height="54dp"
+        android:elevation="8dp"
+        android:stateListAnimator="@null"
+        android:text="@string/LoginButtonText"
+        app:layout_constraintBottom_toBottomOf="@id/input_fields"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_fields" />
+
+  </android.support.constraint.ConstraintLayout>
+</ScrollView>

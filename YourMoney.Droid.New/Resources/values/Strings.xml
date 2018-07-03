@@ -1,4 +1,11 @@
 <resources>
-    <string name="app_name">YourMoney.Droid.New</string>
-    <string name="action_settings">Settings</string>
+  <string name="app_name">YourMoney.Droid.New</string>
+  <string name="action_settings">Settings</string>
+  <string name="icon_description">Application icon</string>
+  <string name="PasswordHint">Password</string>
+  <string name="UserNameHint">User name</string>
+  <string name="LoginButtonText">Sign in</string>
+  <string name="LoginError">User name or password is incorrect</string>
+  <string name="login_do_not_have_account">Do not have an account?</string>
+  <string name="login_sign_up">Sign up!</string>
 </resources>
